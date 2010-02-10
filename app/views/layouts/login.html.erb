@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+	<title><%= configatron.site_name %> - <%= yield(:title) %></title>
+	<%= stylesheet_link_tag 'dialog','common',:media => 'all' %> 	
+	<%= javascript_include_tag 'swfobject', 'scriptaculous' %>
+	<%= javascript_include_tag 'prototype'%>
+	<%= ajaxful_rating_style %>
+	<%= javascript_include_merged :base %>
+	<%= yield(:head) %>
+
+	<!--<%= javascript_include_tag "lightbox" %>
+	<script type="text/javascript" src="/javascripts/scriptaculous.js?load=effects,builder"></script>
+ 	<%= stylesheet_link_tag 'lightbox' %>-->
+	<script type="text/javascript">
+		function radiocheck()
+		{
+			<% if params[:radio] == 'company' %>
+				$('radio_company').checked = true;
+			<% end %>			
+		}				
+	</script>	
+</head>
+
+<body onload="javascript:radiocheck();">
+	<div id="wrapper">
+		<div id="header">
+		  <div id="head_left"><%= render :partial => 'shared/tabs' %></div>
+		  <div id="head_right">
+		  	<div class="right_aln">
+		  	<div id="global_links"><%= render :partial => 'shared/global_links' %></div>  
+		  	</div>
+		  </div>			  
+		 
+		    
+		</div><!-- header end -->
+		<div class="clear"></div>	
+		<div id="main">     
+		  <div id="left">  
+				<% if flash[:notice] %>
+					<div id="notice"><%= flash[:notice] %></div>
+				<% end %>
+				<% if flash[:warning] %>
+					<div id="warning"><%= flash[:warning] %></div>
+				<% end %>
+				<% if flash[:error] %>
+					<div id="error"><%= flash[:error] %></div>
+				<% end %>		   
+				<!--<h2 class="head"><%#= yield_or_default yield(:header), "Use 'content_for :header do; end' in your view to set this title" %></h2>-->        
+				<%= yield %>
+				<%= render :partial => 'shared/login' %>
+				<%= render :partial => 'shared/signup' %>
+		  </div><!-- left end -->
+		  
+		  <div id="right">					
+				<%= yield_or_default(yield(:sidebar)) %>				
+				<!--<%if params[:id]%><div style="display:none"><%else%><div><%end%><%= image_tag 'map.jpg'%></div>-->
+		  </div><!-- right end -->
+		</div><!-- main end -->
+	</div><!-- wrapper end -->
+</body>
+</html>

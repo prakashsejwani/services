@@ -1,0 +1,13 @@
+log/*
+tmp/*
+config/database.yml
+*.sqlite
+*.sqlite3
+doc/api
+.DS_Store
+.svn
+.orig
+config/*.orig
+db/sphinx/*
+db/shpinx
+.sql

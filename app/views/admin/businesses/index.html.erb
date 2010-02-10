@@ -1,0 +1,27 @@
+<% title "Businesses" %>
+<div>
+	<h3>Businesses</h3>
+	<div class="clear"></div>
+	<table cellspacing="0">
+	  <tr>
+	    <th>Name</th>
+	    <th>Alphabet</th>
+		<th colspan="2">Manage</th>
+	  </tr>
+	
+	<% for business in @businesses %>
+	  <tr class="<%= cycle("even", "odd") %>">
+	    <td><%= link_to business.name, admin_business_path(business)  %></td>
+	    <td style="width:12%"><%=h business.alphabet %></td>
+	    <!--<td><%#= link_to 'Show', admin_business_path(business) %></td>-->
+	    <td class="link"><%= link_to image_tag("edit.gif"), edit_admin_business_path(business), :title => "Edit?", :class => "no_border" %></td>
+	    <td class="link"><%= link_to image_tag("destroy.png"), admin_business_path(business), :confirm => 'Are you sure?', :method => :delete, :title => "Delete?", :class => "no_border" %></td>
+	  </tr>
+	<% end %>
+	</table>
+	<div class="clear"></div>
+	<%= will_paginate @businesses %>
+	<div class="clear2"></div>
+	<span class="blue_link"><%= link_to 'New business', new_admin_business_path %></span>
+</div>
+

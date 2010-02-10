@@ -1,0 +1,30 @@
+<% unless @comp.nil? %>
+	<div id="scrollForm" style="display: none;">
+		<span class="close">
+			<a href="#" onclick="hideAreaSelector('scrollForm');">close [x]</a>
+		</span>
+		<div id="scrollRedbox">	   
+	   <h3>Scroll advertisements near expiry</h3>      
+			<table cellspacing="0" cellpadding="0">
+			<tr>
+			   <th>Name</th>
+			   <th style="width:100px">From Date</th>
+			   <th style="width:100px">Expiry Date</th>
+			</tr>
+			<% for company in @comp %>         
+					<% if((company.to_date - Date.today).to_i < 30)%>
+						<tr>
+						   <td><%=h company.name %></td>
+						   <td><%=h company.from_date.strftime("%d %b '%y") %></td>
+						   <% if (company.to_date - Date.today).to_i > 0 %>
+							 <td><%=h company.to_date.strftime("%d %b '%y") %></td>
+								   <% elsif (company.to_date - Date.today).to_i <= 0 %>
+							 <td style="color:red;"><%=h company.to_date.strftime("%d %b '%y") %></td>
+						   <% end %>
+						</tr>	     
+					<% end %>	  
+			<% end %>   
+		   </table>	
+		</div>
+	</div>
+	<% end %>

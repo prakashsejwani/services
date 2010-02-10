@@ -1,0 +1,10 @@
+<% title 'New Locality' %>
+<div>
+	<h3>New Locality</h3>
+	<div class="clear"></div>
+	<% form_for(:locality, :url => admin_localities_path) do |f| %>
+	  <%=render :partial => 'locality', :locals=>{:f=>f}%>		
+	<% end %>
+	<br/>
+	<span class="blue_link"><%= link_to 'Back', admin_localities_path %></span>
+</div>

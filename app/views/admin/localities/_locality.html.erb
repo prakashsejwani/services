@@ -1,0 +1,15 @@
+<div><%= f.error_messages %></div>
+<table>
+	<tr>
+		<td><%= f.label :name %></td>	
+		<td><%= f.text_field :name, :size=>"35" %></td>	
+	</tr>
+	<tr>
+		<td><%= f.label :city_id %></td>	
+		<td> <%= f.collection_select :city_id, @cities, :id, :name, {:prompt => true} %></td>	
+	</tr>
+	<tr>
+		<td colspan="2" align="right"><%= f.submit params[:id] ? "Update" : "Create", :class=>"button" %></td>
+	</tr> 
+</table>			
+

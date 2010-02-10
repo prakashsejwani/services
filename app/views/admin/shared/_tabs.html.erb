@@ -1,0 +1,16 @@
+		<div class="sidebar_green">
+			<ul><li><%= tab_to "Dashboard", [{:controller => "admin/dashboard"}] %></li></ul>
+			<h2>Manage</h2>
+			<ul>
+				<li><%= tab_to "Users Accounts", [{:controller => "admin/users"}] %></li>
+				<li><%= tab_to "Businesses", [{:controller => "admin/businesses"}] %></li>
+				<li><%= tab_to "Cities", [{:controller => "admin/cities"}] %></li>
+				<li><%= tab_to "Localities", [{:controller => "admin/localities"}] %></li>
+				<li><%= tab_to "Companies", [{:controller => "admin/companies"}] %></li>
+				<li><%= tab_to "Categories", [{:controller => "admin/categories"}] %></li>
+			</ul>
+			<h2>Settings</h2>
+			<ul>
+				<li><%= tab_to "Settings", [{:controller => "admin/settings"}] %></li>	
+			</ul>
+		</div>

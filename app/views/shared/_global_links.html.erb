@@ -1,0 +1,23 @@
+<div style="margin:4px 0 0 0">
+<% if logged_in? %>
+	<!--<%#unless current_user.avatar.blank?%><img src =<%#= current_user.avatar.public_filename(:thumbnail) %> /><%# end%>-->
+	<strong><%= current_user.login %></strong> | 
+	<%= link_to "Dashboard", root_url %> | 
+	<%= link_to "My Account", profile_url(current_user) %> | 
+	
+	<% unless admin? %>
+		<%= link_to "My Ads", advertisements_url(:owner_id=>current_user.id)%> |
+	<% else %>
+		<%= link_to "Administration", admin_root_url %> | 
+	<% end %>
+	
+	<%= link_to "Log out", logout_url, :method => :delete %>
+<% else %>
+	<div style="margin:0 45px 0 0">
+	<%#= link_to "Sign up", signup_url %>
+	<a id="signupLink" href="#" onclick="showAreaSelector('signupLink','signupForm')">sign up</a> | 
+		<%#= link_to "Log in", login_url %>
+		<a id="loginLink" href="#" onclick="showAreaSelector('loginLink','loginForm')">log in</a>
+	</div>
+<% end %>
+</div>

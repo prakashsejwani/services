@@ -1,0 +1,90 @@
+<%= javascript 'dynamic_localities' %>	
+<%= render :partial => 'shared/slideshow' %>
+<% content_for :header do -%>
+	My <%= configatron.site_name %>
+<% end -%>
+
+
+<div id="search_count"><% if @comp.empty? %><%= @categories.size %> Related Category for <% else %><%= @comp.size %> Results for <% end %>"<%= params[:q]%>" located in & around "Mumbai"</div>
+<div class="clear"></div>
+<table cellpadding="0" cellspacing="0">
+	<tr>
+	<% unless @categories.nil? %>
+		<td style="width:30%" valign="top">
+		<span><b>Related Categories</b></span>
+			<ul id="rel_category">				
+				<% for category in @categories %>				
+					<li><%= link_to truncate((category.name), :length => 25), search_url(:radio => "category", :q => category.name ), :title => category.name %></li>
+				<% end %>
+			</ul>
+		</td>
+	<% end %>
+	
+	<td style="width:0.5%"></td>
+	<td style="width:69.5%" valign="top">	
+	<% if !@companies.nil?%>	
+		<% for company in @companies %>				
+			<div class="<%if company.priority == true%> priority <%else%> <%= cycle("pre_gray") %> <%end%>">
+				<table cellspacing="0" class="no_pad">
+				<tr><td valign="top" class="company-name">
+						 	<%=link_to truncate((company.name), :length => 30), advertisement_path(company ,:q=>params[:q] , :radio=>params[:radio] , :city=>params[:city], :locality=>params[:locality], :page=>params[:page]), :title => company.name%></td>
+					<td valign="top"><span style="float:right"><%=link_to ratings_for(company,:static, :remote_options => {:url => rate_advertisement_path(company)}), advertisement_path(company ,:q=>params[:q] , :radio=>params[:radio] , :city=>params[:city], :locality=>params[:locality], :page=>params[:page]) %></span></td>
+				</tr>
+				<tr>
+					<td valign="top"><label>Average Rating</label> <span>[<%= number_with_precision((company.rates.sum(:stars).to_f / company.rates.size), :precision => 2)%>]</span></td>
+					<td valign="top" align="right"><%unless company.rates.size <= 0%>
+						<label>Number of Ratings</label> <%= company.rates.size %>
+					<%else%>
+						<%=link_to "Be first to rate", advertisement_path(company ,:q=>params[:q] , :radio=>params[:radio] , :city=>params[:city], :locality=>params[:locality], :page=>params[:page])%>
+					<%end%></td>
+				</tr>
+				<!--<tr>
+					<td></td>
+					<td valign="top"><span style="float:right"><%#= link_to 'Write Review', :controller => 'advertisements', :action => 'reviews', :id => company.id%></span></td>
+				</tr>
+				<tr><td colspan="2" valign="top"><label>Number of Reviews by reg Users</label><%#= pluralize(company.reviews.approved_by_admin.registered_users.size, 'review')%></td></tr>
+				<tr><td colspan="2" valign="top"><label>Number of Reviews by Other Users</label><%#= pluralize(company.reviews.approved_by_admin.other_users.size, 'review')%></td></tr>
+				-->
+				</table>
+					<table cellspacing="0" class="no_pad" cellpadding="0">
+						<tr><td>
+						<table cellspacing="0">
+							<tr><td class="column" valign="top">Address </td><td><%=h company.locality.name %>, <%=h company.city.name %></td></tr>					
+								<!--<%#if !company.phone1.blank? %><tr><td class="column" valign="top">Contact No.</td><td><%#=h company.phone1 %><%#if !company.phone2.blank?%>, <%#=h company.phone2 %><%#end%></td></tr><%# end%>-->					
+								<!--<tr><td class="column" valign="top">Business </td><td><%#=h company.business.name %></td></tr>-->			
+							<tr><td class="column" valign="top">Category </td>
+							<td>
+								<% for category in company.categories%>
+									<%if category.name == params[:q]%>
+										<span class="category_name"><%=h category.name %></span>&nbsp;
+									<%else%>
+									<%=link_to category.name , search_url(:radio => "category", :q => category.name )%> &nbsp;
+									<%end%>
+								<%end%>
+							 </td>
+							</tr>								
+						</table>
+				<% unless company.images[0].blank? %>
+					<td style="width:101px" align="right" ><img src =<%= company.images[0].ad_file_name %> /></td>
+				<% end %>			 
+				</td>
+				</tr>
+				</table>
+			</div>
+			<div class="clear"></div>
+		<% end %>
+	<% else %>
+		<div class="clear"></div>
+		<div class="pre">Try in the related categories below </div>
+		<div class="clear2"></div>
+		<div class="clear2"></div>
+		
+	<% end %>
+	</td>	
+	</tr>								
+</table>
+<%= will_paginate @companies unless @companies.empty?%>
+
+<!--<div class="clear2"></div>
+<%# unless @companies.empty? %><span class="blue_link"><%#= link_to "Back", {:controller=> :home, :action=> :index} %></span><%#end %>-->
+<div class="clear2"></div>

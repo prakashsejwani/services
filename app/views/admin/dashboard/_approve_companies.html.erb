@@ -1,0 +1,41 @@
+<% if !@companies.blank? %>
+	<div>
+	<h3>Approve companies</h3>
+	<div class="clear"></div>
+	   <%form_tag admin_root_path, :method=>:put do%>
+		<% for company in @companies %>
+			<div class="<%= cycle("pre", "pre-col") %>">
+				<table cellspacing="0">
+					<tr><td colspan="2" valign="top" class="company-name"><%=link_to h(company.name), admin_company_path(company) %></td></tr>
+					<tr><td style="width:100px" valign="top">Address </td><td valign="top"><%=h company.locality.name %>, <%=h company.city.name %></td></tr>
+					<tr><td style="width:100px" valign="top">Business </td><td valign="top"><%=h company.business.name %></td></tr>
+					<tr><td style="width:100px" valign="top">other category </td><td valign="top"><%=h company.other_category %></td></tr>
+                      <%unless company.other_category.blank?%>
+				         <tr><td><%= link_to 'add to category from other category', :controller => 'admin/companies', :action => 'add_category', :id => company.id, :add => "y" %></td></tr>
+				      <%end%>                          
+					<tr><td style="width:100px" valign="top">Category </td>
+						<td valign="top">
+						<% for categorization in company.categorizations%>
+							<%=link_to Category.find(categorization.category_id).name , root_path(:radio => "category", :q => Category.find(categorization.category_id).name )%>&nbsp;&nbsp;
+						<%end%>
+						</td>
+					</tr>
+					<tr>
+						<td valign="top"><label>Approve </label></td>
+						<td>
+							<%= check_box_tag "companies[]",company.id, company.approved, :class => 'no_border'  %>
+							<%= link_to image_tag('destroy.png'), admin_company_path(company), :confirm => 'Are you sure?', :method => :delete, :title => 'delete?', :class => 'no_border'  %>
+						</td>
+					</tr>								
+				</table>
+			</div>
+			<div class="clear"></div>
+		<% end %>
+	     <span><%= submit_tag "Approve" %></span>
+	    <% end %>			
+	</div>
+	<div class="clear"></div>	
+	<%= will_paginate @companies %>
+<% else %>
+	<div class="pre-col">No data available for approval for Companies</div>
+<% end %>

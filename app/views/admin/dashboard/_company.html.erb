@@ -1,0 +1,84 @@
+
+<div><%= f.error_messages %></div>
+<table>
+	<tr>
+		<td colspan="2"><%= f.file_field :image_ad, :class=>"border" %></td>	
+	</tr>
+		<tr>
+		<td colspan="2"><%= file_field :image, :uploaded_data %></td>
+		</tr>
+	<tr>
+		<td> <%= f.label :name %></td>
+		<td><%= f.text_field :name %></td>	
+	</tr>
+	<tr>
+		<td><%= f.label :address1 %></td>
+		<td><%= f.text_field :address1 %></td>	
+	</tr>
+	<tr>
+		<td><%= f.label :address2 %></td>
+		<td><%= f.text_field :address2 %></td>	
+	</tr>
+	<tr>
+		<td><%= f.label :city_id %></td>
+		<td><%= f.collection_select :city_id, @cities, :id, :name, {:prompt => true} %></td>	
+	</tr>
+	<tr>
+		<td><%= f.label :locality_id %></td>
+		<td><%= f.collection_select :locality_id, @localities, :id, :name, {:prompt => true} %></td>	
+	</tr>
+	<tr>
+		<td><%= f.label :state %></td>
+		<td><%= f.text_field :state %></td>	
+	</tr>
+	<tr>
+		<td><%= f.label :country %></td>	
+		<td><%= f.text_field :country %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :pincode %></td>	
+		<td><%= f.text_field :pincode %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :phone1 %></td>	
+		<td><%= f.text_field :phone1 %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :phone2 %></td>	
+		<td><%= f.text_field :phone2 %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :fax %></td>	
+		<td><%= f.text_field :fax %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :email %></td>	
+		<td><%= f.text_field :email %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :contact %></td>	
+		<td><%= f.text_field :contact %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :about %></td>	
+		<td><%= f.text_area :about , :rows => 10 %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :business_id %></td>
+		<td><%= f.collection_select :business_id, @businesses, :id, :name, {:prompt => true} %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :approved %></td>	
+		<td><%= f.check_box :approved%></td>
+	</tr>
+	<tr>
+		<td>Categories/Products:</td>	
+		<td><%=  f.text_field :tag_list %></td>
+	</tr>
+	<tr>
+		<td colspan="2" align="right"><%= f.submit params[:id] ? "Update" : "Create", :class=>"button" %>	</td>	
+	</tr>
+	<tr><td colspan="2"></td></tr>
+</table>  
+
+

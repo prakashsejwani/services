@@ -1,0 +1,93 @@
+<!--<%#= javascript 'dynamic_localities' %>-->
+<tr>
+    <td valign="top">Name</td>
+    <td valign="top"><%= f.text_field :name %></td>	
+</tr>
+<tr>
+    <td valign="top">Address</td>
+    <td valign="top"><%= f.text_field :address1 %></td>	
+</tr>
+<tr>
+    <td>&nbsp;</td>
+    <td valign="top"><%= f.text_field :address2 %></td>	
+</tr>
+<tr>
+    <td valign="top">City</td>
+    <td valign="top"><div style="width:34%;float:left"><%= f.collection_select :city_id, @cities, :id, :name, {:prompt => true}, {:selected => params[:city_id]} %></div>
+    <div style="width:20%;float:left;text-align:right"><%= f.label :locality_id %>&nbsp;&nbsp;</div>
+    <div style="width:45%;float:right;"><%= f.collection_select :locality_id, @localities, :id, :name, {:prompt => true}, {:selected => params[:locality_id]} %></div></td>	
+</tr>	
+<tr>
+    <td valign="top">State</td>
+    <td valign="top"><%= f.text_field :state, :value => "Maharashtra" %></td>	
+</tr>
+<tr>
+    <td valign="top">Country</td>	
+    <td valign="top"><%= f.text_field :country, :value => "India" %></td>
+</tr>
+<tr>
+    <td valign="top">Pincode</td>	
+    <td valign="top"><%= f.text_field :pincode, :size => 17 %></td>
+</tr>
+<tr>
+    <td valign="top"><label>Phone No.</label></td>	
+    <td valign="top">
+		<%= f.text_field :phone1, :size => 17 %> / 
+		<%= f.text_field :phone2, :size => 17 %>
+	</td>
+</tr>
+<tr>
+    <td valign="top">Fax No.</td>	
+    <td valign="top"><%= f.text_field :fax, :size => 17 %></td>
+</tr>
+<tr>
+    <td valign="top">E-mail</td>	
+    <td valign="top"><%= f.text_field :email %></td>
+</tr>
+<tr>
+    <td valign="top">Company Url</td>	
+    <td valign="top"><%= f.text_field :ad_url %></td>		
+</tr>
+<tr>
+    <td valign="top">Contact Person</td>	
+    <td valign="top"><%= f.text_field :contact %></td>
+</tr>
+<tr>
+    <td valign="top">About</td>	
+    <td valign="top"><%= f.text_area :about %></td>
+</tr>
+<tr>
+    <td valign="top">Business</td>
+    <td valign="top"><%= f.collection_select :business_id, @businesses, :id, :name, {:prompt => true} %></td>
+</tr>
+<tr>
+    <td valign="top">Categories/Products</td>	
+    <td valign="top"><%= select_tag :category, options_for_select(@categories.collect {|p| [ p.name, p.id]}), {:multiple => true, :size => 4} %>
+	
+            Select add in below select box with this Icon<%= link_to_function image_tag("add.gif") do|page|
+		     page << "var selectedOption = $A($('category').options).find(function(option) { return option.selected; } )"
+			 page << "options = $('category_ids').options"		 		
+			 page << "var op = selectedOption.text"
+			 page << "var duplicate = 0"
+			 page << "for(var i=0;i<options.length;i++){" 
+			 page << "if (options[i].text==op){"
+			 page << "duplicate = 1"
+			 page << "alert('already exists!')"
+			 page << "break}"
+			 page << "else{"
+			 page << "duplicate = 0 }"			             
+                         page << "}"
+			 page << "if (duplicate==0){"
+			 page << "options[options.length] = Option(selectedOption.text , selectedOption.value) }"
+             					
+		    end%></td>		
+</tr>		  
+<tr>				                         
+    <td valign="top">Fill the categories</td>	
+    <td valign="top"><%= select_tag :category_ids, {},{:multiple => true, :size => 4} %>
+		    <%= link_to_function "remove" do|page|
+			  page << "var selectOption = $A($('category_ids').options).find(function(option) { return option.selected; })"
+			  page << "selectOption.remove()"
+			 
+		     end %></td>			    	
+</tr>

@@ -1,0 +1,27 @@
+<% content_for :sidebar do -%>
+	<script>
+		function saveImageAs (imgOrURL) {
+		if (typeof imgOrURL == 'object')
+		imgOrURL = imgOrURL.src;
+		window.win = open (imgOrURL);
+		setTimeout('win.document.execCommand("SaveAs")', 500);
+		}
+	</script>
+	<div style="margin:0 auto">
+	<% unless @company.images[0].blank? %>
+	<%n=1%>
+		<% @company.images.each do |image| %>
+			<div style="width:100px;float:left;margin:0 1px">
+			<center>
+				<a href="#" ONCLICK="saveImageAs(document.getElementById('<%=n%>')); return false" >
+				<%=image_tag image.ad.url(:thumb), :title => "click here to download this image" %>
+				</a>
+				<span style="display:none;overflow:hidden"><img id = <%=n%> src=<%= image.ad.url%>/></span>							
+			</center>
+			</div>
+			<%n=n+1%>
+		<% end %>
+	<% end %>
+	</div>
+	
+<% end %>

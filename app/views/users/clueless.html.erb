@@ -1,0 +1,20 @@
+<% content_for :header do -%>
+	Account Amnesia
+<% end -%>
+<div id="people">
+<div id="screen_1">
+<br/>
+<p>
+	You have indicated you can't remember your <%= configatron.site_name %> account at all.
+</p>
+<br/>
+<p>
+	We can't help you directly to recover you account. Please contact Services<%#= support_name %> at 
+	<%= secure_mail_to configatron.support_email %> for more help. 
+</p>
+<br/>
+<p>
+	If you don't have any important data in your account, you may also opt for <%= link_to "registering a new account", signup_url %>.
+</p>
+</div>
+</div>

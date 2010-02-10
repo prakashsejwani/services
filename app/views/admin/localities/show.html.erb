@@ -1,0 +1,11 @@
+<% title @locality.name %>
+<div>
+	<h3><%=h @locality.name %></h3>
+	<table>	
+		<tr> <td class="bold" style="width:20%">City:</td> <td> <%=h @locality.city.name  %> </td> </tr>		
+	</table>
+
+<br/>	
+<span class="blue_link"><%= link_to 'Edit', edit_admin_locality_path(@locality) %></span>
+<span class="blue_link"><%= link_to 'Back', admin_localities_path %></span>		
+</div>

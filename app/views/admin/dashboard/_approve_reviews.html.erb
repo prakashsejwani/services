@@ -1,0 +1,45 @@
+<div id="sidereviewForm" style="display: none;">
+	<span class="close">
+		<a href="#" onclick="hideAreaSelector('sidereviewForm');">close [x]</a>
+	</span>
+	<div id="sidereviewRedbox">	
+	<%if !@reviews.blank?%>
+	<h3>Approve reviews</h3>
+			<%form_tag admin_root_path, :method=>:put do%>
+				<table cellspacing="0" cellpadding="0">
+					  <tr>
+						<th>Name</th>
+						<th>Email</th>
+						<th>Comment</th>
+						<th>Company Name</th>
+						<th>Approved</th>
+						<th>del?</th>
+					  </tr>
+
+					<% for review in @reviews %>
+					  <tr>
+						<td><%=h review.name %></td>
+						<td><%=h review.email %></td>
+						<td><%=h review.comment %></td>
+						<td><%=h review.company_id %></td>
+						<td><%= check_box_tag "reviews[]",review.id, review.approved  %></td>
+						<td><%= link_to image_tag('destroy.png'), review, :confirm => 'Are you sure?', :method => :delete, :title => 'delete?', :class => 'no_border' %></td>
+					  </tr>
+					<% end %>
+				</table>
+			<span><%= submit_tag "Approve" %></span>
+			<% end %>		
+			<div class="clear"></div>
+		<%= will_paginate @reviews %>
+		<% else %>
+			there are no reviews for approval
+		<% end %>
+	</div>
+</div>
+
+
+
+
+
+
+

@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title><%= configatron.site_name %> - <%= yield(:title) %></title>
+	<%= stylesheet_link_tag 'admin','common', :media => 'all' %>
+  	<%= javascript_include_merged :base %>
+	<%= javascript_include_tag 'swfobject'%>
+</head>
+
+<body>
+  <div id="wrapper">
+		<div id="header">
+			  <div id="head_left"></div>
+			  <div id="head_right">
+			  <div class="right_aln">
+			  <div id="global_links"><%= render :partial => 'shared/global_links' %></div></div></div>			  
+			  <!--<h1><%#= configatron.site_name %> <span><%#= configatron.company_name %></span></h1>-->   
+		</div><!-- header end -->
+		<div class="clear"></div>	
+		<div id="main">
+		  <div id="left">  
+					<div>       
+						 <% if flash[:notice] %>
+							 <div id="notice"><%= flash[:notice] %></div>
+						 <% end %>
+					 	 <% if flash[:warning] %>
+							 <div id="warning"><%= flash[:warning] %></div>
+						 <% end %>
+						 <% if flash[:error] %>
+							 <div id="error"><%= flash[:error] %></div>
+						 <% end %>		
+					  <!--	<h2 class="head"><%= yield_or_default yield(:header), "Use 'content_for :header do; end' in your view to set this title" %></h2>-->
+					  	<div id="screen"><%= yield %><br/></div>
+					</div>
+		  </div><!-- left end -->		  
+		  
+			<div id="right">
+				<%= render :partial => 'admin/shared/tabs' %>
+				<%= yield_or_default(yield(:sidebar)) %>
+			</div><!-- right end -->		  
+		</div><!-- main end -->			
+	</div><!-- wrapper end -->
+			
+</body>
+</html>

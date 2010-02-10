@@ -1,0 +1,13 @@
+<% title "Edit Business" %>
+<div>
+	<h3>Edit Business</h3>
+	<div class="clear"></div>
+	<% form_for(:business, :url => { :action => "update" }, :html=>{:method => :put}) do |f| %>
+		<%=render :partial => 'business', :locals=>{:f=>f}%>				   
+	<% end %>
+	<br/>
+	<span class="blue_link"><%= link_to 'Show', admin_business_path(@business) %></span>
+	<span class="blue_link"><%= link_to 'Back', admin_business_path %></span>
+	<div class="clear2"></div>
+</div>
+

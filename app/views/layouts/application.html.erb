@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  	<meta name="Author" content="services.com">
+  	<meta name="Keywords" content="services, search engine">
+  	<meta name="Description" content="At SERVICES, our people determine our access. We aim to promote Growth, Teamwork, and Learning through constant innovation that ensures we grow together in this competitive arena.">
+	
+	<title><%= configatron.site_name %> - <%= yield(:title) %></title>
+	<%= stylesheet_link_tag 'default','common', :media => 'all' %>
+	<%= javascript_include_tag 'swfobject'%>
+	<%= ajaxful_rating_style %>
+	<%= javascript_include_merged :base %>
+	<%= yield(:head) %>
+
+	<script type="text/javascript">
+		function radiocheck()
+		{
+			
+			<% if params[:radio] == 'company' %>
+				$('radio_company').checked = true;
+			<% end %>
+		}	
+	</script>
+</head>
+
+<body onload="javascript:radiocheck(); ">
+	<div id="wrapper">
+		<div id="header">
+		  <div id="head_left"><%= render :partial => 'shared/tabs' %></div>
+		  <div id="head_right">
+		  	<div class="right_aln">
+		  	<div id="global_links"><%= render :partial => 'shared/global_links' %></div>  
+		  	</div>
+		  </div>			   
+		</div>
+		<div class="clear"></div>	
+		<div id="main">     
+			<% if flash[:notice] %>
+			   <div id="notice"><%= flash[:notice] %></div>
+			 <% end %>
+			 <% if flash[:warning] %>
+			   <div id="warning"><%= flash[:warning] %></div>
+			 <% end %>
+			 <% if flash[:error] %>
+			    <div id="error"><%= flash[:error] %></div>
+			 <% end %>
+		  <div id="left">					   
+				<!--<h2 class="head"><%#= yield_or_default yield(:header), "Use 'content_for :header do; end' in your view to set this title" %></h2>-->        
+				<%= yield %>	
+				<%= render :partial => 'shared/login' %>
+				<%= render :partial => 'shared/signup' %>
+		  </div><!-- left end -->
+		  
+		  <div id="right">
+			<center>
+				<div id="search_option">
+					<%if !@rev%>
+					<% form_tag(search_url, :method => :get) do %>
+					 <table cellspacing="0">
+						<tr>
+							<td align="left" valign="bottom"><label>Search By</label></td>
+							<td align="right"><%= radio_button_tag('radio', "company", false, :class => "no_border") %><label> Company Name </label></td>
+							<td align="right"><%= radio_button_tag('radio', "category", true, :class => "no_border") %><label> product / services</label></td>
+						</tr>
+						<tr>
+							<td colspan="3" align="center"><%= text_field_tag :q, params[:q]%></td>
+							<!--<td colspan="3" align="center"><%#= text_field_with_auto_complete :q, params[:q]%></td>-->
+						</tr>
+						</table>
+						
+						<table cellspacing="0">
+						<tr>
+							<td align="left"><label>City</label></td>
+							<td align="left"><label>Area</label></td>
+							<td></td>
+						</tr>
+						<tr>
+							<%if !@rev%><td style="width:42%" align="left"><%= select_tag :city, %{<option value="">Please select...</option>} + options_from_collection_for_select(@cities,"id","name",params[:city].to_i) %>
+							<%end%>
+							</td>
+							<td style="width:48%" align="left">
+								<div id="location">
+								<%if !@rev%><%= select_tag :locality, %{<option value="">Please select...</option>} + options_from_collection_for_select(@localities,"id","name",params[:locality].to_i) %><%end%>
+								</div> <!-- location end -->
+							</td>
+							<td style="width:10%" align="right"><%= submit_tag("Go", :onclick => "return citycompusory();", :url => {:controller => 'dashboard', :action => 'search'}, :class=>"no-img")%></td>
+							<%end%>
+						</tr>						
+					</table>					   	
+					<% end %>		
+			 	</div>	<!-- search_option end -->			 	
+				<div class="clear"></div> <!-- clear2 end -->				
+				<div>
+					<%= yield_or_default(yield(:sidebar)) %></div>
+					<%if params[:id] || params[:radio] || params[:business]%>
+						<div style="display:none">
+					<%else%>
+						<div class="map">
+						<div class="clear"></div>
+					<%end%>
+					<%#= image_tag 'map.jpg'%>
+				</div>
+			</center><!-- important -->
+		  </div><!-- right end -->		  
+		</div><!-- main end -->
+	</div><!-- wrapper end -->
+</body>
+</html>

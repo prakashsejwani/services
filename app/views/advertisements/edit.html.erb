@@ -1,0 +1,68 @@
+<% title 'Edit Advertisement' %>
+
+
+<% content_for :sidebar do -%>
+	<div style="margin:0 auto">
+	<% unless @company.images[0].blank? %>
+		<% @company.images.each do |image| %>
+			<%=image_tag image.ad.url(:thumb) %>
+		<% end %>
+	<% end %>
+	</div>
+<% end %>
+<div>
+
+	<h3>Edit Information</h3>
+	<div class="clear"></div>
+	<% form_for(:company, :url=>{:action=>:update}, :html=>{:method=>:put, :multipart => true}) do |f| %>			  
+	  <table cellspacing="0">
+	  	<%=render :partial => 'company', :locals=>{:f=>f}%>
+			<%if @company.scroll_ads == true%>
+                    </tr>
+                <td valign="top">Scroll_ads</td>	
+                       <td valign="top"><%= f.file_field :image_ad, :size => "30" %></td>		
+                     </tr>
+            <%end%>	
+			<%if @company.imageapprove == true%>
+			<% fields_for @newfile do |newfile| -%>
+			  <tr>
+			  	<td><label for="newfile_data">Attach Images</label></td>
+			   	<td><input id="newfile_data" type="file" <% if @company.images.count >= 5 -%> disabled<% end -%> size= "30"></td>
+			  </tr>
+      		<% end -%>
+			<tr><td colspan='2'>
+				<ul id="pending_files">
+				 <% if @company.images.size > 0 -%>
+						<%= render :partial => "/admin/companies/image", :collection => @company.images %>
+				  <% end -%>
+			  	</ul>
+			</td></tr>
+			<script type="text/javascript">
+				var multi_selector = new MultiSelector($('pending_files'), <%= @allowed %>);
+				multi_selector.addElement($('newfile_data'));
+			</script>		
+			<%end%>			
+
+	<%if @company.videoapprove == true%>
+	<tr>
+		<td>Video Clip</td>
+		<td><%= file_field :video, :uploaded_data, :class=>"border", :size => 30 %></td>	
+	</tr>
+	<% if @company.video %>
+		<tr>
+			<td colspan="2">
+				<li id="vattachment_<%= @company.video.id %>">
+				<%= @company.video.filename %>
+				<%= link_to_remote "Remove", :url  => "/videos/destroy/#{@company.video.id}", :method => :delete, :html => { :title  => "Remove this video" }, :collection => @company.video %>
+				</li>
+			</td>
+		</tr>
+	<% end %>
+	<% end %>	
+	  	<tr><td colspan="2" align="right"><%= f.submit "Update" %>	</td></tr>				  
+	<% end %>
+	</table>		
+	<span class="blue_link"><%= link_to 'Show',advertisement_path(@company) %></span>
+	<span class="blue_link"><%= link_to 'Back', advertisement_path %></span>
+	
+</div>

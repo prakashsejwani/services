@@ -1,0 +1,24 @@
+<% title 'Localities' %>
+<div>
+	<h3>Localities</h3>
+	<div class="clear"></div>
+	<table cellspacing="0">
+		<tr>
+			<th>Name</th>
+			<th>City</th>				
+			<th colspan="2">Manage</th>
+		</tr>
+		<% for locality in @localities %>
+			<tr class="<%= cycle("even", "odd") %>">
+				<td class="capital"><%= link_to locality.name, admin_locality_path(locality) %></td>
+				<td class="capital"><%=h locality.city.name  %></td>
+				<td class="link"><%= link_to image_tag("edit.gif"), edit_admin_locality_path(locality), :title => "Edit?", :class => "no_border" %></td>
+				<td class="link"><%= link_to image_tag("destroy.png"), admin_locality_path(locality), :confirm => 'Are you sure?', :method => :delete, :title => "Delete?", :class => "no_border" %></td>
+			</tr>
+		<% end %>
+	</table>
+	<div class="clear"></div>	
+	<%= will_paginate @localities %>
+	<div class="clear2"></div>
+	<span class="blue_link"><%= link_to 'New locality', new_admin_locality_path %></span>
+</div>

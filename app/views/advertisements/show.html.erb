@@ -1,0 +1,170 @@
+<%= javascript 'dynamic_localities' %>
+<% title @company.name %>
+<% content_for :sidebar do -%>
+	<div style="width:100%; margin:0 auto; ">
+		<center>
+			<div style="margin: 0 auto; font-size:14px; line-height:22px; color:#111517"><b>place your ads on services.com</b></div>
+			<a id="tipLink" href="#" onclick="showAreaSelector('tipLink','tipForm');return false">How rating works?</a>
+		</center>
+		<br/>
+	</div>
+<% end -%>
+<%= render :partial => 'shared/slideshow' %>
+<div>
+	<h3><%=h @company.name %></h3>
+	<div class="clear"></div>
+	<div id="company_<%= @company.id %>_rating">
+		<%= ratings_for(@company, :remote_options => {:url => rate_advertisement_path(@company)}) %>
+		<div class="clear"></div>
+			<%if !current_user%>
+				<span>( Please Sign up or Login To Rate The Company )</span>
+			<%end%>
+		<div class="clear2"></div>
+	</div>
+	 <%if @company.videoapprove == true %>
+		<%= render :partial=> 'admin/companies/video' if @video%>
+	<%end%>
+
+	<table cellspacing="0" cellpadding="0">
+		<tr>
+			<td>
+				<table>			
+					<%if !@company.contact.blank? %>
+						<tr><td class="bold1"><%= image_tag "contactperson.gif"%><!-- Contact Person --> </td><td> <%=h @company.contact %> </td></tr>
+					<% end %>
+					
+					<%if !@company.phone1.blank? %>
+						<tr> <td class="bold1">Contact No. </td> 
+							 <td> <%=h @company.phone1 %><%if !@company.phone2.blank? %>, <%=h @company.phone2 %> <% end %></td>
+						</tr>
+					<% end %>
+					
+					<%if !@company.fax.blank? %>
+						<tr> <td class="bold1">Fax </td><td><%=h @company.fax %></td></tr>
+					<% end %>
+					<%if !@company.ad_url.blank? %>
+						<tr> <td class="bold1">website </td><td class="no-effects"><%= link_to @company.ad_url, @company.ad_url, :target => '_blank' %> </td></tr>
+					<% end %>
+					<%if !@company.email.blank? %>
+						<tr> <td class="bold1">Email </td><td class="no-effects"><%=mail_to @company.email %></td></tr>
+					<% end %>
+					
+					<%if !@company.address1.blank? %>
+					<tr> <td class="bold1">Address	</td>
+						 <td> <%=h @company.address1 %> 
+							 <%if !@company.address2.blank? %>, <%=h @company.address2 %>, <% end %></td>
+					</tr>
+					<% end %>
+				
+					<tr><td>&nbsp;</td> <td><%=h @company.locality.name %> , <%=h @company.city.name %>-<%=h @company.pincode %></td></tr>
+				
+					<%if !@company.state.blank? %>
+					<tr><td>&nbsp; </td> 
+						<td> <%=h @company.state %><%if !@company.country.blank? %>, <%=h @company.country %><% end %></td>
+					</tr>
+					<% end %>
+				
+					<!-- <tr><td class="bold1"> Business </td><td><%=h @company.business.name %></td></tr> -->
+					
+					<tr><td class="bold1" valign="top"> Category </td>
+						<td>
+							<% for categorization in @company.categorizations%>
+								<span><%=link_to Category.find(categorization.category_id).name, search_path(:radio => "category", :q => Category.find(categorization.category_id).name)%></span>&nbsp;&nbsp;
+							<% end %>
+						</td>
+					</tr>
+
+					<%if !@company.about.blank? %>
+						<tr>  <td class="bold"> About </td><td><%=h @company.about %></td></tr>
+					<% end %>
+					
+					<tr><td><%= link_to 'Write Review', :controller => 'advertisements', :action => 'reviews', :id => @company.id%></td> <td></td> </tr>
+			</table>
+			</td>
+			<%if owner?(@company.owner_id)%>
+				<td style="width:30%" valign="top">	**********changes over here*********** </td>
+			<%end%>
+		</tr>
+	</table>
+
+	<% unless @rev.empty? %>
+		<div class="clear"></div>
+		<h3>Reviews</h3>
+		<div class="clear"></div>	
+			<% @company.reviews.each do |rev| %>
+			<table class="reviews">
+				<tr><td style="border-bottom:1px #f3f3f3 dotted"><%= h rev.name %></td></tr>
+				<tr><td><%= h rev.comment %></td></tr>
+			</table>
+			<% end %>
+		</div>
+		<div class="clear2"></div>	
+	<% end %>	
+			
+	<div class="clear"></div>
+	  <%if admin?%>
+		<span class="blue_link"><%= link_to 'Edit', edit_admin_company_path(@company) %></span>
+	  <%elsif owner?(@company.owner_id)%>		
+		<span class="blue_link"><%= link_to 'Edit', edit_advertisement_path(@company) %></span>		
+	  <%end%>
+		<span class="blue_link"><%= link_to 'Back', search_url( :city=>params[:city], :locality=>params[:locality], :q=>params[:q], :radio=>params[:radio], :page=>params[:page]) %></span>
+	</div>
+
+<div id="mainLogin">
+		<div id="tipForm" style="display: none;">
+			<span class="close">
+				<a href="#" onclick="hideAreaSelector('tipForm');">close [x]</a>
+			</span>
+			<div id="tipRedbox">
+				<div class="clear2"></div>
+				<div>Ratings according to stars</div>
+				<div class="clear2"></div>
+				<div id="rating">
+					<div style="height:20px">
+						<div class="left">Excellent</div>			
+						<div class="right">
+							<div class="rating_tips"></div>
+							<div class="rating_tips"></div>
+							<div class="rating_tips"></div>
+							<div class="rating_tips"></div>
+							<div class="rating_tips"></div>
+						</div>		
+					</div>
+
+					<div style="height:20px">
+						<div class="left">Good</div>			
+						<div class="right">
+							<div class="rating_tips"></div>
+							<div class="rating_tips"></div>
+							<div class="rating_tips"></div>
+							<div class="rating_tips"></div>
+						</div>		
+					</div>
+
+					<div style="height:20px">
+						<div class="left">Average</div>			
+						<div class="right">
+							<div class="rating_tips"></div>
+							<div class="rating_tips"></div>
+							<div class="rating_tips"></div>
+						</div>		
+					</div>
+
+					<div style="height:20px">
+						<div class="left">Poor</div>			
+						<div class="right">
+							<div class="rating_tips"></div>
+							<div class="rating_tips"></div>
+						</div>		
+					</div>
+
+					<div style="height:20px">
+						<div class="left">Awful</div>			
+						<div class="right">
+							<div class="rating_tips"></div>				
+						</div>		
+					</div>		
+				</div> 
+			</div> 
+		</div>
+	</div>

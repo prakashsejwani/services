@@ -1,0 +1,30 @@
+<% unless @compi.blank? %>
+	<div id="imageForm" style="display: none;">
+		<span class="close">
+			<a href="#" onclick="hideAreaSelector('imageForm');">close [x]</a>
+		</span>
+		<div id="imageRedbox">
+		<h3>Image Ads near expiry</h3>
+			<table cellspacing="0" cellpadding="0">
+			<tr>
+			   <th>Name</th>
+			   <th style="width:100px">From Date</th>
+			   <th style="width:100px">Expiry Date</th>
+			</tr>
+			<% for company in @compi %>         
+				  <% if((company.image_to_date - Date.today).to_i < 30)%>
+					<tr>
+					   <td><%=h company.name %></td>
+					   <td><%=h company.image_from_date.strftime("%d %b '%y") %></td>
+					   <% if (company.image_to_date - Date.today).to_i > 0 %>
+						 <td><%=h company.image_to_date.strftime("%d %b '%y") %></td>
+							   <% elsif (company.image_to_date - Date.today).to_i <= 0 %>
+						 <td style="color:red;"><%=h company.image_to_date.strftime("%d %b '%y") %></td>
+					   <% end %>
+					</tr>	     
+				  <% end %>	  
+			  <% end %>   
+		   </table>
+		</div>
+	</div>
+<% end %>

@@ -1,0 +1,38 @@
+<%= javascript 'dynamic_localities' %>
+<% title 'Advertise' %>
+<div>
+<h3>Advertise</h3>
+<div class="clear"></div>
+<<<<<<< HEAD:app/views/advertisements/new.html.erb
+	<% form_for(:company, :url => advertisements_path, :method => :get, :html=>{:multipart => true}) do |f| %>			 
+	  <table cellspacing="0">
+	<%= f.error_messages %>
+	  <%=render :partial => 'company', :locals=>{:f=>f}%>
+	
+		<tr>
+			<td valign="top"><%= check_box(:other, :category, :onclick => "return otherCategory();") %>Other Categories:</td>	
+			<td valign="top"><%= f.text_field :other_category, :size => 28 %></td>
+		</tr>	 
+		<tr>
+			<td colspan="2" align="right"><%= f.submit params[:id] ? "Update" : "submit", :class=>"button", :onclick => "javascript:allselect();" %>	</td>	
+		</tr>	  
+	  </table>
+	<% end %>	
+=======
+		<% form_for(:company, :url => advertisements_path, :method => :get, :html=>{:multipart => true}) do |f| %>			 
+		  <table cellspacing="0">
+		<%= f.error_messages %>
+		  <%=render :partial => 'company', :locals=>{:f=>f}%>
+		
+			<tr>
+				<td valign="top">Other Categories:</td>	
+				<td valign="top"><%= f.text_field :other_category, :size => 28 %></td>
+			</tr>	 
+		 	<tr>
+				<td colspan="2" align="right"><%= f.submit params[:id] ? "Update" : "submit", :class=>"button" , :onclick=>"javascript:allselect();"%>	</td>	
+			</tr>	  
+		  </table>
+		<% end %>	
+>>>>>>> 837b9050859c5a631280e6cd0522dbf4a9a01ade:app/views/advertisements/new.html.erb
+</div>
+

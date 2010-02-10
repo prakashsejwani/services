@@ -1,0 +1,11 @@
+<% title 'Sign Up' %>
+
+<% content_for :sidebar do -%>
+	<center><%= image_tag 'map.jpg'%></center>
+<% end -%>
+
+<center><h4>Create your account</h4></center>
+<% @user.password = @user.password_confirmation = nil %>	
+
+<%= render :partial => 'shared/signup' %>
+

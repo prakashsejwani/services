@@ -1,0 +1,186 @@
+<% title @company.name %>
+<%= render :partial => 'company_slide_show'%>
+<div>
+<table cellspacing="0">
+	<tr><td colspan="2"><h3><%=h @company.name %></h3></td></tr>	
+	
+	<% if @video %>
+		<tr><td colspan="2"><%= render :partial=> 'video'%></td></tr>
+	<% end %>
+    
+    <tr>
+		<td colspan="2">
+		<% unless @company.images[0].blank? %>
+			<img src =<%= @company.images[0].ad.url(:thumb) %> />
+		<% else %>
+			<%= image_tag "no-image.jpg"%>
+		<%end%>
+		</td>
+	</tr>
+	<tr>
+	<%if @company.scroll_ads == true%>	
+		<td class="bold1">scroll advt. preview </td>
+		<td><%=image_tag @company.image_ad.url(:thumb) %></td>	
+	<%else%>	
+		<td colspan="2" class="bold1">no image available for scroll advertisement</td>	
+    <%end%>
+	</tr>
+
+	<%if !@company.contact.blank? %>
+	<tr> 
+		<td class="bold1">Contact Person</td> 
+		<td><%=h @company.contact %> </td>
+	</tr> 
+	<% end %>
+	
+	<%if !@company.owner_id.blank? %>
+	<tr>
+		<td class="bold1">Owner </td>
+		<td><%=h User.find(@company.owner_id).login %> </td>
+	</tr>
+	<% end %>
+	
+	<%if !@company.phone1.blank? %>
+	<tr> <td class="bold1">Contact No. </td> 
+		 <td> <%=h @company.phone1 %> 
+			<%if !@company.phone2.blank? %>,&nbsp;<%=h @company.phone2 %><% end %>
+		 </td>
+	</tr>
+	<% end %>
+	
+	<%if !@company.fax.blank? %>
+	<tr>
+		<td class="bold1">Fax </td> 
+		<td> <%=h @company.fax %> </td>
+	</tr>
+	<% end %>
+	
+	<%if !@company.email.blank? %>
+	<tr>
+		<td class="bold1">Email </td> 
+		<td class="no-effects"> <%=mail_to @company.email %> </td>
+	</tr>
+	<% end %>
+	
+	<%if !@company.ad_url.blank? %>
+	<tr>
+		<td class="bold1">Company Url </td> 
+		<td class="no-effects"> <%=mail_to @company.ad_url %> </td>
+	</tr>
+	<% end %>
+
+
+	<%if !@company.address1.blank? %>
+	<tr>
+		<td class="bold1">Address	</td>
+		<td><%=h @company.address1 %> 
+			 <%if !@company.address2.blank? %>, <%=h @company.address2 %> <% end %> 
+		</td>
+	</tr>
+	<% end %>
+	
+	<tr>
+		<td>&nbsp;</td> 
+		<td>
+			<%=h @company.locality.name %>, 
+			<%=h @company.city.name %>-<%=h @company.pincode %> 
+		</td>
+	</tr>
+	
+	<%if !@company.state.blank? %>
+	<tr>  <td>&nbsp; </td> 
+		  <td><%=h @company.state %><%if !@company.country.blank? %>, <%=h @company.country %> <% end %> 
+		  </td>
+	</tr>
+	<% end %>
+
+	<%if !@company.about.blank? %>
+	<tr>
+		<td class="bold">About </td>
+		<td><%=h @company.about %> </td>
+	</tr>
+	<% end %>
+
+	<tr>
+		<td class="bold"> Business </td>
+		<td><%=h @company.business.name if @company.business_id %> </td>
+	</tr>
+	
+	<tr>
+		<td class="bold">Category/ Product </td>
+		<td> 
+		<% for categorization in @company.categorizations%>
+			<%=h Category.find(categorization.category_id).name %> 
+		<% end %>
+		</td>
+	</tr>
+	
+	<tr>
+		<td class="bold">registered on</td>
+		<td><%= @company.created_at.strftime("%d %b '%y")%></td>
+	</tr>
+
+	<tr>  
+		<td class="bold">Approve</td> 
+		<td><%= @company.approved?  ?  "True"  :  "False" %> </td>
+	</tr>
+
+	<tr>  
+		<td class="bold">Priority Advt.</td> 
+		<td><%= @company.priority?  ?  "True"  :  "False" %></td>
+	</tr>
+
+	<%if !@company.reviews_count.blank? %>
+	<tr>  
+		<td class="bold">Reviews</td> 
+		<td><%= @company.reviews_count%></td>
+	</tr>
+	<% end %>
+
+	
+	<tr>  
+		<td class="bold">Image Approve</td> 
+		<td> 
+			<%= @company.imageapprove?  ?  "True"  :  "False" %>
+			<%if @company.imageapprove %>&nbsp;::&nbsp;
+				<%=h @company.image_from_date.strftime("%d %b '%y") %>
+				&nbsp;&nbsp;<span class="gray">and will expire on</span>&nbsp;&nbsp;
+				<%=h @company.image_to_date.strftime("%d %b '%y") %> 
+			<% end %>
+		</td>
+	</tr>
+	
+
+	
+	<tr>  
+		<td class="bold">Video Approve</td> 
+		<td> 
+			<%= @company.videoapprove?  ?  "True"  :  "False" %>
+			<%if @company.videoapprove %>&nbsp;::&nbsp;
+				<%=h @company.video_from_date.strftime("%d %b '%y") %>
+				&nbsp;&nbsp;<span class="gray">and will expire on</span>&nbsp;&nbsp;
+				<%=h @company.video_to_date.strftime("%d %b '%y") %> 
+			<% end %>
+		</td>
+	</tr>
+	
+
+	<%if @company.scroll_ads %>
+	<tr>  
+		<td class="bold">Scroll Advt.</td> 
+		<td>
+			<%= @company.scroll_ads?  ?  "True"  :  "False" %>
+			<%=h @company.from_date.strftime("%d %b '%y") %>
+			&nbsp;&nbsp;<span class="gray">and will expire on<span>&nbsp;&nbsp;
+			<%=h @company.to_date.strftime("%d %b '%y") %> 
+		</td>
+	</tr>
+	<% end %>
+</table>	
+<br/>
+	<% if @company.approved %>
+		<span class="blue_link"><%= link_to 'Edit', edit_admin_company_path(@company)%></span>
+	<% end %>
+		<span class="blue_link"><%= link_to 'Back', @company.approved ? admin_companies_path : admin_root_path %> </span>
+</div>
+

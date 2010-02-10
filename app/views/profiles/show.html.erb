@@ -1,0 +1,30 @@
+<% title @user.login %>
+<%= javascript 'dynamic_localities' %>
+
+<% if @profile.nil? -%>
+	<% content_for :header do -%>
+		Profile not be found
+	<% end -%>
+	
+	<p>The profile you requested does not exist.</p>
+<% else -%>	
+	<% content_for :header do -%>
+		<% if current_user == @user -%>
+			My Account
+		<% else -%>
+			Profile for <%= @user.login %>
+		<% end -%>
+	<% end -%>
+	<div>
+		<!--<%# if @user.avatar %>	
+		<img src =<%#= current_user.avatar.public_filename(:thumbnail) %> />
+		<%# end %>-->
+		<%= render :partial => 'profiles/my_account' if current_user == @user %>	
+		<%= render :partial => 'profiles/account_details' if current_user == @user %>	
+		<%= render :partial => 'profiles/profile_details' %>
+	</div>
+<% end -%>
+<br/>
+<%if admin_or_owner?(@user.id)%>
+<span class="blue_link"><%= link_to "Edit My Account", edit_profile_url(current_user) %></span>
+<%end%>

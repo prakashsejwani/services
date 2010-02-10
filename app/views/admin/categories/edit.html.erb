@@ -1,0 +1,12 @@
+<% title 'Edit Category' %>
+<div>
+	<h3>Edit Category</h3>	
+	<div class="clear"></div>	
+	<% form_for(:category, :url => {:action=>:update}, :html => {:method=>:put}) do |f| %>
+		<%= render :partial => 'category', :locals=>{:f=>f} %>
+	<% end %>
+	<br/>
+	<span class="blue_link"><%= link_to 'Show', admin_category_path(@category) %></span>
+	<span class="blue_link"><%= link_to 'Back', admin_categories_path %></span>
+</div>
+

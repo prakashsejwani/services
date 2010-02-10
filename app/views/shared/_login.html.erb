@@ -1,0 +1,29 @@
+<div id="mainLogin">
+	<div id="loginForm" style="display: none;">
+		<span class="close">
+			<a href="#" onclick="hideAreaSelector('loginForm');">close [x]</a>
+		</span>
+		<div id="loginRedbox">
+		<% form_tag session_path do -%>
+			<table style="background:transparent">
+				<tr><td><b>Username</b></td></tr>
+				<tr><td><%= text_field_tag 'login' %><td></tr>
+				<tr><td><label for="password"><b>Password</b></label></td></tr>
+				<tr><td id="login"><%= password_field_tag 'password' %><td></tr>
+				<tr><td>Remember me: <%= check_box_tag 'remember_me' %></td></tr>
+				<tr><td><!-- <div id="submitbutton"> --><%= submit_tag 'Log in &raquo;', :class=>"no-image" %><!-- </div> --><td></tr>
+				<tr>
+					<td>
+						<ul>
+							<li><a id="signupLink" href="#" onclick="showAreaSelector('signupLink','signupForm');return false">Sign up for an account now</a><%#= link_to "Sign up for an account now", signup_url %></li>
+							<li><%= link_to "Having trouble logging in?", user_troubleshooting_url %></li>
+							<li><%= link_to "forgot password?", user_forgot_password_url %></li>
+						</ul>
+					</td>
+				</tr>
+			</table>
+		<% end -%>
+		<div class="clear2"></div>
+		</div>
+	</div>
+</div>

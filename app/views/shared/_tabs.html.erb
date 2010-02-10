@@ -1,0 +1,10 @@
+<ul>
+	<!--<li style="float: right;"><a href="#">Tab 1</a></li>
+	<li style="float: right;"><a href="#">Tab 2</a></li>-->
+
+	<li><%= link_to_unless_current("Home", {:controller => "dashboard", :action => "index"}){link_to'Home',{:controller => "dashboard", :action => "index" },:class=>"current"}%>&nbsp;|</li>
+	<li><%= link_to_unless_current("Index", {:controller => "home", :action=>"index" }){link_to'Index', {:controller => "home", :action=>"index" },:class=>"current"}%>&nbsp;|</li>
+	<li><%= link_to_unless_current("Career", {:controller => "home", :action=>"career" }){link_to'Career', {:controller => "home", :action=>"career" },:class=>"current"}%>&nbsp;|</li>
+	<li><%= link_to_unless_current("About Us", {:controller => "home", :action=>"about" }){link_to'About Us', {:controller => "home", :action=>"about" },:class=>"current"}%>&nbsp;|</li>
+	<li><%= link_to_unless_current("Advertise", new_advertisement_path){link_to'Advertise',new_advertisement_path,:class=>"current"}%></li>
+</ul>

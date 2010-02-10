@@ -1,0 +1,50 @@
+var localities = new Array()
+page << "var oparray = new Array()"
+<%# puts @dynamiclocalities.to_yaml %>
+<% for local in @dynamiclocalities %>
+	localities.push(new Array(<%= local.city_id %>, '<%=h local.name %>', <%= local.id %>));
+<% end %>
+
+function citySelected() {
+ 
+  city_id = $('city').getValue();
+  
+  options = $('locality').options;
+  options.length = 1;
+  //alert("hi");
+  localities.each(function(local) {
+    if (local[0] == city_id) {
+      options[options.length] = new Option(local[1], local[2]);
+    }
+  });
+  if (options.length == 1) { 
+    $('location').hide();
+  } else { 
+    $('location').show();
+  }
+}
+
+document.observe('dom:loaded', function() { 
+  //alert('hi');    
+  $('city').observe('change', citySelected);
+  citySelected();
+});
+
+function citySelected1() {
+ 
+  city_id = $('company_city_id').getValue();
+  
+  options = $('company_locality_id').options;
+  options.length = 1;  
+  localities.each(function(local) {
+    if (local[0] == city_id) {
+      options[options.length] = new Option(local[1], local[2]);
+    }
+  });
+  
+}
+
+document.observe('dom:loaded', function() {      
+  $('company_city_id').observe('change', citySelected1);
+  citySelected1();
+});

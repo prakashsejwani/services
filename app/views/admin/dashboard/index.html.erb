@@ -1,0 +1,23 @@
+<% title 'Dashboard' %>
+
+<% content_for :header do -%>
+	<%= configatron.site_name %> Administration
+<% end -%>
+
+<% content_for :sidebar do -%>
+	<div class="sidebar_green">
+		<h2>Approvals</h2>
+		<ul>
+			<li><a id="sidereviewLink" href="#" onclick="showAreaSelector('sidereviewLink','sidereviewForm');return false">approve reviews</a></li>
+			<li><a id="scrollLink" href="#" onclick="showAreaSelector('scrollLink','scrollForm');return false">scroll advertisements expiry information</a></li>
+			<li><a id="imageLink" href="#" onclick="showAreaSelector('imageLink','imageForm');return false">image advertisements expiry information</a></li>
+			<li><a id="videoLink" href="#" onclick="showAreaSelector('videoLink','videoForm');return false">video advertisements expiry information</a></li>				
+		</ul>
+	</div>
+<% end -%>
+<%= render :partial => 'approve_companies' %>
+<%= render :partial => 'approve_reviews' %>
+<%= render :partial => 'scroll_ads_expiry' %>
+<%= render :partial => 'image_ads_expiry' %>
+<%= render :partial => 'video_ads_expiry' %>
+

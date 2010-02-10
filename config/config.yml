@@ -1,0 +1,28 @@
+# This file was auto-generated.  Feel free to customize it to your whim.
+
+production:
+    site_name: SERVICES
+    site_url: http://localhost:3000/
+
+    company_name: Econify Infotech
+    admin_email: sv@econify.com
+    
+    support_name: Support
+    support_email: sdn.2007@rediffmail.com
+
+
+development:
+    site_name: SERVICES
+    site_url: http://localhost:3000/
+
+    company_name: Econify Infotech
+    admin_email: sv@econify.com
+    
+    support_name: Support
+    support_email: sdn.2007@rediffmail.com
+
+test:
+    site_name: Test Site
+    admin_email: admin@test.com
+    site_url: http://localhost:3000/
+

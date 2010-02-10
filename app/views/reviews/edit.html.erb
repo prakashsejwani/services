@@ -1,0 +1,12 @@
+<div>
+			<h3>Edit Review</h3>
+			<div class="clear"></div>
+			<%= error_messages_for :review %>
+			<%= render :partial => @comment, 
+         :locals => { :button_name => "Update"} %>
+			
+			<span class="blue_link"><%= link_to 'Show',[@company, @review]%></span>
+			<span class="blue_link"><%= link_to 'Back', company_reviews_path(@review) %></span>
+		</div>
+	
+	

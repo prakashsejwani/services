@@ -1,0 +1,7 @@
+<%=render :partial => '/advertisements/company', :locals=>{:f=>f}%>	
+<%= render :partial => 'admin/companies/admin_company_column', :locals=>{:f=>f}%>
+<%= render :partial => 'admin/companies/image_video_upload', :locals=>{:f=>f}%>
+	<tr><td></td><td colspan="2" align="right">
+		<%= f.submit params[:id] ? "Update" : "Create", :class=>"button" %>
+	</td></tr>
+	<tr><td></td><td colspan="2">&nbsp;</td></tr>  

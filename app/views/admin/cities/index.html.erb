@@ -1,0 +1,25 @@
+<% title 'Cities' %>
+<div>
+	<h3>Cities</h3>
+	<div class="clear"></div>
+	<table cellspacing="0">
+	  <tr>
+	    <th>Name</th>			   
+	    <th colspan="2">Manage</th>
+	  </tr>
+	
+	<% for city in @cities %>
+	  <tr class="<%= cycle("even", "odd") %>">
+	    <td class="capital"><%=link_to city.name, admin_city_path(city) %></td>
+	    <!--<td><%#= link_to 'Show', admin_city_path(city) %></td>-->
+	    <td class="link"><%= link_to image_tag("edit.gif"), edit_admin_city_path(city), :title => "Edit?", :class => "no_border" %></td>
+	    <td class="link"><%= link_to image_tag("destroy.png"), admin_city_path(city), :confirm => 'Are you sure?', :method => :delete, :title => "Delete?", :class => "no_border" %></td>
+	  </tr>
+	<% end %>
+	</table>
+	<div class="clear"></div>
+	<%= will_paginate @cities %>			
+	<div class="clear2"></div>			
+	<span class="blue_link"><%= link_to 'New city', new_admin_city_path %></span>
+</div>
+

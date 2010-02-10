@@ -1,0 +1,15 @@
+<% title 'New Company' %>
+<div>
+	<h3>New Company</h3>	
+	<div class="clear"></div>		
+	<% form_for(:company, :url => admin_companies_path, :html=>{:multipart => true}) do |f| %>			
+	<div><%= f.error_messages %></div> 
+	  	<table>
+	  	<%=render :partial => 'company', :locals=>{:f=>f}%>			 
+		</table>	  
+	<% end %>
+	<br/>
+			<span class="blue_link"><%= link_to 'Back to new company', new_admin_company_path %></span>
+	<span class="blue_link"><%= link_to 'Back', admin_companies_path %></span>
+</div>
+

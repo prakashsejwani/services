@@ -1,0 +1,2 @@
+page.hide "vattachment_#{@video.id.to_s}"
+page.remove "vattachment_#{@video.id.to_s}"

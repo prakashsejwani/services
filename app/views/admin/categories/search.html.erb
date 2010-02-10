@@ -1,0 +1,7 @@
+<!-- This html view is similar to dashboard search -->
+<% unless @companies.empty? %>	
+	<%= render :partial => 'admin/companies/comp_info' %>
+	<div><%= will_paginate @companies %></div>
+<% else %>
+	Sorry no company in this category 
+<% end %>

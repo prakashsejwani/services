@@ -1,0 +1,26 @@
+<% title 'Application Settings' %>
+<% content_for :header do -%>
+	Application Settings
+<% end -%>
+
+<% content_for :sidebar do -%>
+<div id="sidebar">
+	<div class="sidebar_green"><p>These are site-wide settings. They will be used through-out your application.</p></div>
+</div>
+<% end -%>
+<div >
+	<% form_tag :action => 'update' do %>
+	
+		<h3>General</h3>	
+		<%= settings_field(Setting.load(:site_name)) %>
+		<%= settings_field(Setting.load(:company_name)) %>
+		<%= settings_field(Setting.load(:site_url)) %>
+		<br/>
+		<h3>Support</h3>	
+		<%= settings_field(Setting.load(:support_name)) %>
+		<%= settings_field(Setting.load(:support_email)) %>		
+		<div id="submitbutton"><%= submit_tag 'Save Settings', :class => "button1" %></div>
+	
+	<% end %>
+</div>
+

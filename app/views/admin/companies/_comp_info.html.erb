@@ -1,0 +1,41 @@
+<% for company in @companies %>
+	<div class="<%= cycle("pre", "pre-col") %>">
+		<table cellspacing="0" cellpadding="0">
+		<tr>
+			<td>
+			<table class="no_pad" cellspacing="0">
+				<tr><td colspan="2" valign="top" class="company-name"><%=link_to company.name, admin_company_path(company) %></td></tr>
+				<tr><td style="width:100px" valign="top">Address </td><td valign="top"><%=h company.locality.name %>, <%=h company.city.name %></td></tr>
+				<!--<tr><td style="width:100px" valign="top">Business </td><td valign="top"><%=h company.business.name %></td></tr>-->
+				<tr><td style="width:100px" valign="top">Approved </td><td valign="top"><%= company.approved?  ?  "True"  :  "False" %></td></tr>
+                <tr><td style="width:100px" valign="top">other category </td><td valign="top"><%=h company.other_category %></td></tr>
+				<tr><td style="width:100px" valign="top">Category </td>
+				<td valign="top" id="comp-cat-list">
+					<ul>
+						<% for categorization in company.categorizations%>
+							<li><%=h Category.find(categorization.category_id).name %></li>
+						<%end%>
+					</ul>					
+				 </td>
+				</tr>
+				<%unless company.other_category.blank?%>
+				<tr><td><%= link_to 'add to category from other category', :controller => 'admin/companies', :action => 'add_category', :id => company.id, :add => "y" %></td></tr>
+				<%end%>		
+				<tr>
+					<td>
+						<%= link_to image_tag("edit.gif"), edit_admin_company_path(company), :title => "Edit?", :class => "no_border" %>
+						<%= link_to image_tag("destroy.png"), admin_company_path(company), :confirm => 'Are you sure?', :method => :delete, :title => "Delete?", :class => "no_border" %>
+					</td>
+					<td></td>
+				</tr>						
+			</table>
+			</td>
+		    <% unless company.images[0].blank? %>
+				<td style="width:101px;" align="right"><img src =<%= company.images[0].ad.url(:thumb) %> /></td>
+		    <% end %>
+		</tr>
+		</table>
+	</div>
+	<div class="clear"></div>
+<% end %>
+

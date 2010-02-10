@@ -1,0 +1,11 @@
+<% title 'Login' %>
+
+<% content_for :header do -%>
+	<%= configatron.site_name %> Login
+<% end -%>
+
+<% content_for :sidebar do -%>
+	<center><%= image_tag 'map.jpg'%></center>
+<% end -%>
+
+<%= render :partial => 'shared/login' %>

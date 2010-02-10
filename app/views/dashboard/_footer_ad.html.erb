@@ -1,0 +1,14 @@
+<div id="footer_break"></div>	
+<div id="footer_bottom">
+ <div id="footer_links">
+	<ul>
+		<marquee behavior="alternate" direction=right align=middle scrollamount="1" >
+			<li><%=image_tag "services.gif" %></li>		
+			<% for company in @companies %>
+				<li><%= link_to (image_tag company.image_ad.url(:thumb)), company.ad_url, :target => '_blank' %></li>
+			<%end%>
+			<li><%=image_tag "services.gif" %></li>
+		</marquee>
+	</ul>
+ </div><!-- footer_links end -->
+</div><!-- footer_bottom end -->

@@ -1,0 +1,3 @@
+page.replace_html "company_#{@company.id}_rating", ratings_for(@company, :remote_options => {:url => rate_advertisement_path(@company)}, :wrap => false)
+page.insert_html :bottom, "company_#{@company.id}_rating", "Thanks for rating!"
+page.visual_effect :highlight, "company_#{@company.id}_rating"

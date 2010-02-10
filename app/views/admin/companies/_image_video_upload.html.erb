@@ -1,0 +1,52 @@
+	<%if !params[:id]%>
+		<% fields_for @image do |image| -%>
+			<tr>
+				<td><label for="image_data">Attach Images</label></td>
+				<td><%= image.file_field :data , :size => "32" %></td>
+			</tr>			
+			<tr><td colspan='2'><ul id="pending_files"></ul></td></tr>
+		<% end -%>		
+		<script type="text/javascript">
+			var multi_selector = new MultiSelector($('pending_files'), 5);
+			multi_selector.addElement($('image_data'));
+		</script>		
+	<%end%>
+	<%if params[:id]%>	
+		<% fields_for @newfile do |newfile| -%>
+			<tr>
+				<td><label for="newfile_data">Attach Images</label></td>
+				<td><input id="newfile_data" type="file" <% if @company.images.count >= 5 -%> disabled<% end -%>  size="32"></td>
+			</tr>                        
+		<% end -%>
+		<tr>
+		<td></td>
+		<td colspan='2'>
+			<ul id="pending_files">
+				<% if @company.images.size > 0 -%>
+					<%= render :partial => "/admin/companies/image", :collection => @company.images %>
+				<% end -%>
+			</ul>
+		</td>
+		</tr>		
+		<script type="text/javascript">
+		var multi_selector = new MultiSelector($('pending_files'), <%= @allowed %>);
+		multi_selector.addElement($('newfile_data'));
+		</script>		
+	<% end -%>    		   
+	    
+	<tr>
+		<td>Video Clip</td>
+		<td><%= file_field :video, :uploaded_data, :size => "32" %></td>
+		
+	</tr>          
+	 <% if @company.video %>
+		  <tr>
+			<td></td>
+			<td>
+			   <li id="vattachment_<%= @company.video.id %>">
+			    <%= @company.video.video_file_name %>
+			    <%= link_to_remote "Remove", :url  => "/videos/destroy/#{@company.video.id}", :method => :delete, :collection => @company.video  %>
+			   </li>
+			</td>
+		  </tr>
+	<% end -%>

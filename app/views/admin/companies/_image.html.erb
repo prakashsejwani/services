@@ -1,0 +1,2 @@
+<li id="attachment_<%= image.id %>"><%= image.ad.original_filename %>
+<%= link_to_remote "Remove", :url  => "/images/destroy/#{image.id}", :method => :delete, :html => { :title  => "Remove this image" } %></li>

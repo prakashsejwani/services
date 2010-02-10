@@ -1,0 +1,59 @@
+   <tr>
+	<td valign="top">Other Categories:</td>	
+	<td valign="top"><%= f.text_field :other_category, :size => 28 %></td>
+    </tr>
+	<%unless @company.other_category.blank?%>
+	<tr><td><%= link_to 'add', :controller => 'admin/companies', :action => 'add_category', :id => @company.id%></td></tr>
+	<%end%>
+	<tr>
+		<td>Owner</td>
+		<td><%= f.collection_select :owner_id, @users, :id, :login, {:prompt => true}%></td>
+	</tr>
+	<tr>
+		<td>Approved</td>	
+		<td><%= f.check_box :approved %> </td>	
+	</tr>
+	<tr>
+		<td>Priority Ads</td>
+		<td><%= f.check_box :priority%></td>
+	</tr>
+	<tr>
+		<td>Image Approve</td>	
+		<td><%= f.check_box :imageapprove %> </td>	
+	</tr>
+	<tr>
+		<td align="right">From Date:</td>
+		<td><%= f.date_select :image_from_date, :order => [:day, :month, :year] %></td>
+	</tr>
+	<tr>
+		<td align="right">To Date:</td>
+		<td><%= f.date_select :image_to_date, :order => [:day, :month, :year] %></td>
+	</tr>
+	<tr>
+		<td>Video Approve</td>	
+		<td><%= f.check_box :videoapprove %></td>	
+	</tr>
+	<tr>
+		<td align="right">From Date:</td>
+		<td> <%= f.date_select :video_from_date, :order => [:day, :month, :year] %></td>
+	</tr>
+	<tr>
+		<td align="right">To Date:</td>
+		<td> <%= f.date_select :video_to_date, :order => [:day, :month, :year] %></td>
+	</tr>		
+	<tr>
+		<td>Scroll Ads</td>
+		<td><%= f.check_box :scroll_ads %> </td>
+	</tr>
+	<tr>
+		<td align="right">From Date:</td>
+		<td><%= f.date_select :from_date, :order => [:day, :month, :year] %></td>
+	</tr>
+	<tr>
+		<td align="right">To Date:</td>
+		<td><%= f.date_select :to_date, :order => [:day, :month, :year] %></td>
+	</tr>
+	 </tr>
+    <td valign="top">Scroll_ads</td>	
+    <td valign="top"><%= f.file_field :image_ad, :size => "32" %></td>		
+   </tr>

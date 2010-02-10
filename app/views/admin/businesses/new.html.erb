@@ -1,0 +1,11 @@
+<% title "New Business" %>
+<div>
+	<h3>New Business</h3>
+	<div class="clear"></div>
+	<% form_for(:business, :url=>admin_businesses_path) do |f| %>
+		<%=render :partial => 'business', :locals=>{:f=>f}%>	
+	<% end %>
+	<br/>
+	<span class="blue_link"><%= link_to 'Back', admin_businesses_path %></span>
+</div>
+	

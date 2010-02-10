@@ -1,0 +1,46 @@
+<div id="mainSignup">
+	<div id="signupForm" style="display: none;">
+		<span class="close">
+			<a href="#" onclick="hideAreaSelector('signupForm');">close [x]</a>
+		</span>
+		<div id="signupRedbox">	
+		<!--<p>
+			To access <%#= configatron.site_name %> you may sign up with your OpenID. If you don't have an OpenID yet, we recommend <a href="http://www.myopenid.com">MyOpenID</a>.
+		</p>-->
+		<% form_for :user,:html => { :multipart => true }, :url => users_path do |f| -%>
+			<%= error_messages_for :user %>		
+			<!-- <h4>Your Details</h4> -->
+			<div class="clear2"></div>	<div class="clear2"></div>	
+			<table style="background:transparent" id="signup">			
+				<tr>
+					<td><label for="login">Login</label></td>
+					<td><%= f.text_field :login %><td>
+				</tr>
+				<tr>
+					<td><label for="email">Email</label></td>
+					<td><%= f.text_field :email %><td>
+				</tr>
+				<tr>
+					<td><label for="password">Password</label></td>
+					<td><%= f.password_field :password %></td>
+				</tr>
+				<tr>
+					<td><label for="password_confirmation">Confirm Password</label></td>
+					<td><%= f.password_field :password_confirmation %></td>
+				</tr>
+				<tr>
+					<td><%= submit_tag 'Sign up &raquo;', :class=>"no-image" %></td>
+					<td></td>
+				</tr>
+			</table>			
+			<ul>
+				<li>
+					<a id="loginLink" href="#" onclick="showAreaSelector('loginLink','loginForm');return false">Already signed up? Login now!</a>
+					<%#= link_to "Already signed up? Login now!", login_url %>
+				</li>
+			</ul>				
+		<% end %>
+	<div class="clear2"></div>
+	</div>
+	</div>
+</div>

@@ -1,0 +1,36 @@
+<% title 'Categories' %>
+<div>
+	<h3>Categories</h3>
+	<div class="clear2"></div>
+	<% form_tag(admin_categories_path, :method => :get) do %>
+		<div style="float:right">
+			<%= text_field_tag :q, params[:q], :size => 35 %>
+			<%= submit_tag "Search" %>
+		</div>
+	<%end%>
+	<div class="clear2"></div>
+	<div class="clear"></div>
+	<table cellspacing="0">
+	  <tr>
+		<th>Name</th>
+		<th>alphabet</th>
+		<th colspan="2">Manage</th>
+	  </tr>
+
+	<% for category in @categories %>
+	  <tr class="<%= cycle("even", "odd") %>">
+		<td><%=link_to category.name, admin_catsearch_url(:category_id => category.id) %></td>
+		<td style="width:60px;text-align:center"><%=h category.alphabet %></td>
+		<!--<td><%#= link_to 'Show', admin_category_path(category) %></td>-->
+		<td class="link"><%= link_to image_tag("edit.gif"), edit_admin_category_path(category), :title => 'edit?', :class => "no_border" %></td>
+		<td class="link"><%= link_to image_tag("destroy.png"), admin_category_path(category), :confirm => 'Are you sure?', :method => :delete, :title => 'delete?', :class => "no_border" %></td>
+	  </tr>
+	<% end %>
+	</table>
+
+	<div class="clear"></div>	
+	<%= will_paginate @categories %>
+	<div class="clear2"></div>
+	<span class="blue_link"><%= link_to 'New category', new_admin_category_path %></span>
+</div>
+	

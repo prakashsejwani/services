@@ -1,0 +1,118 @@
+
+<% content_for :sidebar do -%>
+
+<% if !@company.blank? %><!-- for single company -->
+	<% if @company.imageapprove == true %>
+		<%c=1%>
+			<% @company.images.each do |image| %>
+				<div id="content-body" class="content">
+					<div id="slideshow-content">
+						<div class="slide" id="slide<%=c%>" <%if c>=2 %>style="display: none;" <%end%> >
+							<center>					
+							<div class="image"><%= image_tag image.ad.url %></div>
+							</center>
+							</div>
+						</div>
+					</div>
+				<%c=c+1%>
+			<%end%>	
+			<%if (c-1)>= 2%>	
+				<script language="JavaScript" type="text/javascript">
+					<%n=1%>
+					var slides= new Array(<% @company.images.each do |image| %><% unless image.blank? %><%if n>=2 %>,<%end%> 'slide<%=n%>' <%n=n+1%><%end%> <%end%>); 
+					var i = 0; var wait = 6000;
+
+					function SlideShow() {
+					Effect.Fade(slides[i], { duration:1, from:1.0, to:0.0 }); 
+					i++;
+					 if (i == slides.length ) i = 0; 
+					Effect.Appear(slides[i], { duration:1, from:0.0, to:1.0 });
+					 } 
+					// the onload event handler that starts the fading. 
+					start_slideshow=function() { setInterval('SlideShow()',wait); }
+					window.onload=start_slideshow;
+				</script>
+			<% end %>
+	<% end %>
+	<!-- *********** -->
+
+	<!-- <%# unless @rev.empty? %>	
+	<div id="reviews_slideshow">
+		<%# unless @company.imageapprove == false %><div id="content-body_rev" class="content_rev"><%#end%>
+		<h2>Reviews</h2>
+		<%#d=1%>
+			<%# @company.reviews.each do |rev| %>
+					<div class="slide" id="revslide<%#=d%>" <%#if d>=2 %>style="display: none;" <%#end%> >
+						<p><%#= h rev.name %><br/>
+						<%#= h truncate((rev.comment), :length => 45) %></p>
+						</div>
+					</div>
+			<%#d=d+1%>
+			<%# end %>
+		<%# unless @company.imageapprove == false %></div><%#end%>	
+		<%#if (d-1)>= 2%>	
+			<script language="JavaScript" type="text/javascript">
+				<%#r=1%>
+				var revslides= new Array(<%# @company.reviews.each do |rev| %><%# unless rev.blank? %><%#if r>=2 %>,<%#end%> 'revslide<%#=r%>' <%#r=r+1%><%#end%> <%#end%>); 
+				var w = 0; var revwait = 8000;
+
+				function ReviewsShow() {
+				Effect.Fade(revslides[w], { duration:1, from:1.0, to:0.0 }); 
+				w++;
+				 if (w == revslides.length ) w = 0; 
+				Effect.Appear(revslides[w], { duration:1, from:0.0, to:1.0 });
+				 } 
+				// the onload event handler that starts the fading. 
+				function start_reviews() { setInterval('ReviewsShow()',revwait); }
+			</script>
+		<%# end %>
+		</div>
+		<%# end %> -->
+
+<% end %><!-- for single company -->
+<!-- ============================================================= -->
+<% unless @comp.nil? %><!-- for multiple companies -->
+	<div id="sidebar">
+			<div class="sidebar_blue">
+				<%c=1%>
+				<% for company in @comp %> 
+				<% if company.images.size>0 %>
+					<div id="content-body" class="content">
+						<div id="slideshow-content" >
+							<div class="slide" id="slide<%=c%>" <%if c>=2 %>style="display: none;" <%end%> >
+								<center class="no_border">
+									<%= link_to company.name, advertisement_path(company), :class=>"link" %>
+									<div class="clear"></div>
+									<%=link_to (image_tag company.images[0].ad.url), advertisement_path(company), :title => company.name %>
+								</center>
+							</div>
+						</div>
+					</div>
+					<%c=c+1%>
+					<% end %>
+				<%end%>	
+				<%if (c-1)>=2%>
+				<script language="JavaScript" type="text/javascript">
+			  		<%n=1%>
+					var slides= new Array(<% for company in @comp %><% unless company.images[0].blank? %><%if n>=2 %>,<%end%> 'slide<%=n%>' <%n=n+1%> <% end %><%end%>); 
+					var i = 0; var wait = 8000;
+					
+					function SlideShow(){
+						Effect.Fade(slides[i], { duration:1, from:1.0, to:0.0 });
+						i++;						 
+						if (i == slides.length ) i = 0;						
+						Effect.Appear(slides[i], { duration:1, from:0.0, to:1.0 });							
+					 } 
+		
+					// the onload event handler that starts the fading. 
+					start_slideshow=function() { setInterval('SlideShow()',wait); }	
+					window.onload=start_slideshow;
+				</script> 
+				<%end%>
+			</div>
+		</div>
+<%end%><!-- for multiple companies -->
+
+
+<% end %>
+

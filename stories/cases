@@ -1,0 +1,40 @@
+ 1*)  When a user opens the home page
+     Then he should get proper search on a) company or category
+                                         b) city
+                                         c) locality (not compulsory)
+                                         
+ 2*)  When the search result comes
+     Then related categories are displayed
+     And paid ads are shown 1st
+     And below unpaid ads
+     
+ 3*)  When a new company is registered
+     Then it goes for admin approval 
+     
+ 4)  When admin approves the new company 
+     Then an approval mail is sent to the concern person
+     And the company comes in the list.
+     
+ 5)  When the free listed company wants to be paid
+     Then there should be a provision to send a request for the same
+     
+ 6)  When the admin sees the paid listing request
+     Then he collects the money
+     And the company is put in paid listing 
+     
+ 7)  When admin logs in
+     Then he sees approved and unapproved companies                                                                 
+     
+     
+* => feature done 
+    
+========== improvements ===========
+pagination in 'view only approved companies' admin section.
+when a company is approved it dosent come in the search unless it is again indexed.
+
+
+
+========== suggestions ============
+The site is dull at the moment, the alphabets are not readable.
+color of the paid ads to be change.
+     

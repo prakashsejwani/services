@@ -1,0 +1,20 @@
+<h3>Popular Catlog</h3>
+<% if @popular_catlogs.present? %>
+<div>To Remove a company from the popular catlog select the company and click the send to unpopular.</div>
+  <table>
+    <% form_tag 'popular_catlog' do %>
+      <% @popular_catlogs.each do |catlog| %>
+        <tr>
+          <td><%= check_box_tag "companies[]", catlog.id %></td>
+          <td><%= catlog.name %><td>
+        </tr>
+      <% end %>
+      <tr>
+        <td colspan="2"><%= submit_tag "Send to UnPopular" %></td>
+      </tr>
+      <tr>
+        <td colspan="2"><%= will_paginate @popular_catlogs %></td>
+      </tr>
+    <% end %>  
+  </table>
+<% end %>

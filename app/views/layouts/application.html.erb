@@ -61,26 +61,25 @@
 					<% form_tag(search_url, :method => :get) do %>
 					 <table cellspacing="0">
 						<tr>
-							<td align="left" valign="bottom"><label>Search By</label></td>
-							<td align="right"><%= radio_button_tag('radio', "company", false, :class => "no_border") %><label> Company Name </label></td>
-							<td align="right"><%= radio_button_tag('radio', "category", true, :class => "no_border") %><label> product / services</label></td>
+							<td align="left" valign="bottom" colspan="3"><label>Search By</label>
+							<%= radio_button_tag('radio', "company", false, :class => "no_border") %><label> Company </label>
+							<%= radio_button_tag('radio', "category", true, :class => "no_border") %><label> product / services</label></td>
 						</tr>
 						<tr>
 							<td colspan="3" align="center"><%= text_field_tag :q, params[:q]%></td>
 							<!--<td colspan="3" align="center"><%#= text_field_with_auto_complete :q, params[:q]%></td>-->
 						</tr>
-						</table>
+						<!--</table>
 						
-						<table cellspacing="0">
+						<table cellspacing="0">-->
 						<tr>
 							<td align="left"><label>City</label></td>
 							<td align="left"><label>Area</label></td>
 							<td></td>
 						</tr>
 						<tr>
-							<%if !@rev%><td style="width:42%" align="left"><%= select_tag :city, %{<option value="">Please select...</option>} + options_from_collection_for_select(@cities,"id","name",params[:city].to_i) %>
-							<%end%>
-							</td>
+							<%if !@rev %><td style="width:42%" align="left"><%= select_tag :city, %{<option value="">Please select...</option>} + options_from_collection_for_select(@cities,"id","name",params[:city].to_i) %></td>
+							<%end%>							
 							<td style="width:48%" align="left">
 								<div id="location">
 								<%if !@rev%><%= select_tag :locality, %{<option value="">Please select...</option>} + options_from_collection_for_select(@localities,"id","name",params[:locality].to_i) %><%end%>
@@ -92,7 +91,19 @@
 					</table>					   	
 					<% end %>		
 			 	</div>	<!-- search_option end -->			 	
-				<div class="clear"></div> <!-- clear2 end -->				
+				<div class="clear"></div> <!-- clear2 end -->	
+				<div>				  
+				  <% if @popular_catlogs.present? %>
+				    Popular Catlogs
+				    <table>
+				      <% @popular_catlogs.each do |catlog| %>
+				        <tr>
+				          <td><%= catlog.name %></td>
+				        </tr>
+				      <% end %>
+				    </table>
+				  <% end %>
+				</div>			
 				<div>
 					<%= yield_or_default(yield(:sidebar)) %></div>
 					<%if params[:id] || params[:radio] || params[:business]%>

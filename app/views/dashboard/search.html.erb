@@ -31,7 +31,8 @@
 					<td valign="top"><span style="float:right"><%=link_to ratings_for(company,:static, :remote_options => {:url => rate_advertisement_path(company)}), advertisement_path(company ,:q=>params[:q] , :radio=>params[:radio] , :city=>params[:city], :locality=>params[:locality], :page=>params[:page]) %></span></td>
 				</tr>
 				<tr>
-					<td valign="top"><label>Average Rating</label> <span>[<%= number_with_precision((company.rates.sum(:stars).to_f / company.rates.size), :precision => 2)%>]</span></td>
+				  <% rate = number_with_precision((company.rates.sum(:stars).to_f / company.rates.size), :precision => 2)%>
+					<td valign="top"><label>Average Rating</label> <span>[<% if rate.to_s != "NaN" %><%= rate %><% else %>0<% end %>]</span></td>
 					<td valign="top" align="right"><%unless company.rates.size <= 0%>
 						<label>Number of Ratings</label> <%= company.rates.size %>
 					<%else%>

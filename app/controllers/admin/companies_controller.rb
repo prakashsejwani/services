@@ -134,17 +134,17 @@ class Admin::CompaniesController < ApplicationController
     if scroll == 0 && params[:company][:scroll_ads].to_i == 1
       UserMailer.deliver_scroll_ads_approved(@company )
     elsif scroll == 1 && params[:company][:scroll_ads].to_i == 0
-        UserMailer.deliver_scroll_ads_unapproved(@company )
+      UserMailer.deliver_scroll_ads_unapproved(@company )
     end
-     if imgapp == 0 && params[:company][:imageapprove].to_i == 1
+    if imgapp == 0 && params[:company][:imageapprove].to_i == 1
       UserMailer.deliver_image_ads_approved(@company)
     elsif imgapp == 1 && params[:company][:imageapprove].to_i == 0
-        UserMailer.deliver_image_ads_unapproved(@company)
+      UserMailer.deliver_image_ads_unapproved(@company)
     end
     if video == 0 && params[:company][:videoapprove].to_i == 1
       UserMailer.deliver_video_ads_approved(@company)
     elsif video == 1 && params[:company][:videoapprove].to_i == 0
-        UserMailer.deliver_video_ads_unapproved(@company)
+      UserMailer.deliver_video_ads_unapproved(@company)
     end
     respond_to do |format|
      if @company.save
@@ -219,6 +219,16 @@ class Admin::CompaniesController < ApplicationController
       format.xml  { head :ok }
     end
   end 
+  
+  def popular_catlog
+    Company.send_to_unpopular(params[:companies]) if params[:companies].present?
+    @popular_catlogs = Company.popular.paginate :per_page => 15, :page => params[:page]
+  end
+  
+  def not_popular_catlog
+    Company.send_to_popular(params[:companies]) if params[:companies].present?
+    @not_popular = Company.not_popular.paginate :per_page => 15, :page => params[:page]
+  end
         
   protected
  

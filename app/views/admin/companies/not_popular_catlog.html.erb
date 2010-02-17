@@ -1,0 +1,20 @@
+<h3>Not in Popular Catlog</h3>
+<% if @not_popular.present? %>
+<div>To send to popular catlogs select the comppany and click send to popular.</div>
+  <table>
+    <% form_tag 'not_popular_catlog' do %>
+      <% @not_popular.each do |catlog| %>
+        <tr>
+          <td><%= check_box_tag "companies[]", catlog.id %></td>
+          <td><%= catlog.name %><td>
+        </tr>
+      <% end %>
+      <tr>
+        <td colspan="2"><%= submit_tag "Send to Popular" %></td>
+      </tr>
+      <tr>
+        <td colspan="2"><%= will_paginate @not_popular %></td>
+      </tr>  
+    <% end %>  
+  </table>
+<% end %>

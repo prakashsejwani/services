@@ -8,6 +8,8 @@
 				<li><%= tab_to "Localities", [{:controller => "admin/localities"}] %></li>
 				<li><%= tab_to "Companies", [{:controller => "admin/companies"}] %></li>
 				<li><%= tab_to "Categories", [{:controller => "admin/categories"}] %></li>
+				<li><%= tab_to "Popular Catlog", [{:controller => "admin/companies", :action => "popular_catlog"}] %></li>
+				<li><%= tab_to "Not in Popular Catlog", [{:controller => "admin/companies", :action => "not_popular_catlog"}] %></li>
 			</ul>
 			<h2>Settings</h2>
 			<ul>

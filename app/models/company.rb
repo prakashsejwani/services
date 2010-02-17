@@ -41,6 +41,8 @@ class Company < ActiveRecord::Base
   named_scope :near_expiry, {:conditions => ['companies.scroll_ads = ? AND companies.to_date is not null', true]}
   named_scope :image_near_expiry, {:conditions => ['companies.imageapprove = ? AND companies.image_to_date is not null', true]}
   named_scope :video_near_expiry, {:conditions => ['companies.videoapprove = ? AND companies.video_to_date is not null', true]}
+  named_scope :popular, { :conditions => {:popular_catlog =>  true }, :order => "name ASC"}
+  named_scope :not_popular, {:conditions => {:popular_catlog => false}, :order => "name ASC"}
   
   attr_accessible :name, :address1, :address2, :approved
   attr_accessor :category_ids
@@ -93,6 +95,20 @@ class Company < ActiveRecord::Base
   def self.find_by_category(page=1, cat_id='')
      paginate :per_page=>5, :page=>page,
      :conditions => ['companies.id in(select company_id from categorizations where category_id = ?)', cat_id]
+  end
+  
+  def self.send_to_popular(companies)    
+    companies.each do |c|
+      company = Company.find(c)
+      company.update_attribute(:popular_catlog, true)
+    end    
+  end
+  
+  def self.send_to_unpopular(companies)
+    companies.each do |c|
+      company = Company.find(c)
+      company.update_attribute(:popular_catlog, false)
+    end
   end
    
 end

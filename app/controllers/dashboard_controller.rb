@@ -6,6 +6,7 @@ class DashboardController < ApplicationController
   def index 
     localities
     company_scroll_ad
+    @popular_catlogs = Company.popular
   end
   
   # this action shows the search results
@@ -13,7 +14,7 @@ class DashboardController < ApplicationController
     if params[:city]
       session[:city] = params[:city]
     end
-    if params[:locality]
+    if params[:locality].present?
       conditions = {:city => params[:city], :locality => params[:locality]}
     else
       conditions = {:city => params[:city]}
@@ -21,8 +22,8 @@ class DashboardController < ApplicationController
     set_city(params[:city])
     if params[:radio] == "company" 
       @companies = Company.search params[:q],
-                   :include=>[:locality, :city, :business, :images, :categories, :rates],
                    :conditions=> conditions, :order => :priority, :sort_mode => :desc,
+                   :include=>[:locality, :city, :business, :images, :categories, :rates],                   
                    :page => params[:page],
                    :per_page => 5,
                    :with => {:approved=>true}

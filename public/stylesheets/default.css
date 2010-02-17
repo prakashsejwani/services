@@ -29,7 +29,7 @@ input[type="password"]{ width:60%}
 /* == search option == */
 #search_option{ margin:10px 0 10px 0; color:black}
 #search_option table{ 
-	width:340px; 
+	width:300px; 
 	padding:0; 
 	background-color:transparent}
 
@@ -73,9 +73,9 @@ div#search_count{
 	margin: 0; 
 	font-size: 1.3em;}
 
-#left #people{ 
+/*#left #people{ 
 	background-image:url(/images/people.jpg); 
-	height:540px;}
+	height:540px;}*/
 
 /* == holds screen_red and screen_green == */
 #left #gr_holder{ 

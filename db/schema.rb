@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100217100259) do
+ActiveRecord::Schema.define(:version => 20100222113857) do
 
   create_table "assets", :force => true do |t|
     t.string   "data_file_name"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(:version => 20100217100259) do
     t.integer  "business_id"
     t.string   "alphabet"
     t.boolean  "delta"
+    t.boolean  "popular",     :default => false
   end
 
   create_table "categorizations", :force => true do |t|
@@ -113,6 +114,7 @@ ActiveRecord::Schema.define(:version => 20100217100259) do
     t.date     "video_from_date"
     t.date     "video_to_date"
     t.boolean  "popular_catlog",        :default => false
+    t.boolean  "popular_services",      :default => false
   end
 
   add_index "companies", ["address1"], :name => "index_companies_on_address1"

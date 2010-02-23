@@ -4,6 +4,30 @@
 <% content_for :header do -%>
 	My <%= configatron.site_name %>
 <% end -%>
+<div>
+  <span>Popular Product</span><br/>
+  <% if @popular_products.present? %>
+    <table>
+      <% @popular_products.each do |product| %>
+        <tr>
+          <td><%= product.name %></td>
+        </tr>
+      <% end %>  
+    </table>
+    <br/>
+  <% end %>
+  <span>Popular Services</span>
+  <% if @popular_services.present? %>
+    <table>
+      <% @popular_services.each do |serv| %>
+        <tr>
+          <td><%= serv.name %></td>
+        </tr>
+      <% end %>  
+    </table>
+  <% end %>  
+  
+</div>
 
 
 	<!--<div id="people">&nbsp;</div>-->

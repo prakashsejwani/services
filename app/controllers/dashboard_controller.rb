@@ -7,6 +7,8 @@ class DashboardController < ApplicationController
     localities
     company_scroll_ad
     @popular_catlogs = Company.popular
+    @popular_products = Category.popular
+    @popular_services = Company.popular_service
   end
   
   # this action shows the search results

@@ -104,16 +104,16 @@
 				    </table>
 				  <% end %>
 				</div>			
-				<div>
-					<%= yield_or_default(yield(:sidebar)) %></div>
-					<%if params[:id] || params[:radio] || params[:business]%>
-						<div style="display:none">
-					<%else%>
-						<div class="map">
-						<div class="clear"></div>
-					<%end%>
+				<div><%= yield_or_default(yield(:sidebar)) %></div>
+				<!-- the code below is commented as the map is no more -->
+				<!--<%#if params[:id] || params[:radio] || params[:business]%>
+					<div style="display:none">
+				<%#else%>
+					<div class="map">
+					<div class="clear"></div>
+				<%#end%>
 					<%#= image_tag 'map.jpg'%>
-				</div>
+				</div>-->
 			</center><!-- important -->
 		  </div><!-- right end -->		  
 		</div><!-- main end -->

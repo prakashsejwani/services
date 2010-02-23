@@ -41,8 +41,9 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :businesses
     admin.resources :cities
     admin.resources :localities
-    admin.resources :companies, :collection => {:popular_catlog => :get, :not_popular_catlog => :get} 
-    admin.resources :categories
+    admin.resources :companies, :collection => {:popular_catlog => :get, :not_popular_catlog => :get, :popular_services => :get, 
+                                                :unpopular_services => :get} 
+    admin.resources :categories, :collection => {:popular_products => :get, :unpopular_products => :get}
     admin.catsearch '/catsearch', :controller => "categories", :action => "search"
     admin.resources :users, :member => { :suspend   => :put,
                                          :unsuspend => :put,

@@ -43,6 +43,8 @@ class Company < ActiveRecord::Base
   named_scope :video_near_expiry, {:conditions => ['companies.videoapprove = ? AND companies.video_to_date is not null', true]}
   named_scope :popular, { :conditions => {:popular_catlog =>  true }, :order => "name ASC"}
   named_scope :not_popular, {:conditions => {:popular_catlog => false}, :order => "name ASC"}
+  named_scope :popular_service, {:conditions => {:popular_services => true}, :order => "name ASC"}
+  named_scope :unpopular_service, {:conditions => {:popular_services => false}, :order => "name ASC"}
   
   attr_accessible :name, :address1, :address2, :approved
   attr_accessor :category_ids
@@ -108,6 +110,20 @@ class Company < ActiveRecord::Base
     companies.each do |c|
       company = Company.find(c)
       company.update_attribute(:popular_catlog, false)
+    end
+  end
+  
+  def self.send_to_popular_service(companies)    
+    companies.each do |c|
+      company = Company.find(c)
+      company.update_attribute(:popular_services, true)
+    end    
+  end
+  
+  def self.send_to_normal_service(companies)
+    companies.each do |c|
+      company = Company.find(c)
+      company.update_attribute(:popular_services, false)
     end
   end
    

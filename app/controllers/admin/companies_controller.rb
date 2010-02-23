@@ -229,6 +229,17 @@ class Admin::CompaniesController < ApplicationController
     Company.send_to_popular(params[:companies]) if params[:companies].present?
     @not_popular = Company.not_popular.paginate :per_page => 15, :page => params[:page]
   end
+  
+  def popular_services
+    Company.send_to_normal_service(params[:companies]) if params[:companies].present?
+    @popular_services = Company.popular_service.paginate :per_page => 15, :page => params[:page]
+  end 
+  
+  def unpopular_services
+    Company.send_to_popular_service(params[:companies]) if params[:companies].present?
+    @unpopular_services = Company.unpopular_service.paginate :per_page => 15, :page => params[:page]
+  end
+
         
   protected
  

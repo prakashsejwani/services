@@ -99,5 +99,14 @@ class Admin::CategoriesController < ApplicationController
     end
   end
   
+  def popular_products
+    Category.send_to_unpopular(params[:categories]) if params[:categories].present?
+    @popular_products = Category.popular.paginate :per_page => 15, :page => params[:page]
+  end
+  
+  def unpopular_products
+    Category.send_to_popular(params[:categories]) if params[:categories].present?
+    @unpopular_products = Category.unpopular.paginate :per_page => 15, :page => params[:page]    
+  end
  
 end

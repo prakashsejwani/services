@@ -1,5 +1,7 @@
 class Category < ActiveRecord::Base
-  
+  named_scope :popular, :conditions => {:popular => true}, :order => "name ASC"
+  named_scope :unpopular, :conditions => {:popular => false}, :order => "name ASC"  
+    
   # For Thinking-sphinx search
   define_index do
     indexes :name, :sortable => true
@@ -23,6 +25,20 @@ class Category < ActiveRecord::Base
     paginate :per_page => 20, :page => page,
              :conditions => ["name like ?", "%#{q}%"], 
              :order => 'name'
+  end
+  
+  def self.send_to_popular(categories)
+    categories.each do |c| 
+      category = Category.find(c) 
+      category.update_attribute(:popular, true) 
+    end    
+  end
+  
+  def self.send_to_unpopular(categories)
+    categories.each do |c| 
+      category = Category.find(c)  
+      category.update_attribute(:popular, false)
+    end 
   end
   
 end

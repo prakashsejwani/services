@@ -64,7 +64,7 @@ div#search_count{
 /* == left column == */
 
 
-#left {padding:0; margin:0;	min-height:540px}
+#left {padding:0; margin:0;	min-height:540px; }
 
 #left .head { 
 	color: #204ca0; 
@@ -258,7 +258,7 @@ a.b_link{ color:#084C8F}
 	background-color: #f1f1f1;}
 
 /* == right column == */
-#right { width:380px; padding:0; margin:0 auto; color: #666; background-color:#E5E5E5}
+#right { width:380px; padding:0; margin:0 auto; color: #666; background-color:#f4e5ce /* #E5E5E5 */; height:511px; border-bottom:20px solid #C1C1C1}
 
 /* == sidebar search == */
 #search{ 
@@ -322,4 +322,17 @@ a.b_link{ color:#084C8F}
 	bottom:0;}
 
 * html #footer_bottom {position:absolute;} 
+#new_search_div{text-align:left; padding:0 0 0 16px;}
+#new_search_div div.head {text-align:center; background:url('/images/new_button.jpg') repeat-x; border:1px solid #cbc4b3; height:23px; line-height:23px; font-size:11px; width:133px; font-weight:bold}
+#new_search_div div{margin:5px 0 0 0; overflow:hidden}
+#new_search_div table{width:100%; background:transparent}
 
+#main_left_div{background:#eeeeee; height:510px; margin: 0 2px 0 0; border-top:1px solid #c8c8ca; border-right:1px solid #c8c8ca; border-left:1px solid #c8c8ca;  border-bottom:20px solid #C1C1C1 }
+#main_left_div table{background:transparent; }
+#main_left_div table table{margin:0 0 0 20px}
+#main_left_div div.heading{padding: 0 0 0 10px; background:url('/images/new_btn.jpg') repeat-x; border:1px solid #cbc4b3; height:23px; line-height:23px; font-size:11px; width:133px; font-weight:bold; margin:0 0 0 10px}
+#main_left_div img, #main_left_div a img{margin:0 28px 16px 0; border:1px solid #b4b4b4}
+
+#products_page_div {height:23px; line-height:23px; width:270px; border:1px solid #ccc; background:#fff; margin:0 0 10px 0; text-align:left}
+#left_list{width:55%; background:#f6e5d0; font-weight:bold; padding:0px 0 0 10px; _padding:0 0 0 5px; float:left}
+#right_list{width:44px; float:right; text-align:left}

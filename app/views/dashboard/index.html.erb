@@ -4,34 +4,62 @@
 <% content_for :header do -%>
 	My <%= configatron.site_name %>
 <% end -%>
-<div>
-  <span>Popular Product</span><br/>
-  <% if @popular_products.present? %>
-    <table>
-      <% @popular_products.each do |product| %>
-        <tr>
-          <td><%= product.name %></td>
-        </tr>
-      <% end %>  
-    </table>
-    <br/>
-  <% end %>
-  <span>Popular Services</span>
-  <% if @popular_services.present? %>
-    <table>
-      <% @popular_services.each do |serv| %>
-        <tr>
-          <td><%= serv.name %></td>
-        </tr>
-      <% end %>  
-    </table>
-  <% end %>  
-  
-</div>
-
-
+<table style="margin:10px 0 0 0">
+	<tr>
+		<td valign="top" style="width:38%">
+			<div>
+				<div class="heading">Popular Product</div>
+				<% if @popular_products.present? %>
+					<table>
+						<% @popular_products.each do |product| %>
+							<tr><td><%= product.name %></td></tr>
+							<tr><td>product record</td></tr>
+						<% end %>  
+					</table>
+					<br />
+				<% end %>
+				<div class="heading">Popular Services</div>
+				<% if @popular_services.present? %>
+					<table>
+						<% @popular_services.each do |serv| %>
+							<tr><td><%= serv.name %></td></tr>
+						<% end %>  
+					</table>
+				<% end %>  
+			</div>
+		</td>
+		<td valign="top">
+			<div id="products_page_div">
+				<div id="left_list">Companies gallery</div>
+				<div id="right_list">All</div>
+			</div>
+			<%= image_tag "logo.jpg" %>
+			<%= image_tag "logo.jpg" %>
+			<%= image_tag "logo.jpg" %>
+			<br />
+			<%= image_tag "logo.jpg" %>
+			<%= image_tag "logo.jpg" %>
+			<%= image_tag "logo.jpg" %>
+			<br />
+			<%= image_tag "logo.jpg" %>
+			<%= image_tag "logo.jpg" %>
+			<%= image_tag "logo.jpg" %>
+			<br />
+			<%= image_tag "logo.jpg" %>
+			<%= image_tag "logo.jpg" %>
+			<%= image_tag "logo.jpg" %>
+			<br />
+			<%= image_tag "logo.jpg" %>
+			<%= image_tag "logo.jpg" %>
+			<%= image_tag "logo.jpg" %>
+			<br />
+			<%= image_tag "logo.jpg" %>
+			<%= image_tag "logo.jpg" %>
+			<%= image_tag "logo.jpg" %>
+			<br />
+		</td>
+	</tr>
+</table>
 	<!--<div id="people">&nbsp;</div>-->
 
 <%#= render :partial => 'footer_ad' %>
-
-

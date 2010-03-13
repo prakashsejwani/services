@@ -49,7 +49,7 @@
 			 <% end %>
 		  <div id="left">					   
 				<!--<h2 class="head"><%#= yield_or_default yield(:header), "Use 'content_for :header do; end' in your view to set this title" %></h2>-->        
-				<%= yield %>	
+				<div id="main_left_div"><%= yield %>	</div>
 				<%= render :partial => 'shared/login' %>
 				<%= render :partial => 'shared/signup' %>
 		  </div><!-- left end -->
@@ -85,16 +85,18 @@
 								<%if !@rev%><%= select_tag :locality, %{<option value="">Please select...</option>} + options_from_collection_for_select(@localities,"id","name",params[:locality].to_i) %><%end%>
 								</div> <!-- location end -->
 							</td>
-							<td style="width:10%" align="right"><%= submit_tag("Go", :onclick => "return citycompusory();", :url => {:controller => 'dashboard', :action => 'search'}, :class=>"no-img")%></td>
+							<td style="width:10%" align="right"><%= submit_tag("&rarr;", :onclick => "return citycompusory();", :url => {:controller => 'dashboard', :action => 'search'}, :class=>"no-img")%></td>
 							<%end%>
 						</tr>						
 					</table>					   	
 					<% end %>		
-			 	</div>	<!-- search_option end -->			 	
-				<div class="clear"></div> <!-- clear2 end -->	
-				<div>				  
+			 	</div>	<!-- search_option end -->		
+					
+				
+				<div id="new_search_div">
 				  <% if @popular_catlogs.present? %>
-				    Popular Catlogs
+				    <div class="head">Popular Catalogs</div>
+						<div>
 				    <table>
 				      <% @popular_catlogs.each do |catlog| %>
 				        <tr>
@@ -102,8 +104,10 @@
 				        </tr>
 				      <% end %>
 				    </table>
+						</div>
 				  <% end %>
 				</div>			
+				<div class="clear"></div> <!-- clear2 end -->	
 				<div><%= yield_or_default(yield(:sidebar)) %></div>
 				<!-- the code below is commented as the map is no more -->
 				<!--<%#if params[:id] || params[:radio] || params[:business]%>

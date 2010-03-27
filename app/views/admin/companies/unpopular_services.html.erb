@@ -1,0 +1,20 @@
+<h3>Not in Popular Services</h3>
+<% if @unpopular_services.present? %>
+<div>To send to popular services select the comppany and click send to popular.</div>
+  <table>
+    <% form_tag 'unpopular_services' do %>
+      <% @unpopular_services.each do |catlog| %>
+        <tr>
+          <td><%= check_box_tag "companies[]", catlog.id %></td>
+          <td><%= catlog.name %><td>
+        </tr>
+      <% end %>
+      <tr>
+        <td colspan="2"><%= submit_tag "Send to Popular" %></td>
+      </tr>
+      <tr>
+        <td colspan="2"><%= will_paginate @unpopular_services %></td>
+      </tr>  
+    <% end %>  
+  </table>
+<% end %>

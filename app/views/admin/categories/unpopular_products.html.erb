@@ -1,0 +1,19 @@
+<h3>UnPopular Products</h3>
+<% if @unpopular_products.present? %>
+  <% form_tag 'unpopular_products' do %>
+    <table>
+      <% @unpopular_products.each do |product| %>
+        <tr>
+          <td><%= check_box_tag "categories[]", product.id %></td>
+          <td><%= product.name %></td>
+        </tr>
+      <% end %> 
+      <tr>
+        <td colspan="2"><%= submit_tag "Send to Popular" %></td>
+      </tr>
+      <tr>
+        <td colspan="2"><%= will_paginate @unpopular_products %></td>
+      </tr> 
+    </table>
+  <% end %>  
+<% end %>

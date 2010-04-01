@@ -31,6 +31,20 @@ ActiveRecord::Schema.define(:version => 20100217100259) do
   add_index "attachings", ["asset_id"], :name => "index_attachings_on_asset_id"
   add_index "attachings", ["attachable_id"], :name => "index_attachings_on_attachable_id"
 
+  create_table "avatars", :force => true do |t|
+    t.string   "filename"
+    t.string   "content_type"
+    t.string   "thumbnail"
+    t.integer  "size"
+    t.integer  "parent_id"
+    t.integer  "height"
+    t.integer  "width"
+    t.integer  "asset_id"
+    t.string   "asset_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "businesses", :force => true do |t|
     t.string   "name"
     t.string   "alphabet"
@@ -84,11 +98,11 @@ ActiveRecord::Schema.define(:version => 20100217100259) do
     t.datetime "image_ad_updated_at"
     t.boolean  "approved",              :default => false
     t.string   "other_category"
-    t.boolean  "delta"
-    t.integer  "reviews_count",         :default => 0
     t.boolean  "imageapprove",          :default => false
     t.boolean  "videoapprove",          :default => false
     t.integer  "owner_id"
+    t.boolean  "delta"
+    t.integer  "reviews_count",         :default => 0
     t.boolean  "priority",              :default => false
     t.date     "from_date"
     t.date     "to_date"
@@ -141,9 +155,9 @@ ActiveRecord::Schema.define(:version => 20100217100259) do
   end
 
   create_table "open_id_authentication_nonces", :force => true do |t|
-    t.integer "timestamp",                  :null => false
+    t.integer "timestamp",  :null => false
     t.string  "server_url"
-    t.string  "salt",       :default => "", :null => false
+    t.string  "salt",       :null => false
   end
 
   create_table "profiles", :force => true do |t|

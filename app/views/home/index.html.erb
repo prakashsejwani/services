@@ -1,21 +1,24 @@
 <% title 'Index' %>
 <%= javascript 'dynamic_localities' %>	
+<div id="alpha_head">
+	<ul>
+			<li>Select Alphabetical Lisitings: &nbsp;&nbsp;</li>
+		<% @alphabets.each do|alpha| %>
+			<li <%= "id='current'" if @alpha == alpha %>><%= link_to alpha, {:alpha=>alpha} %></li>					
+		<% end %>			
+	</ul>
+</div>
+
+
 <div id="people">
 	<div id="gr_holder">
-		<div id="screen_red">
-			<ul>
-				<% @alphabets.each do|alpha| %>
-					<li <%= "id='current1'" if @alpha == alpha %>><%= link_to alpha, {:alpha=>alpha} %></li>					
-				<% end %>			
-			</ul>		
-		</div>
 		<div id="screen_green">
 			<% i = @categories.size %>
 			<% if i < 35 %>	
 				<div id="list_left">
 					<ul>					
 						<% @categories[0..i].each do|category| %>
-							<li <%= "id='current2'" if category.id.to_s == params[:category] %>>
+							<li <%= "id='current'" if category.id.to_s == params[:category] %>>
 								<%= link_to truncate((category.name), :length => 25), search_url(:q => category.name, :radio=>"category", :alpha=>params[:alpha]), :title => category.name %></li>						
 							</li>
 						<% end %>												
@@ -28,7 +31,7 @@
 				<div id="list_left">
 					<ul>					
 						<% @categories[0..34].each do|category| %>
-							<li <%= "id='current2'" if category.id.to_s == params[:category] %>>
+							<li <%= "id='current'" if category.id.to_s == params[:category] %>>
 								<%= link_to truncate((category.name), :length => 25), search_url(:q => category.name, :radio=>"category", :alpha=>params[:alpha]), :title => category.name %></li>						
 							</li>
 						<% end %>												
@@ -37,7 +40,7 @@
 				<div id="list_right">			
 					<ul>
 						<% @categories[35..i].each do|category| %>
-							<li <%= "id='current2'" if category.id.to_s == params[:category] %>>
+							<li <%= "id='current'" if category.id.to_s == params[:category] %>>
 							<%= link_to truncate((category.name),:length => 25), search_url(:q => category.name, :radio=>"category", :alpha=>params[:alpha]), :title => category.name %></li>						
 							</li>
 						<% end %>

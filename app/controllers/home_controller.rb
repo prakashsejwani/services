@@ -8,7 +8,7 @@ class HomeController < ApplicationController
       @categories = Category.paginate(:per_page=>70, :page=>params[:page], :conditions=>['alphabet = ?',@alpha], :order=>'name')      
     else
       @categories = []
-    end
+    end		
   end
 
   def career

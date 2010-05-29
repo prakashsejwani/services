@@ -1,0 +1,110 @@
+/* CSS Document */
+
+body{font-family:Arial, Helvetica, sans-serif;margin:0 auto ; padding:0;}
+
+.mainDiv{width:1002px; margin:0 auto; padding:0;}
+
+/***HEADER FOR HOME PAGE**/
+.headerHome{}
+.headerHome .nav{float:left; width:686px; background:#141615; height:95px; border-left:1px solid #8b8d8c; border-bottom:1px solid #8b8d8c; border-right:1px solid #8b8d8c; margin:0 2px 2px 0;}
+	    .nav ul{list-style:none; list-style-type:none;margin:0; padding:0; margin:40px 10px; xborder:1px solid red;}
+		.nav ul li{display:inline; font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#FFFFFF;margin:0; padding:0 15px 0 15px; border-right:1px solid #FFFFFF;}
+		.nav ul li.last{display:inline; font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#FFFFFF;margin:0; padding:0 20px 0 15px; border:none;}
+		.nav ul li a{color:#FFFFFF;margin:0;text-decoration:none;}
+		.nav ul li a:hover{color:#FFFFFF;margin:0;text-decoration:underline;}
+		
+.headerHome .logoDiv{float:right; width:308px; background:#eeeeee;border-left:1px solid #8b8d8c; border-bottom:1px solid #8b8d8c; border-right:1px solid #8b8d8c;height:95px;margin:0 0 2px 2px; }
+        .logoDiv .toplink{font-family:Arial, Helvetica, sans-serif; font-size:11px; float:right; margin:2px 5px 5px 2px;}
+		.logoDiv .logo{ margin:35px 0 0 0; text-align:center;}
+
+/**HEADER FOR SUBPAGES**/
+.headerSub{}
+.headerSub .navSub{float:left; width:755px; background:#141615; height:59px; border-left:1px solid #8b8d8c; border-bottom:1px solid #8b8d8c; border-right:1px solid #8b8d8c; margin:0 2px 2px 0;}
+	    .navSub ul{list-style:none; list-style-type:none;padding:0; margin:24px 10px;}
+		.navSub ul li{display:inline; font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#FFFFFF;margin:0; padding:0 15px 0 15px; border-right:1px solid #FFFFFF;}
+		.navSub ul li.last{display:inline; font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#FFFFFF;margin:0; padding:0 20px 0 15px; border:none;}
+		.navSub ul li a{color:#FFFFFF;margin:0;text-decoration:none;}
+		.navSub ul li a:hover{color:#FFFFFF;margin:0;text-decoration:underline;}
+		.navSub ul li a.current{color:#af2421;margin:0;text-decoration:none;}
+		
+.headerSub .logoSub{ float:right;width:239px; background:#eeeeee;border-left:1px solid #8b8d8c; border-bottom:1px solid #8b8d8c; border-right:1px solid #8b8d8c;height:59px; margin:0 2px 2px 0; text-align:center;}
+          .logoSub .toplink{font-family:Arial, Helvetica, sans-serif; font-size:11px; float:right; margin:2px 5px 5px 2px;}
+
+/**CONTENT HOME**/
+.content{}
+.content form{margin:0; padding:0;}
+.content .leftDiv{float:left; width:686px;border-left:1px solid #8b8d8c; border-top:1px solid #8b8d8c;border-bottom:25px solid #BFBFBF; border-right:1px solid #8b8d8c;padding:0px;background:#eeeeee;margin:2px 2px 2px 0;height:700px;}
+		 
+.content .rightDiv{float:right; width:308px;border-left:1px solid #8b8d8c; border-top:1px solid #8b8d8c;border-bottom:25px solid #BFBFBF; border-right:1px solid #8b8d8c;margin:2px 0 2px 2px; background:#f4e5ce; font-size:10px;height:700px;}
+
+/**CONTENT SUB**/
+.contentSub{}
+.contentSub form{margin:0; padding:0;}
+.contentSub .leftDivSub{float:left; width:755px;border-left:1px solid #8b8d8c; border-top:1px solid #8b8d8c; border-right:1px solid #8b8d8c; margin:0; padding:0px;background:#eeeeee;margin:2px 2px 2px 0;height:700px;}
+
+.leftDivSub ul{list-style:none; list-style-type:none;margin:0; padding:10px 0.5px;}
+			ul li{display:inline;font-size:14px;margin:0; padding:0 4px;}
+			ul li a{color:#000000; text-decoration:none;}
+			ul li a:hover{color:#af2421; text-decoration:none;}
+			ul li#current a{color:#af2421;margin:0;text-decoration:none;}
+.leftDivSub h4{ font-size:12px; color:#af2421; margin:0; padding:0; font-weight:normal;}
+.leftDivSub h5{ font-size:12px; color:#5b5b5b; margin:5px 0; padding:0; font-weight:bold;}
+.leftDivSub p{color:#5b5b5b; margin:12px 0; padding:0;}
+
+.contentSub .rightDivSub{float:right; width:238px;border-left:1px solid #8b8d8c; border-top:1px solid #8b8d8c; border-right:1px solid #8b8d8c;margin:2px 0 2px 2px; background:#eeeeee; font-size:13px;height:700px;}
+.rightDivSub img{ padding:20px 0 0 0;}
+/* == screen_green == */
+#screen_green{ 
+	height:100%; 
+	color:#fff; 
+	/*float:right; */
+	width:84.8%; 
+	text-transform:capitalize; 
+	text-align:left; 
+	margin:0; 
+	padding:0}
+#screen_green ul{ margin:4px 0 0 0 }
+#left #screen_green ul li{ 
+         list-style:disc; 
+         margin:0; 
+         line-height:14px }
+#screen_green #list_left a, #screen_green #list_right a{ 
+	color:black; 
+	text-decoration:none; 
+	text-transform:capitalize; 
+	font-size:11px; }
+#screen_green #list_left #current2 a{ color:black;}
+	
+#screen_green #list_left{ float:left; width:50%;}
+#screen_green #list_right{ float:right;width:50%;}
+*:first-child+html #screen_green #list_left, *:first-child+html #screen_green #list_right{ 
+	background-image:none; 
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/screen_green.png', sizingMethod='scale');}
+
+* html #screen_green #list_left, * html #screen_green #list_right{ 
+	background-image:none; 
+	height:539px; 
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/screen_green.png', sizingMethod='scale');}
+	
+	
+table{ margin:0; padding:0;}
+table td{ padding:3px;margin:0; font-size:13px;}
+table td a{ color:#000000; text-decoration:none;}
+table td a:hover{ color:#000000; text-decoration:underline;}
+table td a.current{ color:#af2421; text-decoration:none;}
+
+.pl10{ padding-left:10px;}
+.ptb10{ padding-top:10px; padding-bottom:10px;}
+.pt10{ padding-top:10px;}
+.pt15{ padding-top:15px;}
+
+.w120{ width:120px;}
+
+.buttonbg{ background:url(../images/btn_bg.gif) repeat-x; border:1px solid #b5b5b5; font-family:Arial, Helvetica, sans-serif; font-size:14px; padding:6px 0 0 5px; margin:0; font-weight:bold;height:23px;}
+.searchBox{background:#f4e6cc;border:1px solid #b5b5b5; height:28px; width:295px; font-size:14px; font-weight:bold; padding:4px 0 0 10px; float:left; margin:4px 0 0 0;}
+input.search{ border:1px solid #d4d4d4; background:#FFFFFF; padding:2px; font-family:Arial, Helvetica, sans-serif; width:150px;}
+.logoBox{border:1px solid #a1a1a1; background:#FFFFFF; width:120px; height:40px; text-align:center; padding:25px 0 0 0; margin:11px 30px 11px 0;}
+.textBox{border:1px solid #d4d4d4; background:#FFFFFF; padding:2px; font-family:Arial, Helvetica, sans-serif;}
+.textArea{border:1px solid #d4d4d4; background:#FFFFFF; padding:2px; font-family:Arial, Helvetica, sans-serif; width:510px;}
+.textBoxW290p{border:1px solid #d4d4d4; background:#FFFFFF; padding:2px; font-family:Arial, Helvetica, sans-serif; width:290px;}
+.textBoxW120p{border:1px solid #d4d4d4; background:#FFFFFF; padding:2px; font-family:Arial, Helvetica, sans-serif; width:120px;}

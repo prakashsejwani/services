@@ -1,64 +1,65 @@
-<!--<%#= javascript 'dynamic_localities' %>-->
+<%= javascript 'dynamic_localities' %>
 <tr>
-    <td valign="top">Name</td>
-    <td valign="top"><%= f.text_field :name %></td>	
+    <td width="23%">Contact Person</td>
+    <td colspan="3"><%= f.text_field :contact, :size => 80, :class => "textBox"  %></td>	
 </tr>
 <tr>
-    <td valign="top">Address</td>
-    <td valign="top"><%= f.text_field :address1 %></td>	
+    <td>Email</td>
+    <td colspan="3"><%= f.text_field :email, :size => 80, :class => "textBox"  %></td>
 </tr>
 <tr>
-    <td>&nbsp;</td>
-    <td valign="top"><%= f.text_field :address2 %></td>	
+    <td>Company Name</td>
+    <td colspan="3"><%= f.text_field :name, :size => 80, :class => "textBox"  %></td>
 </tr>
 <tr>
-    <td valign="top">City</td>
-    <td valign="top"><div style="width:34%;float:left"><%= f.collection_select :city_id, @cities, :id, :name, {:prompt => true}, {:selected => params[:city_id]} %></div>
+    <td>State</td>
+    <td width="25%"><%= f.text_field :state, :value => "Maharashtra", :size => 30, :class => "textBox"  %></td>	
+</tr>
+<tr>
+    <td >City</td>
+    <td colspan="3"><div style="width:34%;float:left"><%= f.collection_select :city_id, @cities, :id, :name, {:prompt => true}, {:selected => params[:city_id]} %></div>
     <div style="width:20%;float:left;text-align:right"><%= f.label :locality_id %>&nbsp;&nbsp;</div>
     <div style="width:45%;float:right;"><%= f.collection_select :locality_id, @localities, :id, :name, {:prompt => true}, {:selected => params[:locality_id]} %></div></td>	
-</tr>	
-<tr>
-    <td valign="top">State</td>
-    <td valign="top"><%= f.text_field :state, :value => "Maharashtra" %></td>	
 </tr>
 <tr>
-    <td valign="top">Country</td>	
-    <td valign="top"><%= f.text_field :country, :value => "India" %></td>
-</tr>
-<tr>
-    <td valign="top">Pincode</td>	
-    <td valign="top"><%= f.text_field :pincode, :size => 17 %></td>
-</tr>
-<tr>
-    <td valign="top"><label>Phone No.</label></td>	
-    <td valign="top">
-		<%= f.text_field :phone1, :size => 17 %> / 
-		<%= f.text_field :phone2, :size => 17 %>
+    <tr>
+        <td>Telephone No.</td>
+        <td colspan="3"><div style="width:34%;float:left"><%= f.text_field :phone1, :size => 30, :class => "textBox" %></div><div style="width:20%;float:left;text-align:right">Mobile</div>
+        <div style="width:45%;float:right;"><%= f.text_field :phone2, :size => 30, :class => "textBox"  %></div>
 	</td>
 </tr>
 <tr>
-    <td valign="top">Fax No.</td>	
-    <td valign="top"><%= f.text_field :fax, :size => 17 %></td>
+    <td valign="top">Address</td>
+    <td colspan="3"><%= f.text_area :address1,  :cols=>75, :rows=> 3, :class=>"textArea"%></td>	
+</tr>
+<!-- <tr>
+    <td>&nbsp;</td>
+    <td valign="top"><%# f.text_field :address2 %></td>	
+</tr>
+
+
+<tr>
+    <td valign="top">Country</td>	
+    <td valign="top"><%# f.text_field :country, :value => "India" %></td>
 </tr>
 <tr>
-    <td valign="top">E-mail</td>	
-    <td valign="top"><%= f.text_field :email %></td>
-</tr>
-<tr>
-    <td valign="top">Company Url</td>	
-    <td valign="top"><%= f.text_field :ad_url %></td>		
-</tr>
-<tr>
-    <td valign="top">Contact Person</td>	
-    <td valign="top"><%= f.text_field :contact %></td>
+    <td valign="top">Pincode</td>	
+    <td valign="top"><%# f.text_field :pincode, :size => 17 %></td>
 </tr>
 <tr>
     <td valign="top">About</td>	
-    <td valign="top"><%= f.text_area :about %></td>
+    <td valign="top"><%# f.text_area :about %></td>
+</tr>
+-->
+<tr>
+    <td valign="top">Fax No.</td>	
+    <td colspan="3"><div style="width:34%;float:left"><%= f.text_field :fax, :size => 25, :class => "textBox" %></div>
+	<div style="width:20%;float:left;text-align:right">Company Url</div>
+	<div style="width:45%;float:right;"><%= f.text_field :ad_url, :size => 25, :class => "textBox" %></div></td>
 </tr>
 <tr>
-    <td valign="top">Business</td>
-    <td valign="top"><%= f.collection_select :business_id, @businesses, :id, :name, {:prompt => true} %></td>
+    <td>Nature of Business</td>
+    <td colspan="3"><%= f.collection_select :business_id, @businesses, :id, :name, {:prompt => true} %></td>
 </tr>
 <tr>
     <td valign="top">Categories/Products</td>	

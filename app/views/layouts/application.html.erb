@@ -9,7 +9,7 @@
   	<meta name="Description" content="At SERVICES, our people determine our access. We aim to promote Growth, Teamwork, and Learning through constant innovation that ensures we grow together in this competitive arena.">
 	
 	<title><%= configatron.site_name %> - <%= yield(:title) %></title>
-	<%= stylesheet_link_tag 'default','common', 'base', :media => 'all' %>
+	<%= stylesheet_link_tag 'default','common','base', 'arya_style', :media => 'all' %>
 	<%= javascript_include_tag 'swfobject'%>
 	<%= ajaxful_rating_style %>
 	<%= javascript_include_merged :base %>
@@ -27,88 +27,147 @@
 </head>
 
 <body onload="javascript:radiocheck(); ">
-	<div id="wrapper">
-		<div id="header">
-		  <div id="head_left"><%= render :partial => 'shared/tabs' %></div>
-		  <div id="head_right">
-		  	<div class="right_aln">
-		  	<div id="global_links"><%= render :partial => 'shared/global_links' %></div>  
-		  	</div>
-		  </div>			   
-		</div>
-		<div class="clear"></div>	
-		<div id="main">     
-			<% if flash[:notice] %>
-			   <div id="notice"><%= flash[:notice] %></div>
-			 <% end %>
-			 <% if flash[:warning] %>
-			   <div id="warning"><%= flash[:warning] %></div>
-			 <% end %>
-			 <% if flash[:error] %>
-			    <div id="error"><%= flash[:error] %></div>
-			 <% end %>
-		  <div id="left">					   
+	<div class="mainDiv">
+	  <div class="headerHome"><!--Header Starts-->
+          <%= render :partial => 'shared/tabs' %>
+		  <div class="logoDiv">
+		    <%= render :partial => 'shared/global_links' %>
+			<div class="logo">
+				<img src="images/logo.gif" width="300" height="55" align="absbottom" />
+			</div>
+		  </div>
+		  	<%= render :partial => 'shared/login' %>
+			  <%= render :partial => 'shared/signup' %>  
+	  	</div><!--Header Ends-->		
+	     <div class="clear"></div>	
+	  <!-- <div id="main">      -->
+			
+			<div class="content"><!--Content Starts-->
+								   
 				<!--<h2 class="head"><%#= yield_or_default yield(:header), "Use 'content_for :header do; end' in your view to set this title" %></h2>-->        
-				<div id="main_left_div"><%= yield %>	</div>
-				<%= render :partial => 'shared/login' %>
-				<%= render :partial => 'shared/signup' %>
-		  </div><!-- left end -->
-		  
-		  <div id="right">
-			<center>
-				<div id="search_option">
+				<div class="leftDiv">
+						<% if flash[:notice] %>
+						   <div id="notice"><%= flash[:notice] %></div>
+						 <% end %>
+						 <% if flash[:warning] %>
+						   <div id="warning"><%= flash[:warning] %></div>
+						 <% end %>
+						 <% if flash[:error] %>
+						    <div id="error"><%= flash[:error] %></div>
+						 <% end %>
+				 	<%= yield %>
+				</div><!-- left end -->
+				 	  
+		  <div class="rightDiv">
+			
+				
 					<%if !@rev%>
 					<% form_tag(search_url, :method => :get) do %>
-					 <table cellspacing="0">
+					 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="mt10">
 						<tr>
-							<td align="left" valign="bottom" colspan="3"><label>Search By</label>
-							<%= radio_button_tag('radio', "company", false, :class => "no_border") %><label> Company </label>
-							<%= radio_button_tag('radio', "category", true, :class => "no_border") %><label> product / services</label></td>
+							<td colspan="3" align="left" class="pt15">
+				                <table border="0" cellspacing="0" cellpadding="0">
+				                  <tr>
+				                    <td width="25%">Search By </td>
+				                    <td width="9%"><%= radio_button_tag('radio', "company", false, :class => "no_border") %></td>
+				                    <td width="20%"><label>Company </label></td>
+				                    <td width="9%"><%= radio_button_tag('radio', "category", true, :class => "no_border") %></td>
+				                    <td width="37%">Product/Services</td>
+				                  </tr>
+				                </table>
+				          	</td>
 						</tr>
 						<tr>
-							<td colspan="3" align="center"><%= text_field_tag :q, params[:q]%></td>
+							<td colspan="3"><%= text_field_tag :q, params[:q], :size=>15, :class=>"textBoxW290p"%></td>
 							<!--<td colspan="3" align="center"><%#= text_field_with_auto_complete :q, params[:q]%></td>-->
 						</tr>
 						<!--</table>
 						
 						<table cellspacing="0">-->
 						<tr>
-							<td align="left"><label>City</label></td>
-							<td align="left"><label>Area</label></td>
+							<td class="pl10" align="left"><label>City</label></td>
+							<td class="pl10" align="left"><label>Area</label></td>
 							<td></td>
 						</tr>
 						<tr>
-							<%if !@rev %><td style="width:42%" align="left"><%= select_tag :city, %{<option value="">Please select...</option>} + options_from_collection_for_select(@cities,"id","name",params[:city].to_i) %></td>
+							<%if !@rev %><td style="width:42%" align="left"><%= select_tag :city, %{<option value="">Please select...</option>} + options_from_collection_for_select(@cities,"id","name",params[:city].to_i), :class=>"textBoxW120p" %></td>
 							<%end%>							
 							<td style="width:48%" align="left">
 								<div id="location">
-								<%if !@rev%><%= select_tag :locality, %{<option value="">Please select...</option>} + options_from_collection_for_select(@localities,"id","name",params[:locality].to_i) %><%end%>
+								<%if !@rev%><%= select_tag :locality, %{<option value="">Please select...</option>} + options_from_collection_for_select(@localities,"id","name",params[:locality].to_i), :class=>"textBoxW120p" %><%end%>
 								</div> <!-- location end -->
 							</td>
-							<td style="width:10%" align="right"><%= submit_tag("&rarr;", :onclick => "return citycompusory();", :url => {:controller => 'dashboard', :action => 'search'}, :class=>"no-img")%></td>
+							<td style="width:10%" align="right"><%= image_submit_tag("btn_go.gif", :onclick => "return citycompusory();", :url => {:controller => 'dashboard', :action => 'search'}, :class=>"no-img")%></td>
 							<%end%>
 						</tr>						
 					</table>					   	
-					<% end %>		
-			 	</div>	<!-- search_option end -->		
-					
+					<% end %>
+							
 				
-				<div id="new_search_div">
-				  <% if @popular_catlogs.present? %>
-				    <div class="head">Popular Catalogs</div>
-						<div>
-				    <table>
-				      <% @popular_catlogs.each do |catlog| %>
-				        <tr>
-				          <td><%= catlog.name %></td>
-				        </tr>
-				      <% end %>
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				  <%# if @popular_catlogs.present? %>
+				    <tr>
+		                <td class="pt10"><img src="images/heading_popular_catlogs.gif" /></td>
+				    </tr>
+				      <%# @popular_catlogs.each do |catlog| %>
+				        <!-- <tr>
+				    				          <td><%# catlog.name %></td>
+				    				        </tr> -->
+				       	<!-- <tr>
+				       			                <td class="pt10"></td>
+				       			            </tr> -->
+			            <tr>
+			                <td class="pl10 pt10"><a href="#">Apparel Garment</a></td>
+			            </tr>
+			            <tr>
+			                <td class="pl10"><a href="#">Agro Products</a></td>
+			            </tr>
+			            <tr>
+			                <td class="pl10"><a href="#">Automobile Components</a></td>
+			            </tr>
+			            <tr>
+			                <td class="pl10"><a href="#">Art, Handicarfts and Gifts</a></td>
+			            </tr>
+			            <tr>
+			                <td class="pl10"><a href="#">Industrial Products</a></td>
+			            </tr>
+			            <tr>
+			                <td class="pl10"><a href="#">Kinter Garden-Nursery School</a></td>
+			            <tr>
+			                <td class="pl10"><a href="#">Kitchen and Canteen Equipments</a></td>
+			            </tr>
+			            <tr>
+			                <td class="pl10"><a href="#">Gems & Jewellery</a></td>
+			            </tr>
+			            <tr>
+			                <td class="pl10"><a href="#">Plant & Machinery</a></td>
+			            </tr>
+			            <tr>
+			                <td class="pl10"><a href="#">Home Furnishings</a></td>
+			            </tr>
+			            <tr>
+			                <td class="pl10"><a href="#">Herbal Ayurvedic Products</a></td>
+			            </tr>
+			            <tr>
+			                <td class="pl10"><a href="#">Stone & Marbels</a></td>
+			            </tr>
+			            <tr>
+			                <td class="pl10"><a href="#">Steel Products</a></td>
+			            </tr>
+			            <tr>
+			                <td class="pl10"><a href="#">Rubber Products</a></td>
+			            </tr>
+			            <tr>
+			                <td class="pl10"><a href="#">Home Furnishings</a></td>
+			            </tr>
+			            <tr>
+			                <td class="pl10"><a href="#">Herbal Ayurvedic Products</a></td>
+			            </tr>
+				      <%# end %>
 				    </table>
-						</div>
-				  <% end %>
-				</div>			
+				  <%# end %>		
 				<div class="clear"></div> <!-- clear2 end -->	
-				<div><%= yield_or_default(yield(:sidebar)) %></div>
+				<!-- <div><%# yield_or_default(yield(:sidebar)) %></div> -->
 				<!-- the code below is commented as the map is no more -->
 				<!--<%#if params[:id] || params[:radio] || params[:business]%>
 					<div style="display:none">
@@ -118,9 +177,9 @@
 				<%#end%>
 					<%#= image_tag 'map.jpg'%>
 				</div>-->
-			</center><!-- important -->
+			
 		  </div><!-- right end -->		  
-		</div><!-- main end -->
-	</div><!-- wrapper end -->
+		</div><!-- Content end -->		
+	</div><!-- maindiv end -->
 </body>
 </html>

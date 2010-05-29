@@ -1,22 +1,26 @@
 <% title 'About Services' %>
 <%= javascript 'dynamic_localities' %>	
-<div id="people">
-	<div id="screen_1">
-		<br/>
-		<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et 
-			dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
-			ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
-			fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
-			mollit anim id est laborum. 
-		</p>
-		<br/>
-		<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et 
-			dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
-			ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
-			fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
-			mollit anim id est laborum. 
-		</p>
-		<br/>
-	</div>
-</div>
-<%= render :partial => '/dashboard/footer_ad' %>
+<div class="pl10 pt10">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td>
+        	<h5>The Company</h5>
+        	<p>Services bridges the gap between the buyers and sellers by helping the buyers find the right providers of products and services while helping the sellers improve the efficiency of marketing channel. To constantly bring out revolutionary concepts in the field of local search that would change the people access information on products and services. The companies philosophy focus on end user experience through constant innovation, teamwork and integrity.  </p>
+            
+            <h5>The Vision</h5>
+        	<p>Services bridges the gap between the buyers and sellers by helping the buyers find the right providers of products and services while helping the sellers improve the efficiency of marketing channel. To constantly bring out revolutionary concepts in the field of local search that would change the people access information on products and services. The companies philosophy focus on end user experience through constant innovation, teamwork and integrity.  </p>
+            
+            <h5>Corporate Office</h5>
+            <h5>SERVICES</h5>
+            <p>507, Shalimar Morya Park, Opp. Infinity Mall,<br />
+            Link Road, Andheri (W), Mumbai-400053.</p>
+            
+            <p>Tel: 40898500 [30 lines]<br />
+            Email: info@services.sh</p>
+        </td>
+        </tr>
+    </table>
+  </div>
+<% content_for :footer do%>
+ <%= render :partial => '/dashboard/footer_ad' %>
+<%end%>

@@ -16,7 +16,7 @@ input[type="submit"].no-img{
 
 input[type="file"] { width:353px;}
 
-input[type="text"]#q{ border:1px solid #A09992; width:99.6%;}
+/*input[type="text"]#q{ border:1px solid #A09992;}*/
 * html input#q{ border:1px solid #A09992; width:99.6%}
 
 p input#email{ width:50%}
@@ -208,7 +208,7 @@ table .column{width:100px}
 	padding:2px 0 2px 0}
 
 /* == links == */
-.button{ background-color:#EFF5E7; width:100px}
+.button{background:url(/images/btn_submit.gif) no-repeat; width:100px}
 .button1{ background-color:#EFF5E7; width:150px}
 #button_shift{ float:right; width:40%}
 a.b_link{ color:#084C8F}
@@ -218,7 +218,7 @@ a.b_link{ color:#084C8F}
 
 /* == special styling for screen green div pagination == */
 #page_shift{ 
-	position:relative; 
+/*	position:relative;*/ 
 	top:-24px; 
 	clear:both}
 
@@ -318,7 +318,7 @@ a.b_link{ color:#084C8F}
 
 #footer_bottom{
 	position:fixed; 
-	width:960px; 
+	width:1003px; 
 	bottom:0;}
 
 * html #footer_bottom {position:absolute;} 

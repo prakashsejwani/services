@@ -20,4 +20,6 @@
 		</p>
 	</div>
 </div>
-<%= render :partial => '/dashboard/footer_ad' %>
+<% content_for :footer do%>
+ <%= render :partial => '/dashboard/footer_ad' %>
+<%end%>

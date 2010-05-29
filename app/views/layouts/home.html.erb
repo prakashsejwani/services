@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  	<meta name="Author" content="services.com">
+  	<meta name="Keywords" content="services, search engine">
+  	<meta name="Description" content="At SERVICES, our people determine our access. We aim to promote Growth, Teamwork, and Learning through constant innovation that ensures we grow together in this competitive arena.">
+	
+	<title><%= configatron.site_name %> - <%= yield(:title) %></title>
+	<%= stylesheet_link_tag 'default','common','base', 'arya_style', :media => 'all' %>
+	<%= javascript_include_tag 'swfobject'%>
+	<%= ajaxful_rating_style %>
+	<%= javascript_include_merged :base %>
+	<%= yield(:head) %>
+
+	<script type="text/javascript">
+		function radiocheck()
+		{
+			
+			<% if params[:radio] == 'company' %>
+				$('radio_company').checked = true;
+			<% end %>
+		}	
+	</script>
+</head>
+
+<body onload="javascript:radiocheck(); ">
+<div class="mainDiv">
+<!--Header Starts-->
+  <div class="headerSub">
+   	<div class="navSub">
+   	   <%= render :partial => 'shared/tabs' %>
+    </div>
+     	<!-- <div class="logoDiv">
+     			    <%= render :partial => 'shared/global_links' %>
+     				<div class="logo">
+     					<img src="images/logo_sub.gif" width="240" height="59" />
+     				</div>
+     			  </div> -->
+        <div class="logoSub"><%= render :partial => 'shared/global_links' %><img src="/images/logo.gif" width="230" height="30" align="absbottom" /></div>
+    	<%= render :partial => 'shared/login' %>
+		  <%= render :partial => 'shared/signup' %>
+        <br clear="all" />
+  </div>
+<!--Header Ends-->
+<!--Content Starts-->
+<div class="contentSub">
+	<form id="form1" name="form1" method="post" action="">
+	<div class="leftDivSub">
+    	<%= yield%>
+    </div>
+    <div class="rightDivSub" align="center">
+    	<img src="/images/ad_img1.gif" />
+        <img src="/images/ad_img2.gif" />
+    </div>
+	
+	<div><%= yield_or_default(yield(:footer)) %></div>
+    </form>
+</div>
+<!--Content Ends-->
+</div>
+</body>
+</html>

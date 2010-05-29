@@ -1,0 +1,42 @@
+/* CSS Document */
+
+body{font-family:Arial, Helvetica, sans-serif;margin:0 auto ; padding:0;}
+
+.mainDiv{width:1002px; margin:0 auto; padding:0;}
+
+.header{}
+.header .nav{float:left; width:686px; background:#141615; height:95px; border-left:1px solid #8b8d8c; border-bottom:1px solid #8b8d8c; border-right:1px solid #8b8d8c; margin:0 2px 2px 0;}
+	    .nav ul{list-style:none; list-style-type:none;margin:0; padding:0; margin:40px 10px; xborder:1px solid red;}
+		.nav ul li{display:inline; font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#FFFFFF;margin:0; padding:0 15px 0 15px; border-right:1px solid #FFFFFF;}
+		.nav ul li.last{display:inline; font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#FFFFFF;margin:0; padding:0 20px 0 15px; border:none;}
+		.nav ul li a{color:#FFFFFF;margin:0;text-decoration:none;}
+		.nav ul li a:hover{color:#FFFFFF;margin:0;text-decoration:underline;}
+		
+.header .logoDiv{float:right; width:308px; background:#eeeeee;border-left:1px solid #8b8d8c; border-bottom:1px solid #8b8d8c; border-right:1px solid #8b8d8c;height:95px;margin:0 0 2px 2px; }
+        .logoDiv .toplink{font-family:Arial, Helvetica, sans-serif; font-size:11px; float:right; margin:2px 5px 5px 2px;}
+		.logoDiv .logo{ margin:35px 0 0 0; text-align:center;}
+
+.content{}
+.content form{margin:0; padding:0;}
+.content .leftDiv{float:left; width:686px;border-left:1px solid #8b8d8c; border-top:1px solid #8b8d8c; border-right:1px solid #8b8d8c; margin:0; padding:0px;background:#eeeeee;margin:2px 2px 2px 0; height:700px;}
+		 
+.content .rightDiv{float:right; width:308px;border-left:1px solid #8b8d8c; border-top:1px solid #8b8d8c; border-right:1px solid #8b8d8c;margin:2px 0 2px 2px; background:#f4e5ce; font-size:13px;height:700px;}
+
+table{ margin:0; padding:0;}
+table td{ padding:3px;margin:0; font-size:13px;}
+table td a{ color:#000000; text-decoration:none;}
+table td a:hover{ color:#000000; text-decoration:underline;}
+
+.pl10{ padding-left:10px;}
+.ptb10{ padding-top:10px; padding-bottom:10px;}
+.pt10{ padding-top:10px;}
+.pt15{ padding-top:15px;}
+
+.w120{ width:120px;}
+
+.buttonbg{ background:url(../images/btn_bg.gif) repeat-x; border:1px solid #b5b5b5; font-family:Arial, Helvetica, sans-serif; font-size:14px; padding:6px 0 0 5px; margin:0; font-weight:bold;height:23px;}
+.searchBox{background:#f4e6cc;border:1px solid #b5b5b5; height:28px; width:295px; font-size:14px; font-weight:bold; padding:4px 0 0 10px; float:left; margin:4px 0 0 0;}
+input.search{ border:1px solid #d4d4d4; background:#FFFFFF; padding:2px; font-family:Arial, Helvetica, sans-serif; width:150px;}
+.logoBox{border:1px solid #a1a1a1; background:#FFFFFF; width:120px; height:40px; text-align:center; padding:25px 0 0 0; margin:11px 30px 11px 0;}
+.textBoxW290p{border:1px solid #d4d4d4; background:#FFFFFF; padding:2px; font-family:Arial, Helvetica, sans-serif; width:290px;}
+.textBoxW120p{border:1px solid #d4d4d4; background:#FFFFFF; padding:2px; font-family:Arial, Helvetica, sans-serif; width:120px;}

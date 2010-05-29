@@ -76,7 +76,7 @@ class AdvertisementsController < ApplicationController
     categories
     
     respond_to do |format|
-      format.html { render :layout => 'login' }
+      format.html { render :layout => 'home' }
       format.xml  { render :xml => @company }
     end
   end

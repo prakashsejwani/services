@@ -1,6 +1,6 @@
 html{height: 100%; }
 
-body {
+/*body {
 	font-smooth: always; 
 	font-family:arial, sans-serif ;
 	letter-spacing:1px; 
@@ -8,15 +8,15 @@ body {
 	background-color:#fff; 
 	margin:0; 
 	padding:0; 
-	font-size: 0.7em;}
+	font-size: 0.7em;}*/
 
 * html body{height: 100%; overflow: auto;}
 
 /* == default == */
 p{ margin:0; padding :0}
-ul { padding-left: 2em; margin-left: 0;}
+/*ul { padding-left: 2em; margin-left: 0;}*/
 
-a:link, a:visited { color: #bbb;}
+/*a:link, a:visited { color: #bbb;}*/
 a:hover { color: #333;}
 a.name{ font-size:13px; font-weight:bold}
 a img{ border:none}
@@ -311,7 +311,7 @@ div.progressBar div.background {
 #signupForm table input[type="password"], #signupForm table input[type="text"]{ width:200px}
 
 /* == table == */
-table{ width:100%; background-color:white}
+table{ width:100%;}
 table th { 
 	text-align: left; 
 	background-color:#C7C7BC; 

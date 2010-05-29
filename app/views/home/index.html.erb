@@ -1,8 +1,8 @@
 <% title 'Index' %>
 <%= javascript 'dynamic_localities' %>	
-<div id="alpha_head">
+<div  style="background:url(images/alphabet_bg.gif) repeat-x left top; height:39px;">
 	<ul>
-			<li>Select Alphabetical Lisitings: &nbsp;&nbsp;</li>
+			<li>Select Alphabetical Lisitings:</li>
 		<% @alphabets.each do|alpha| %>
 			<li <%= "id='current'" if @alpha == alpha %>><%= link_to alpha, {:alpha=>alpha} %></li>					
 		<% end %>			
@@ -10,8 +10,7 @@
 </div>
 
 
-<div id="people">
-	<div id="gr_holder">
+
 		<div id="screen_green">
 			<% i = @categories.size %>
 			<% if i < 35 %>	
@@ -49,5 +48,4 @@
 			<% end %>
 			<div id="page_shift"><%= will_paginate @categories unless @categories.empty? %></div>
 		</div>
-	</div>
 </div>

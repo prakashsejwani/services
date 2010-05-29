@@ -4,60 +4,102 @@
 <% content_for :header do -%>
 	My <%= configatron.site_name %>
 <% end -%>
-<table style="margin:10px 0 0 0">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="mt10">
 	<tr>
-		<td valign="top" style="width:38%">
-			<div>
-				<div class="heading">Popular Product</div>
-				<% if @popular_products.present? %>
-					<table>
-						<% @popular_products.each do |product| %>
-							<tr><td><%= product.name %></td></tr>
+    	<td width="36%">
+				<img src="images/heading_popular_product.gif" />
+				<%# if @popular_products.present? %>
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<%# @popular_products.each do |product| %>
+							<!-- <tr><td><%# product.name %></td></tr> -->
 							<tr><td>product record</td></tr>
-						<% end %>  
+							<tr><td>product record</td></tr>
+							<tr><td>product record</td></tr>
+							<tr><td>product record</td></tr>
+							<tr><td>product record</td></tr>
+							<tr><td>product record</td></tr>
+							<tr><td>product record</td></tr>
+							<tr><td>product record</td></tr>
+							<tr><td>product record</td></tr>
+							<tr><td>product record</td></tr>
+							<tr><td>product record</td></tr>
+							<tr><td>product record</td></tr>
+							<tr><td>product record</td></tr>
+						<%# end %>  
 					</table>
-					<br />
-				<% end %>
-				<div class="heading">Popular Services</div>
-				<% if @popular_services.present? %>
-					<table>
-						<% @popular_services.each do |serv| %>
-							<tr><td><%= serv.name %></td></tr>
-						<% end %>  
+					<img src="images/heading_popular_services.gif" />
+						<%# if @popular_services.present? %>
+							<table width="100%" border="0" cellspacing="0" cellpadding="0">
+								<%# @popular_services.each do |serv| %>
+									<!-- <tr><td><%# serv.name %></td></tr> -->
+										<tr><td>product record</td></tr>
+										<tr><td>product record</td></tr>
+										<tr><td>product record</td></tr>
+										<tr><td>product record</td></tr>
+										<tr><td>product record</td></tr>
+										<tr><td>product record</td></tr>
+										<tr><td>product record</td></tr>
+										<tr><td>product record</td></tr>
+										<tr><td>product record</td></tr>
+										<tr><td>product record</td></tr>
+										<tr><td>product record</td></tr>
+										<tr><td>product record</td></tr>
+										<tr><td>product record</td></tr>
+										<tr><td>product record</td></tr>
+								<%# end %>  
+							</table>
+						<% #end %>
+					</td>
+				<%# end %>
+				<td width="64%" rowspan="2" valign="top">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+					  <tr>
+		                <td colspan="3">
+					    <div id="products_page_div">
+						  <div id="left_list">Companies gallery</div>
+						  <div id="right_list">All</div>
+					    </div>
+		               </td>
+		             </tr>
+					<tr>
+		                <td width="34%"><div class="logoBox">Logo</div></td>
+		                <td width="34%"><div class="logoBox">Logo</div></td>
+		                <td width="32%"><div class="logoBox">Logo</div></td>
+		              </tr>
+					  <tr>
+		                <td width="34%"><div class="logoBox">Logo</div></td>
+		                <td width="34%"><div class="logoBox">Logo</div></td>
+		                <td width="32%"><div class="logoBox">Logo</div></td>
+		              </tr>
+		              <tr>
+		                <td width="34%"><div class="logoBox">Logo</div></td>
+		                <td width="34%"><div class="logoBox">Logo</div></td>
+		                <td width="32%"><div class="logoBox">Logo</div></td>
+		              </tr>
+		              <tr>
+		                <td width="34%"><div class="logoBox">Logo</div></td>
+		                <td width="34%"><div class="logoBox">Logo</div></td>
+		                <td width="32%"><div class="logoBox">Logo</div></td>
+		              </tr>
+		              <tr>
+		                <td width="34%"><div class="logoBox">Logo</div></td>
+		                <td width="34%"><div class="logoBox">Logo</div></td>
+		                <td width="32%"><div class="logoBox">Logo</div></td>
+		              </tr>
+		              <tr>
+		                <td width="34%"><div class="logoBox">Logo</div></td>
+		                <td width="34%"><div class="logoBox">Logo</div></td>
+		                <td width="32%"><div class="logoBox">Logo</div></td>
+		              </tr>
+		              <tr>
+		                <td width="34%"><div class="logoBox">Logo</div></td>
+		                <td width="34%"><div class="logoBox">Logo</div></td>
+		                <td width="32%"><div class="logoBox">Logo</div></td>
+		              </tr>
 					</table>
-				<% end %>  
-			</div>
-		</td>
-		<td valign="top">
-			<div id="products_page_div">
-				<div id="left_list">Companies gallery</div>
-				<div id="right_list">All</div>
-			</div>
-			<%= image_tag "logo.jpg" %>
-			<%= image_tag "logo.jpg" %>
-			<%= image_tag "logo.jpg" %>
-			<br />
-			<%= image_tag "logo.jpg" %>
-			<%= image_tag "logo.jpg" %>
-			<%= image_tag "logo.jpg" %>
-			<br />
-			<%= image_tag "logo.jpg" %>
-			<%= image_tag "logo.jpg" %>
-			<%= image_tag "logo.jpg" %>
-			<br />
-			<%= image_tag "logo.jpg" %>
-			<%= image_tag "logo.jpg" %>
-			<%= image_tag "logo.jpg" %>
-			<br />
-			<%= image_tag "logo.jpg" %>
-			<%= image_tag "logo.jpg" %>
-			<%= image_tag "logo.jpg" %>
-			<br />
-			<%= image_tag "logo.jpg" %>
-			<%= image_tag "logo.jpg" %>
-			<%= image_tag "logo.jpg" %>
-			<br />
-		</td>
+				</td>
+			
+		
 	</tr>
 </table>
 	<!--<div id="people">&nbsp;</div>-->

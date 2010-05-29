@@ -1,22 +1,22 @@
 html{height: 100%; }
 
-body {
+/*body {
 	font-smooth: always; 
-	font-family:arial, sans-serif ;
+	font-family:Arial, Helvetica, sans-serif;
 	letter-spacing:1px; 
 	color: #000; 
 	background-color:#fff; 
-	margin:0; 
+	margin:0 auto; 
 	padding:0; 
-	font-size: 0.7em;}
+	font-size: 0.7em;}*/
 
 * html body{height: 100%; overflow: auto;}
 
 /* == default == */
 p{ margin:0; padding :0}
-ul { padding-left: 2em; margin-left: 0;}
+/*ul { padding-left: 2em; margin-left: 0;}*/
 
-a:link, a:visited { color: #bbb;}
+/*a:link, a:visited { color: #bbb;}*/
 a:hover { color: #333;}
 a.name{ font-size:13px; font-weight:bold}
 a img{ border:none}
@@ -325,7 +325,7 @@ div.progressBar div.background {
 #signupForm table input[type="password"], #signupForm table input[type="text"]{ width:200px}
 
 /* == table == */
-table{ width:100%; background-color:white}
+table{ width:100%;}
 table th { 
 	text-align: left; 
 	background-color:#C7C7BC; 
@@ -553,21 +553,25 @@ tr.even td{ background-color:transparent}
 	border:2px solid #AFADB0;}
 
 marquee{padding:0; margin:0}
-#alpha_head{background:url(/images/head.jpg) repeat-x; height:31px; height:31px}
-#alpha_head ul{margin:0 0 0 20px; padding:0}
-#alpha_head ul li {display:inline; height:30px; line-height:30px;}
-#alpha_head ul li a, #alpha_head ul li a:visited{text-decoration:none; color:#000; padding:0 4px}
-#alpha_head ul li#current a{color:#da5353}
-
+#alpha_head{background:url(images/alphabet_bg.gif) repeat-x left top; height:39px;}
+#alpha_head ul{list-style:none; list-style-type:none;margin:0; padding:0px 0.5px;}
+#alpha_head ul li {display:inline;font-size:14px; color:#000000;margin:0; padding:0 4px;}
+#alpha_head ul li a, #alpha_head ul li a:visited{color:#000000; text-decoration:none;}
+#alpha_head ul li#current a{color:#af2421;margin:0;text-decoration:none;}
+/*ul{list-style:none; list-style-type:none;margin:0; padding:10px 5px;}
+			ul li{display:inline;font-size:14px; color:#000000;margin:0; padding:0 4px;}
+			ul li a{color:#000000; text-decoration:none;}
+			ul li a:hover{color:#af2421; text-decoration:none;}
+			ul li a.current{color:#af2421;margin:0;text-decoration:none;}*/
 .advt{margin:17px; height:185px; line-height:185px; background:#a9a9a9; text-align:center; }
 .advt span, .video span{color:#cb202b; font-weight:bold}
 .video {margin:17px; height:185px; line-height:185px; background:#bab3d5; text-align:center; }
 
-#screen_green{margin:20px; color:#646263; line-height:18px }
+/*#screen_green{margin:20px; color:#646263; line-height:18px }
 #screen_green ul{margin:0; padding:0; list-style:none}
 #screen_green ul li{height:18px; line-height:18px}
 #screen_green ul li a, #screen_green ul li a:visited{font-weight:bold; color:#615f60; text-decoration:none}
-#screen_green ul li#current a{color:#d51814}
+#screen_green ul li#current a{color:#d51814}*/
 
 .red_header{color:#d83a2f; font-weight:bold; text-transform:none}
 #screen_green input, #screen_green select{border:1px solid #c0c0c0}

@@ -17,8 +17,7 @@
 
 	<script type="text/javascript">
 		function radiocheck()
-		{
-			
+		{			
 			<% if params[:radio] == 'company' %>
 				$('radio_company').checked = true;
 			<% end %>
@@ -104,68 +103,19 @@
 					<% end %>
 							
 				
-				<table width="100%" border="0" cellspacing="0" cellpadding="0">
-				  <%# if @popular_catlogs.present? %>
-				    <tr>
-		                <td class="pt10"><img src="images/heading_popular_catlogs.gif" /></td>
-				    </tr>
-				      <%# @popular_catlogs.each do |catlog| %>
-				        <!-- <tr>
-				    				          <td><%# catlog.name %></td>
-				    				        </tr> -->
-				       	<!-- <tr>
-				       			                <td class="pt10"></td>
-				       			            </tr> -->
-			            <tr>
-			                <td class="pl10 pt10"><a href="#">Apparel Garment</a></td>
-			            </tr>
-			            <tr>
-			                <td class="pl10"><a href="#">Agro Products</a></td>
-			            </tr>
-			            <tr>
-			                <td class="pl10"><a href="#">Automobile Components</a></td>
-			            </tr>
-			            <tr>
-			                <td class="pl10"><a href="#">Art, Handicarfts and Gifts</a></td>
-			            </tr>
-			            <tr>
-			                <td class="pl10"><a href="#">Industrial Products</a></td>
-			            </tr>
-			            <tr>
-			                <td class="pl10"><a href="#">Kinter Garden-Nursery School</a></td>
-			            <tr>
-			                <td class="pl10"><a href="#">Kitchen and Canteen Equipments</a></td>
-			            </tr>
-			            <tr>
-			                <td class="pl10"><a href="#">Gems & Jewellery</a></td>
-			            </tr>
-			            <tr>
-			                <td class="pl10"><a href="#">Plant & Machinery</a></td>
-			            </tr>
-			            <tr>
-			                <td class="pl10"><a href="#">Home Furnishings</a></td>
-			            </tr>
-			            <tr>
-			                <td class="pl10"><a href="#">Herbal Ayurvedic Products</a></td>
-			            </tr>
-			            <tr>
-			                <td class="pl10"><a href="#">Stone & Marbels</a></td>
-			            </tr>
-			            <tr>
-			                <td class="pl10"><a href="#">Steel Products</a></td>
-			            </tr>
-			            <tr>
-			                <td class="pl10"><a href="#">Rubber Products</a></td>
-			            </tr>
-			            <tr>
-			                <td class="pl10"><a href="#">Home Furnishings</a></td>
-			            </tr>
-			            <tr>
-			                <td class="pl10"><a href="#">Herbal Ayurvedic Products</a></td>
-			            </tr>
-				      <%# end %>
-				    </table>
-				  <%# end %>		
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <% if @popular_catlogs.present? %>
+            <tr>
+              <td class="pt10"><img src="images/heading_popular_catlogs.gif" /></td>
+            </tr>
+            <% @popular_catlogs.each do |catlog| %>
+              <tr>
+                <td><%= catlog.name %></td>
+              </tr>             
+            <% end %>
+          <% end %>	
+        </table>
+				  	
 				<div class="clear"></div> <!-- clear2 end -->	
 				<!-- <div><%# yield_or_default(yield(:sidebar)) %></div> -->
 				<!-- the code below is commented as the map is no more -->

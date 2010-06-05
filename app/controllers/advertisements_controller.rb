@@ -24,7 +24,7 @@ class AdvertisementsController < ApplicationController
     @rev = @company.reviews.approved_by_admin
 	  @video = @company.video
     respond_to do |format|
-      format.html { render :layout => 'login' }
+      format.html { render :layout => 'home' }
       format.xml  { render :xml => @company }
     end
   end

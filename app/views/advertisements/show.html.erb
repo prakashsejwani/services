@@ -1,14 +1,15 @@
 <%= javascript 'dynamic_localities' %>
 <% title @company.name %>
-<% content_for :sidebar do -%>
-	<div style="width:100%; margin:0 auto; ">
-		<center>
-			<div style="margin: 0 auto; font-size:14px; line-height:22px; color:#111517"><b>place your ads on services.com</b></div>
+<%# content_for :sidebar do -%>
+   <!--	<div style="width:100%; margin:0 auto; ">
+		 <center>
+					<div style="margin: 0 auto; font-size:14px; line-height:22px; color:#111517"><b>place your ads on services.com</b></div> -->
 			<a id="tipLink" href="#" onclick="showAreaSelector('tipLink','tipForm');return false">How rating works?</a>
-		</center>
+		<!-- </center> -->
 		<br/>
-	</div>
-<% end -%>
+	  <%= render :partial => 'shared/rating' %>	
+	<!-- </div> -->
+<%# end -%>
 <%= render :partial => 'shared/slideshow' %>
 <div>
 	<h3><%=h @company.name %></h3>
@@ -110,61 +111,4 @@
 		<span class="blue_link"><%= link_to 'Back', search_url( :city=>params[:city], :locality=>params[:locality], :q=>params[:q], :radio=>params[:radio], :page=>params[:page]) %></span>
 	</div>
 
-<div id="mainLogin">
-		<div id="tipForm" style="display: none;">
-			<span class="close">
-				<a href="#" onclick="hideAreaSelector('tipForm');">close [x]</a>
-			</span>
-			<div id="tipRedbox">
-				<div class="clear2"></div>
-				<div>Ratings according to stars</div>
-				<div class="clear2"></div>
-				<div id="rating">
-					<div style="height:20px">
-						<div class="left">Excellent</div>			
-						<div class="right">
-							<div class="rating_tips"></div>
-							<div class="rating_tips"></div>
-							<div class="rating_tips"></div>
-							<div class="rating_tips"></div>
-							<div class="rating_tips"></div>
-						</div>		
-					</div>
 
-					<div style="height:20px">
-						<div class="left">Good</div>			
-						<div class="right">
-							<div class="rating_tips"></div>
-							<div class="rating_tips"></div>
-							<div class="rating_tips"></div>
-							<div class="rating_tips"></div>
-						</div>		
-					</div>
-
-					<div style="height:20px">
-						<div class="left">Average</div>			
-						<div class="right">
-							<div class="rating_tips"></div>
-							<div class="rating_tips"></div>
-							<div class="rating_tips"></div>
-						</div>		
-					</div>
-
-					<div style="height:20px">
-						<div class="left">Poor</div>			
-						<div class="right">
-							<div class="rating_tips"></div>
-							<div class="rating_tips"></div>
-						</div>		
-					</div>
-
-					<div style="height:20px">
-						<div class="left">Awful</div>			
-						<div class="right">
-							<div class="rating_tips"></div>				
-						</div>		
-					</div>		
-				</div> 
-			</div> 
-		</div>
-	</div>

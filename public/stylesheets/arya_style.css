@@ -53,6 +53,8 @@ body{font-family:Arial, Helvetica, sans-serif;margin:0 auto ; padding:0;}
 
 .contentSub .rightDivSub{float:right; width:238px;border-left:1px solid #8b8d8c; border-top:1px solid #8b8d8c; border-right:1px solid #8b8d8c;margin:2px 0 2px 2px; background:#eeeeee; font-size:13px;height:700px;}
 .rightDivSub img{ padding:20px 0 0 0;}
+
+
 /* == screen_green == */
 #screen_green{ 
 	height:100%; 

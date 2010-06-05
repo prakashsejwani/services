@@ -49,6 +49,15 @@
 <div class="contentSub">
 	<form id="form1" name="form1" method="post" action="">
 	<div class="leftDivSub">
+		<% if flash[:notice] %>
+		   <div id="notice"><%= flash[:notice] %></div>
+		 <% end %>
+		 <% if flash[:warning] %>
+		   <div id="warning"><%= flash[:warning] %></div>
+		 <% end %>
+		 <% if flash[:error] %>
+		    <div id="error"><%= flash[:error] %></div>
+		 <% end %>
     	<%= yield%>
     </div>
     <div class="rightDivSub" align="center">

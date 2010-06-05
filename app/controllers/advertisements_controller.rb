@@ -94,11 +94,13 @@ class AdvertisementsController < ApplicationController
     save_company
     @company.owner_id = current_user.id if current_user
     respond_to do |format|
-      if @company.save
+      if @company.save!
+        puts "=-==-=-=-=-=-=-=#{@company}"
         flash[:notice] =  'Thank You, for your Interest Our executive will get back to you shortly.'
        format.html { redirect_to(root_path)}
        format.xml  { render :xml => @company, :status => :created, :location => @company }
       else
+         puts "=-==-=-=-=-=-=-=#{@company}"
         cities
         localities
         businesses

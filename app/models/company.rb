@@ -31,7 +31,7 @@ class Company < ActiveRecord::Base
   has_many :images, :as => :asset, :dependent => :destroy
   has_attached_file :image_ad, :styles => { :medium => "300x300>", :thumb => "89x57#" }
   has_one  :video, :as => :asset, :dependent => :destroy
-  validates_presence_of :name, :address1, :address2, :pincode, :locality_id, :city_id, :business_id, :email
+  validates_presence_of :name, :address1, :locality_id, :city_id, :business_id, :email
   validates_uniqueness_of :name
   named_scope :approved_by_admin, :conditions=>{ 'companies.approved' => true }
   named_scope :unapproved, :conditions=>{'companies.approved' => false}  

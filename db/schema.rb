@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100217100259) do
+ActiveRecord::Schema.define(:version => 20100605114436) do
 
   create_table "assets", :force => true do |t|
     t.string   "data_file_name"
@@ -54,6 +54,22 @@ ActiveRecord::Schema.define(:version => 20100217100259) do
 
   add_index "businesses", ["alphabet"], :name => "index_businesses_on_alphabet"
 
+  create_table "careers", :force => true do |t|
+    t.string   "name",                :limit => 50
+    t.string   "email",               :limit => 50
+    t.string   "post",                :limit => 50
+    t.string   "city",                :limit => 50
+    t.string   "tel",                 :limit => 20
+    t.string   "mobile",              :limit => 20
+    t.string   "address"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "resume_file_name"
+    t.string   "resume_content_type"
+    t.integer  "resume_file_size"
+    t.datetime "resume_updated_at"
+  end
+
   create_table "categories", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -61,6 +77,7 @@ ActiveRecord::Schema.define(:version => 20100217100259) do
     t.integer  "business_id"
     t.string   "alphabet"
     t.boolean  "delta"
+    t.boolean  "popular",     :default => false
   end
 
   create_table "categorizations", :force => true do |t|
@@ -113,6 +130,7 @@ ActiveRecord::Schema.define(:version => 20100217100259) do
     t.date     "video_from_date"
     t.date     "video_to_date"
     t.boolean  "popular_catlog",        :default => false
+    t.boolean  "popular_services",      :default => false
   end
 
   add_index "companies", ["address1"], :name => "index_companies_on_address1"

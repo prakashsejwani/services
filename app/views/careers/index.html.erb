@@ -1,0 +1,32 @@
+<h1>Listing careers</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Post</th>
+    <th>City</th>
+    <th>Tel</th>
+    <th>Mobile</th>
+    <th>Address</th>
+  </tr>
+
+<% @careers.each do |career| %>
+  <tr>
+    <td><%=h career.name %></td>
+    <td><%=h career.email %></td>
+    <td><%=h career.post %></td>
+    <td><%=h career.city %></td>
+    <td><%=h career.tel %></td>
+    <td><%=h career.mobile %></td>
+    <td><%=h career.address %></td>
+    <td><%= link_to 'Show', career %></td>
+    <td><%= link_to 'Edit', edit_career_path(career) %></td>
+    <td><%= link_to 'Destroy', career, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New career', new_career_path %>

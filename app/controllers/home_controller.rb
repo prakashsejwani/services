@@ -12,11 +12,11 @@ class HomeController < ApplicationController
   end
 
   def career
-	company_scroll_ad
+	  company_scroll_ad
   end
 
   def about
-	company_scroll_ad
+	  company_scroll_ad
   end
 
   

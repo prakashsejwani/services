@@ -5,23 +5,31 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<title><%= configatron.site_name %> - <%= yield(:title) %></title>
-	<%= stylesheet_link_tag 'admin','common', :media => 'all' %>
+	<%= stylesheet_link_tag 'admin','common', 'arya_style', :media => 'all' %>
   	<%= javascript_include_merged :base %>
 	<%= javascript_include_tag 'swfobject'%>
 </head>
 
 <body>
-  <div id="wrapper">
-		<div id="header">
-			  <div id="head_left"></div>
-			  <div id="head_right">
-			  <div class="right_aln">
-			  <div id="global_links"><%= render :partial => 'shared/global_links' %></div></div></div>			  
-			  <!--<h1><%#= configatron.site_name %> <span><%#= configatron.company_name %></span></h1>-->   
-		</div><!-- header end -->
-		<div class="clear"></div>	
-		<div id="main">
-		  <div id="left">  
+	<div class="mainDiv">
+	  <div class="headerHome"><!--Header Starts-->
+          <div class="nav"></div>
+		  <div class="logoDiv">
+		    <%= render :partial => 'shared/global_links' %>
+			<div class="logo">
+				<img src="images/logo.gif" width="300" height="55" align="absbottom" />
+			</div>
+		  </div>
+		  	<%= render :partial => 'shared/login' %>
+			  <%= render :partial => 'shared/signup' %>  
+	  	</div><!--Header Ends-->		
+	     <div class="clear"></div>	
+	  <!-- <div id="main">      -->
+			
+			<div class="content"><!--Content Starts-->
+								   
+				<!--<h2 class="head"><%#= yield_or_default yield(:header), "Use 'content_for :header do; end' in your view to set this title" %></h2>-->        
+				<div class="leftDiv">
 					<div>       
 						 <% if flash[:notice] %>
 							 <div id="notice"><%= flash[:notice] %></div>
@@ -35,14 +43,14 @@
 					  <!--	<h2 class="head"><%= yield_or_default yield(:header), "Use 'content_for :header do; end' in your view to set this title" %></h2>-->
 					  	<div id="screen"><%= yield %><br/></div>
 					</div>
-		  </div><!-- left end -->		  
-		  
-			<div id="right">
+				</div><!-- left end -->
+				 	  
+		  <div class="rightDiv">
 				<%= render :partial => 'admin/shared/tabs' %>
 				<%= yield_or_default(yield(:sidebar)) %>
 			</div><!-- right end -->		  
-		</div><!-- main end -->			
-	</div><!-- wrapper end -->
-			
+		</div><!-- content end -->			
+	</div><!-- maindiv end -->
+ 			
 </body>
 </html>

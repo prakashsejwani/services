@@ -14,7 +14,7 @@ config.action_view.debug_rjs                         = true
 config.action_controller.perform_caching             = true
 
 # Don't care if the mailer can't send        -------- made it true --------
-#config.action_mailer.raise_delivery_errors = true
+config.action_mailer.raise_delivery_errors = true
 
 # -------- changes made below are done by sachin for mailing --------
 # set delivery method to :smtp, :sendmail or :test

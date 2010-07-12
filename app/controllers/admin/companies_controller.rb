@@ -149,7 +149,7 @@ class Admin::CompaniesController < ApplicationController
     respond_to do |format|
      if @company.save
        process_file_uploads if params[:attachment]       
-          unless params[:video][:uploaded_data].blank?
+          unless params[:video].blank?
             video = Video.new("video" => params[:video][:uploaded_data])
             @company.video = video
             video.save

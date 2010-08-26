@@ -143,9 +143,9 @@
 		<td> 
 			<%= @company.imageapprove?  ?  "True"  :  "False" %>
 			<%if @company.imageapprove %>&nbsp;::&nbsp;
-				<%=h @company.image_from_date.strftime("%d %b '%y") %>
+				<%=h @company.image_from_date.strftime("%d %b '%y") if @company.image_from_date%>
 				&nbsp;&nbsp;<span class="gray">and will expire on</span>&nbsp;&nbsp;
-				<%=h @company.image_to_date.strftime("%d %b '%y") %> 
+				<%=h @company.image_to_date.strftime("%d %b '%y") if @company.image_to_date%> 
 			<% end %>
 		</td>
 	</tr>
@@ -157,9 +157,9 @@
 		<td> 
 			<%= @company.videoapprove?  ?  "True"  :  "False" %>
 			<%if @company.videoapprove %>&nbsp;::&nbsp;
-				<%=h @company.video_from_date.strftime("%d %b '%y") %>
+				<%=h @company.video_from_date.strftime("%d %b '%y") if @company.video_from_date%>
 				&nbsp;&nbsp;<span class="gray">and will expire on</span>&nbsp;&nbsp;
-				<%=h @company.video_to_date.strftime("%d %b '%y") %> 
+				<%=h @company.video_to_date.strftime("%d %b '%y") if @company.video_to_date%> 
 			<% end %>
 		</td>
 	</tr>

@@ -15,18 +15,10 @@
 	<%= javascript_include_merged :base %>
 	<%= yield(:head) %>
 
-	<script type="text/javascript">
-		function radiocheck()
-		{
-			
-			<% if params[:radio] == 'company' %>
-				$('radio_company').checked = true;
-			<% end %>
-		}	
-	</script>
+
 </head>
 
-<body onload="javascript:radiocheck(); ">
+<body >
 <div class="mainDiv">
 <!--Header Starts-->
   <div class="headerSub">
@@ -47,7 +39,7 @@
 <!--Header Ends-->
 <!--Content Starts-->
 <div class="contentSub">
-	<form id="form1" name="form1" method="post" action="">
+	<!-- <form id="form1" name="form1" method="post" action=""> -->
 	<div class="leftDivSub">
 		<% if flash[:notice] %>
 		   <div id="notice"><%= flash[:notice] %></div>
@@ -60,13 +52,13 @@
 		 <% end %>
     	<%= yield%>
     </div>
-    <div class="rightDivSub" align="center">
+    <div class="rightSub">
     	<img src="/images/ad_img1.gif" />
         <img src="/images/ad_img2.gif" />
     </div>
 	
-	<div><%= yield_or_default(yield(:footer)) %></div>
-    </form>
+	<!-- <div><%# yield_or_default(yield(:footer)) %></div> -->
+    <!-- </form> -->
 </div>
 <!--Content Ends-->
 </div>

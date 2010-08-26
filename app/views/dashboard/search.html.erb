@@ -27,8 +27,8 @@
 			<div class="<%if company.priority == true%> priority <%else%> <%= cycle("pre_gray") %> <%end%>">
 				<table cellspacing="0" class="no_pad">
 				<tr><td valign="top" class="company-name">
-						 	<%=link_to truncate((company.name), :length => 30), advertisement_path(company ,:q=>params[:q] , :radio=>params[:radio] , :city=>params[:city], :locality=>params[:locality], :page=>params[:page]), :title => company.name%></td>
-					<td valign="top"><span style="float:right"><%=link_to ratings_for(company,:static, :remote_options => {:url => rate_advertisement_path(company)}), advertisement_path(company ,:q=>params[:q] , :radio=>params[:radio] , :city=>params[:city], :locality=>params[:locality], :page=>params[:page]) %></span></td>
+						 	<%=link_to truncate((company.name), :length => 30), company_path(company ,:q=>params[:q] , :radio=>params[:radio] , :city=>params[:city], :locality=>params[:locality], :page=>params[:page]), :title => company.name%></td>
+					<td valign="top"><span style="float:right"><%=link_to ratings_for(company,:static, :remote_options => {:url => rate_company_path(company)}), company_path(company ,:q=>params[:q] , :radio=>params[:radio] , :city=>params[:city], :locality=>params[:locality], :page=>params[:page]) %></span></td>
 				</tr>
 				<tr>
 				  <% rate = number_with_precision((company.rates.sum(:stars).to_f / company.rates.size), :precision => 2)%>
@@ -36,12 +36,12 @@
 					<td valign="top" align="right"><%unless company.rates.size <= 0%>
 						<label>Number of Ratings</label> <%= company.rates.size %>
 					<%else%>
-						<%=link_to "Be first to rate", advertisement_path(company ,:q=>params[:q] , :radio=>params[:radio] , :city=>params[:city], :locality=>params[:locality], :page=>params[:page])%>
+						<%=link_to "Be first to rate", company_path(company ,:q=>params[:q] , :radio=>params[:radio] , :city=>params[:city], :locality=>params[:locality], :page=>params[:page])%>
 					<%end%></td>
 				</tr>
 				<!--<tr>
 					<td></td>
-					<td valign="top"><span style="float:right"><%#= link_to 'Write Review', :controller => 'advertisements', :action => 'reviews', :id => company.id%></span></td>
+					<td valign="top"><span style="float:right"><%#= link_to 'Write Review', :controller => 'company', :action => 'reviews', :id => company.id%></span></td>
 				</tr>
 				<tr><td colspan="2" valign="top"><label>Number of Reviews by reg Users</label><%#= pluralize(company.reviews.approved_by_admin.registered_users.size, 'review')%></td></tr>
 				<tr><td colspan="2" valign="top"><label>Number of Reviews by Other Users</label><%#= pluralize(company.reviews.approved_by_admin.other_users.size, 'review')%></td></tr>

@@ -19,7 +19,7 @@ class Company < ActiveRecord::Base
   
   #acts_as_taggable_on :tags
   acts_as_polymorphic_paperclip #:counter_cache => true
-  ajaxful_rateable :cache_column => :my_cached_rating
+  ajaxful_rateable :dimensions => [], :allow_update => true
  # before_update :add_category
   belongs_to :business
   belongs_to :city

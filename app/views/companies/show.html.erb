@@ -1,0 +1,131 @@
+<%= javascript 'dynamic_localities' %>
+<% title @company.name %>
+<%# render :partial => 'shared/slideshow' %>
+
+	<div class="headingBgRed"><h2><%=h @company.name %></h2></div>
+		<div class="headingBgYellow"><h6><%=@company.categorizations.map{ |categorization| link_to Category.find(categorization.category_id).name, search_path(:radio => "category", :q => Category.find(categorization.category_id).name)}.join(" &nbsp;  ")%></h6></div>
+	
+	<div class="clear"></div>
+	<!-- <div id="company_<%# @company.id %>_rating"> -->
+	      <!-- <p>
+	    			  Global Avg: <%# ratings_for @company, :force_static => true, :small => true, :show_user_rating => true%>
+	    	</p> -->
+		 		<%# for rater in @company.raters %>			   
+	<!-- </div> -->
+	 
+
+	<table cellspacing="0" cellpadding="0">
+		<tr>
+			<td>
+				<table>			
+					<%if !@company.contact.blank? %>
+						<tr><td class="bold1"><%# image_tag "contactperson.gif"%>Contact Person </td><td> <%=h @company.contact %> </td></tr>
+					<% end %>
+					
+					<%if !@company.phone1.blank? %>
+						<tr> <td class="bold1">Contact No. </td> 
+							 <td> <%=h @company.phone1 %><%if !@company.phone2.blank? %>, <%=h @company.phone2 %> <% end %></td>
+						</tr>
+					<% end %>
+					
+					<%if !@company.fax.blank? %>
+						<tr> <td class="bold1">Fax </td><td><%=h @company.fax %></td></tr>
+					<% end %>
+					<%if !@company.ad_url.blank? %>
+						<tr> <td class="bold1">website </td><td class="no-effects"><%= link_to @company.ad_url, @company.ad_url, :target => '_blank' %> </td></tr>
+					<% end %>
+					<%if !@company.email.blank? %>
+						<tr> <td class="bold1">Email </td><td class="no-effects"><%=mail_to @company.email %></td></tr>
+					<% end %>
+					
+					<%if !@company.address1.blank? %>
+					<tr> <td class="bold1">Address	</td>
+						 <td> <%=h @company.address1 %> 
+							 <%if !@company.address2.blank? %>, <%=h @company.address2 %>, <% end %></td>
+					</tr>
+					<% end %>
+				
+					<tr><td>&nbsp;</td> <td><%=h @company.locality.name %> , <%=h @company.city.name %>-<%=h @company.pincode %></td></tr>
+				
+					<%if !@company.state.blank? %>
+					<tr><td>&nbsp; </td> 
+						<td> <%=h @company.state %><%if !@company.country.blank? %>, <%=h @company.country %><% end %></td>
+					</tr>
+					<% end %>
+				
+					<!-- <tr><td class="bold1"> Business </td><td><%=h @company.business.name %></td></tr> -->
+					
+					<!-- <tr><td class="bold1" valign="top"> Category </td>	<td></td></tr> -->
+			
+					<%if !@company.about.blank? %>
+						<tr>  <td class="bold"> About </td><td><%=h @company.about %></td></tr>
+					<% end %>
+					<tr><td class="bold">Photo Gallery</td><td><%= @company.images.map{|image| image_tag image.ad.url(:thumb)}%></td></tr>
+					
+					<tr><td class="bold">Video</td><td><%#if @company.videoapprove == true %>
+						<%= render :partial=> 'admin/companies/video' if @video%>
+					<%#end%></td></tr>
+			</table>
+			</td>
+			<% if @company.image_ad_file_name.present? %>
+				<td style="width:30%" valign="top">	<%= link_to (image_tag @company.image_ad.url(:medium)), @company.ad_url, :target => '_blank' %><!-- **********changes over here***********  --></td>
+			<% else %>
+			 	<td style="width:30%" valign="top"> <%= image_tag "company_logo.gif" %>	</td>
+			<% end %>
+		</tr>
+	</table>
+	<h3><%= link_to_function('Write Review', visual_effect(:toggle_appear, "company_#{@company.id}")+ remote_function(:url => {:controller => 'companies', :action => 'review_status', :id => @company.id }))%></h3>
+	<div id='company_<%=@company.id%>' style="display:none">
+		<%if logged_in?%>
+       	<% form_for(:review, :url => reviews_path ) do |f| %>
+			<table cellspacing="0">
+				<tr>
+					<td valign="top"><label>Rate it</label></td>
+					<td><%= ratings_for @company, :show_user_rating => true%></td>
+					<td>
+					<%= render :partial => 'shared/rating' %></td>
+				<tr>
+					<td valign="top"><label>name</label></td>
+					<td><%= f.text_field :name, :size => 35%></td>
+				</tr>
+				<tr>
+					<td valign="top"><label>Email</label></td>
+					<td><%= f.text_field :email, :size => 35 %></td>
+				</tr>
+				<tr>
+					<td valign="top"><label>review</label></td>
+					<td><%= f.text_area :comment, :rows => 3, :cols => 35 %></td>
+				</tr>	 
+				<tr>
+					<td><%= f.hidden_field 'company_id', :value => @company.id %></td>
+					<td><%= f.submit "Submit" %></td>
+				</tr>
+			</table>	
+		<%end%>
+		<% else %>
+		  Please <%= link_to "login", root_url%> or register to review the company
+		<% end %>
+    </div>
+	<% unless @rev.empty? %>
+		<div class="clear"></div>
+		<h3>Reviews</h3>
+		<div class="clear"></div>	
+			<% @rev.each do |rev| %>
+			<table class="reviews">
+				<tr><td style="border-bottom:1px #f3f3f3 dotted"><%= h rev.name %></td></tr>
+				<tr><td><%= h rev.comment %></td></tr>
+			</table>
+			<% end %>
+		<div class="clear2"></div>	
+	<% end %>	
+			
+	<div class="clear"></div>
+	  <%if admin?%>
+		<span class="blue_link"><%= link_to 'Edit', edit_admin_company_path(@company) %></span>
+	  <%elsif owner?(@company.owner_id)%>		
+		<span class="blue_link"><%= link_to 'Edit', edit_comapny_path(@company) %></span>		
+	  <%end%>
+		<span class="blue_link"><%= link_to 'Back', search_url( :city=>params[:city], :locality=>params[:locality], :q=>params[:q], :radio=>params[:radio], :page=>params[:page]) %></span>
+
+
+

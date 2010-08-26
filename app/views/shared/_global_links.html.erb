@@ -8,7 +8,7 @@
 	<%= link_to "My Account", profile_url(current_user) %> | 
 	
 	<% unless admin? %>
-		<%= link_to "My Ads", advertisements_url(:owner_id=>current_user.id)%> |
+		<%= link_to "My Ads", companies_url(:owner_id=>current_user.id)%> |
 	<% else %>
 		<%= link_to "Administration", admin_root_url %> | 
 	<% end %>

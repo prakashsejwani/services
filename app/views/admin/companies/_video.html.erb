@@ -1,6 +1,6 @@
 <div id="player"></div>
 <script type="text/javascript">
-     var so = new SWFObject("/videoplayer.swf", "myvideo", "320", "285", "8", "#FFF");
+     var so = new SWFObject("/videoplayer.swf", "myvideo", "100", "100", "8", "#FFF");
      so.addVariable("file", "/admin/companies/stream/<%=@video.video_file_name if @video%>");
      so.write("player");
  </script>

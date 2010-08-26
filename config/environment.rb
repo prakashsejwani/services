@@ -15,10 +15,10 @@ Rails::Initializer.run do |config|
   config.gem "capistrano-ext", :lib => "capistrano"
   config.gem "configatron"
   config.gem 'mislav-will_paginate', :version => '2.3.6', :lib => 'will_paginate', :source => 'http://gems.github.com'
-  
+  config.gem 'ajaxful_rating'
   config.time_zone = 'UTC'
   config.action_controller.session = {
-    :session_key => '_base_session',
+    :key => '_services_session',
     :secret      => 'c5cfc6d7a49cc5f796a77ad683cc49aa0b2b43f8e32e43e2c30050ff65aa809d6c3353e1efd8712e1f8702bc008a70b9891e53b6ea649b2319a438e2b17457b2'
   }
   config.load_paths << "#{RAILS_ROOT}/app/sweepers" 

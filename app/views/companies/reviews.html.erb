@@ -1,0 +1,40 @@
+<% content_for :sidebar do -%>
+<div>
+	<div style="font-size:14px; font-weight:bold; font-color:#141216">
+
+	</div>
+</div>
+<% end -%>
+<h3>Write A Review</h3>
+<div class="clear2"></div>
+<div class="clear2"></div>
+<div>Please feel free to share your opinions</div>
+<div class="clear2"></div>
+<div class="clear2"></div>
+<div id="review_form" >
+	<span style="font-size:12px">Review for : <b> <%= @company.name %> </b></span>
+<div class="clear2"></div>
+<div class="clear2"></div>
+<% form_for(:review, :url => reviews_path ) do |f| %>
+	<table cellspacing="0">
+		<tr>
+			<td valign="top"><label>name</label></td>
+			<td><%= f.text_field :name, :size => 35%></td>
+		</tr>
+		<tr>
+			<td valign="top"><label>Email</label></td>
+			<td><%= f.text_field :email, :size => 35 %></td>
+		</tr>
+		<tr>
+			<td valign="top"><label>review</label></td>
+			<td><%= f.text_area :comment, :rows => 3, :cols => 35 %></td>
+		</tr>	 
+		<tr>
+			<td><%= f.hidden_field 'company_id', :value => @company.id %></td>
+			<td><%= f.submit "Submit" %></td>
+		</tr>
+	</table>	
+<%end%>	
+</div>
+<br/>
+<span class="blue_link"><%= link_to 'Back', company_path(@company) %></span>

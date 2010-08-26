@@ -1,0 +1,48 @@
+<% title 'My Advertisements' %>
+<%= render :partial => '/shared/slideshow' %>
+<div>
+	<%if params[:owner_id]%>
+		<h3> My companies</h3>
+	<% else %>
+		<h3>List of all approved companies/ advertisements</h3>
+	<% end %>
+	
+	<div class="clear"></div>
+
+	<% for company in @companies %>
+	<div class="<%= cycle("pre", "pre-col") %>">
+			<table cellspacing="0">
+			<tr><td>
+			<table cellspacing="0">
+			  	<tr><td colspan="2" class="company-name"><%=link_to h(company.name), companies_path(company) %></td></tr>
+				<tr><td style="width:20%">Address: </td><td><%=h company.locality.name %>, <%=h company.city.name %></td></tr>
+				<!--<tr><td style="width:20%">Business </td><td><%#=h company.business.name %></td></tr>-->			  
+				<tr>
+					<td style="width:20%" valign="top">Category: </td>
+					<td>
+						<% for categorization in company.categorizations%>
+						<%=link_to Category.find(categorization.category_id).name , root_path(:radio => "category", :q => Category.find(categorization.category_id).name )%>&nbsp;&nbsp;
+					<%end%>
+					</td>
+				</tr>	
+				<tr>
+					<td class="no_border">
+						<%= link_to image_tag("edit.gif"), edit_company_path(company), :title=>"Edit" if admin_or_owner?(params[:owner_id]) %>
+						<%= link_to image_tag("destroy.png"), admin_company_path(company), :confirm => 'Are you sure?', :method => :delete, :title => "Delete?" if admin? %>
+					</td>
+					<td></td>
+				</tr>							
+			</table>
+			</td>
+			<% unless company.images[0].blank? %>
+				<td style="width:101px" align="right">
+					<img src =<%= company.images[0].ad.url(:thumb)%> />
+				</td>
+			<% end %>
+			</tr>
+			</table>
+		</div>
+		<div class="clear"></div>
+	<% end %>
+<% if admin? %><span class="blue_link"><%= link_to 'New company', new_company_path %></span><% end %>
+</div>

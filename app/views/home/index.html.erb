@@ -1,15 +1,11 @@
 <% title 'Index' %>
 <%= javascript 'dynamic_localities' %>	
-<div  style="background:url(images/alphabet_bg.gif) repeat-x left top; height:39px;">
-	<ul>
-			<li>Select Alphabetical Lisitings:</li>
-		<% @alphabets.each do|alpha| %>
-			<li <%= "id='current'" if @alpha == alpha %>><%= link_to alpha, {:alpha=>alpha} %></li>					
-		<% end %>			
-	</ul>
+<div class="alphabets">
+   Select Alphabetical Lisitings:
+		<%# @alphabets.each do|alpha| %>
+   <h7><%= @alphabets.map{|alpha|  link_to_unless_current(alpha, {:alpha => alpha}){link_to alpha, {:alpha => alpha}, :class => 'current'}}.join(" &nbsp; ")%></h7>			
+		<%# end %>			
 </div>
-
-
 
 		<div id="screen_green">
 			<% i = @categories.size %>
@@ -18,7 +14,7 @@
 					<ul>					
 						<% @categories[0..i].each do|category| %>
 							<li <%= "id='current'" if category.id.to_s == params[:category] %>>
-								<%= link_to truncate((category.name), :length => 25), search_url(:q => category.name, :radio=>"category", :alpha=>params[:alpha]), :title => category.name %></li>						
+								<%= link_to (category.name), search_url(:q => category.name, :radio=>"category", :alpha=>params[:alpha]), :title => category.name %></li>						
 							</li>
 						<% end %>												
 					</ul>	
@@ -31,7 +27,7 @@
 					<ul>					
 						<% @categories[0..34].each do|category| %>
 							<li <%= "id='current'" if category.id.to_s == params[:category] %>>
-								<%= link_to truncate((category.name), :length => 25), search_url(:q => category.name, :radio=>"category", :alpha=>params[:alpha]), :title => category.name %></li>						
+								<%= link_to (category.name), search_url(:q => category.name, :radio=>"category", :alpha=>params[:alpha]), :title => category.name %></li>						
 							</li>
 						<% end %>												
 					</ul>	
@@ -40,7 +36,7 @@
 					<ul>
 						<% @categories[35..i].each do|category| %>
 							<li <%= "id='current'" if category.id.to_s == params[:category] %>>
-							<%= link_to truncate((category.name),:length => 25), search_url(:q => category.name, :radio=>"category", :alpha=>params[:alpha]), :title => category.name %></li>						
+							<%= link_to (category.name), search_url(:q => category.name, :radio=>"category", :alpha=>params[:alpha]), :title => category.name %></li>						
 							</li>
 						<% end %>
 					</ul>				
@@ -48,4 +44,4 @@
 			<% end %>
 			<div id="page_shift"><%= will_paginate @categories unless @categories.empty? %></div>
 		</div>
-</div>
+

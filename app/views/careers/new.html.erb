@@ -1,43 +1,49 @@
-<h1>New career</h1>
-
-<% form_for(@career, :html => {:multipart => true}) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </p>
-  <p>
-    <%= f.label :post %><br />
-    <%= f.text_field :post %>
-  </p>
-  <p>
-    <%= f.label :city %><br />
-    <%= f.text_field :city %>
-  </p>
-  <p>
-    <%= f.label :tel %><br />
-    <%= f.text_field :tel %>
-  </p>
-  <p>
-    <%= f.label :mobile %><br />
-    <%= f.text_field :mobile %>
-  </p>
-  <p>
-    <%= f.label :address %><br />
-    <%= f.text_field :address %>
-  </p>
-  <p>
-    Attach Resume<br />
-    <%= f.file_field :resume %>
-  </p>
-  <p>
-    <%= f.submit 'Create' %>
-  </p>
-<% end %>
-
-<%= link_to 'Back', careers_path %>
+<%# link_to 'Back', careers_path %>
+ <div class="pl10 pt10">
+	<% form_for(@career, :html => {:multipart => true}) do |f| %>
+	  <%= f.error_messages %>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td colspan="4"><h4>We offer a long time career growth opportunity to those, who are sincere and have a passion to work to excel.
+        </h4><br />
+          Free fill in the below details &amp; will get back to you soon.</td>
+        </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td colspan="3">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="23%">Name</td>
+        <td colspan="3"><%= f.text_field :name, :size=>"80", :class=>"textBox" %></td>
+        </tr>
+      <tr>
+        <td>Email</td>
+        <td colspan="3"><%= f.text_field :email, :size=>"80", :class=>"textBox" %></td>
+        </tr>
+      <tr>
+        <td>Post</td>
+        <td><%= f.text_field :post, :size=>"30", :class=>"textBox" %></td>
+        <td align="right">Telephone</td>
+        <td><%= f.text_field :tel, :size=>"30", :class=>"textBox" %></td>
+      </tr>
+      <tr>
+        <td>City </td>
+        <td width="25%"><%= f.text_field :city,  :size=>"30", :class=>"textBox"%></td>
+        <td align="right">Mobile</td>
+        <td> <%= f.text_field :mobile, :size=>"30", :class=>"textBox"%></td>
+      </tr>
+      <tr>
+        <td valign="top">Address</td>
+        <td colspan="3"><%= f.text_area :address,  :cols=>"75", :rows=>"3", :class=>"textArea"%></td>
+        </tr>
+      <tr>
+        <td>Attach Resume</td>
+        <td colspan="3"><%= f.file_field :resume %></td>
+        </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td colspan="3"><%= f.submit 'Create' %></td>
+      </tr>
+    </table>
+   <% end %>
+  </div>

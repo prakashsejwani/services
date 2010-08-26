@@ -25,7 +25,7 @@ class DashboardController < ApplicationController
     if params[:radio] == "company" 
       @companies = Company.search params[:q],
                    :conditions=> conditions, :order => :priority, :sort_mode => :desc,
-                   :include=>[:locality, :city, :business, :images, :categories, :rates],                   
+                   :include=>[:locality, :city, :business, :images, :categories],                   
                    :page => params[:page],
                    :per_page => 5,
                    :with => {:approved=>true}
@@ -60,7 +60,7 @@ class DashboardController < ApplicationController
       conditions = {:category_name => q, :city => city}
     end  
     @companies = Company.search(:conditions => conditions,  :order => :priority, :sort_mode => :desc,
-    	  :include=>[:locality, :city, :images, :categories, :rates],
+    	  :include=>[:locality, :city, :images, :categories],
           :with => {:approved=>true},
           :page => page,
           :per_page => 5)

@@ -6,13 +6,13 @@
 .ajaxful-rating a:hover,
 .ajaxful-rating a:active,
 .ajaxful-rating a:focus,
-.ajaxful-rating .current-rating{
+.ajaxful-rating .show-value{
     background: url(/images/ajaxful_rating/star.png) left -1000px repeat-x;
 }
 .ajaxful-rating{
     position: relative;
-    /*width: 49px; this is setted dynamically */
-    height: 10px;
+    /*width: 125px; this is setted dynamically */
+    height: 25px;
     overflow: hidden;
     list-style: none;
     margin: 0;
@@ -22,13 +22,13 @@
 .ajaxful-rating li{ display: inline; }
 .ajaxful-rating a,
 .ajaxful-rating span,
-.ajaxful-rating .current-rating{
+.ajaxful-rating .show-value{
     position: absolute;
     top: 0;
     left: 0;
     text-indent: -1000em;
-    height: 10px;
-    line-height: 10px;
+    height: 25px;
+    line-height: 25px;
     outline: none;
     overflow: hidden;
     border: none;
@@ -63,22 +63,22 @@ width: 100%;
 z-index: 2;
 }
 */
-.ajaxful-rating .current-rating{
-    z-index: 3;
+.ajaxful-rating .show-value{
+    z-index: 1;
     background-position: left center;
 }
 
 /* smaller star */
-.small-star{
-    /*width: 16px; this is setted dynamically */
-    height: 3px;
+.ajaxful-rating.small{
+    /*width: 50px; this is setted dynamically */
+    height: 10px;
 }
-.small-star,
-.small-star a:hover,
-.small-star a:active,
-.small-star a:focus,
-.small-star .current-rating{
+.ajaxful-rating.small,
+.ajaxful-rating.small a:hover,
+.ajaxful-rating.small a:active,
+.ajaxful-rating.small a:focus,
+.ajaxful-rating.small .show-value{
     background-image: url(/images/ajaxful_rating/star_small.png);
-    line-height: 3px;
-    height: 3px;
+    line-height: 10px;
+    height: 10px;
 }

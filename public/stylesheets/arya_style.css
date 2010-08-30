@@ -122,3 +122,13 @@ input.search{ border:1px solid #d4d4d4; background:#FFFFFF; padding:2px; font-fa
 
 .headingBgYellow{background:url(../images/yellow_bg.gif) repeat-x left top; height:57px; padding:0 20px; color:#504846;}
 .headingBgYellow h6{font-size:20px;margin:0; padding:15px 0;}
+
+
+/* Will Paginate */
+#pages {bottom:0;
+font-size:12px;
+margin:0 auto;
+padding:3px;
+position:relative;
+text-align:center;
+width:820px;}

@@ -81,9 +81,9 @@
 						<div id="slideshow-content" >
 							<div class="slide" id="slide<%=c%>" <%if c>=2 %>style="display: none;" <%end%> >
 								<center class="no_border">
-									<%= link_to company.name, advertisement_path(company), :class=>"link" %>
+									<%= link_to company.name, company_path(company), :class=>"link" %>
 									<div class="clear"></div>
-									<%=link_to (image_tag company.images[0].ad.url), advertisement_path(company), :title => company.name %>
+									<%=link_to (image_tag company.images[0].ad.url), company_path(company), :title => company.name %>
 								</center>
 							</div>
 						</div>

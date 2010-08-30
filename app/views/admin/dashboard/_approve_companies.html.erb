@@ -35,7 +35,7 @@
 	    <% end %>			
 	</div>
 	<div class="clear"></div>	
-	<%= will_paginate @companies %>
+	<div id="pages"><%= will_paginate @companies %></div>
 <% else %>
 	<div class="pre-col">No data available for approval for Companies</div>
 <% end %>

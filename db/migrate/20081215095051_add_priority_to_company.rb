@@ -1,8 +1,8 @@
 class AddPriorityToCompany < ActiveRecord::Migration
   def self.up
    
-     add_column :companies, :from_date, :string
-     add_column :companies, :to_date, :string
+     add_column :companies, :from_date, :date
+     add_column :companies, :to_date, :date
   end
 
   def self.down

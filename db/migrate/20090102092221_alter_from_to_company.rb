@@ -5,7 +5,7 @@ class AlterFromToCompany < ActiveRecord::Migration
   end
 
   def self.down
-    change_column :companies, :from_date, :string
-    change_column :companies, :to_date, :string
+    change_column :companies, :from_date
+    change_column :companies, :to_date
   end
 end

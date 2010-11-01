@@ -175,12 +175,14 @@ class CompaniesController < ApplicationController
  protected
   def process_file_uploads
     i = 0
+    if params[:attachment].present?
     while params[:attachment]['file_'+i.to_s] != "" && !params[:attachment]['file_'+i.to_s].nil?
       @image = Image.new(Hash["ad" => params[:attachment]['file_'+i.to_s]])
       @company.images << @image
       i += 1 
       @image.save!
-    end   
+    end 
+    end  
   end
 
 private  

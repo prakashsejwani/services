@@ -85,11 +85,15 @@ class Admin::CompaniesController < ApplicationController
     save_company
     respond_to do|format|
       if @company.save
-        process_file_uploads  
+       if params[:attachment].present?
+        process_file_uploads
+       end 
+        if  params[:video].present? 
         unless params[:video][:uploaded_data].blank?
           video = Video.new("video" => params[:video][:uploaded_data])
           @company.video = video
           @company.video.save!
+        end
         end
         flash[:notice] = 'Company was successfully created.'        
         format.html { redirect_to(new_admin_company_path) }
@@ -245,12 +249,14 @@ class Admin::CompaniesController < ApplicationController
  
   def process_file_uploads
     i = 0
-    while params[:attachment]['file_'+i.to_s] != "" && !params[:attachment]['file_'+i.to_s].nil?
+    if params[:attachment].present? && params[:attachment]['file_'+i.to_s].present?
+    while params[:attachment]['file_'+i.to_s] != "" && !params[:attachment]['file_'+i.to_s].nil? 
       @image = Image.new(Hash["ad" => params[:attachment]['file_'+i.to_s]])
       @company.images << @image
       i += 1 
       @image.save!
-    end     
+    end 
+    end    
   end
   
 end

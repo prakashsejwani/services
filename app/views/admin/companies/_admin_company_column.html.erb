@@ -7,7 +7,7 @@
 	<%end%>
 	<tr>
 		<td>Owner</td>
-		<td><%= f.collection_select :owner_id, @users, :id, :login, {:prompt => true}%></td>
+		<td><%= f.collection_select :owner_id, User.all, :id, :login, {:prompt => true}%></td>
 	</tr>
 	<tr>
 		<td>Approved</td>	
